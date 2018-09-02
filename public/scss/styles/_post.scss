@@ -1,0 +1,282 @@
+.post {
+	width: 100%;
+	min-height: 100vh;
+	padding: 2rem;
+	border-radius: 3px;
+	border: 2rem solid $black;
+	border-style: groove;
+
+	background-color: $white;
+	color: $white;
+
+	&__header {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+    	height: 2rem;
+		
+		&__back {
+			color: $black;
+			margin-bottom: 1rem;
+
+			a {
+				text-decoration: none;
+				color: $black;
+			}
+
+			&__text {
+				margin-left: .5rem;
+				font-size: 1rem;
+			}
+		}
+
+		&__edit {
+			color: $black;
+			margin-bottom: 1rem;
+
+			a {
+				text-decoration: none;
+				color: $black;
+			}
+
+			&__text {
+				margin-left: .5rem;
+				font-size: 1rem;
+			}
+
+			&__trending {
+				font-size: 1rem;
+
+				background-color: transparent;
+				border: none;
+				outline: none;
+				cursor: pointer;
+
+				i {
+					padding-right: .3rem;
+				}
+			}
+		}
+	}
+
+	&__share {
+		display: flex;
+		flex-direction: column;
+
+		&__text {
+			color: $black;
+		}
+
+		&__buttons {
+			display: flex;
+			flex-direction: row;
+		}
+
+		&__title {
+			font-size: 2rem;
+			font-weight: bold;
+			color: $black;
+		}
+
+		.facebook {
+			color: $black;
+			font-size: 2rem;
+			margin-right: 1.5rem;
+			width: 1rem;
+			a {
+				color: $black;
+			}
+			a:hover {
+				color: #3B5998;
+			}
+		}
+
+		.twitter {
+			color: $black;
+			font-size: 2rem;
+			width: 1rem;
+			a {
+				color: $black;
+			}
+			a:hover {
+				color: #0084b4;
+			}
+		}
+	}
+
+	&__post {
+		margin-bottom: 1rem;
+		background-color: $black;
+		padding: 2rem;
+		border-top: .3rem solid $white;
+		box-shadow: 0px 0px 1rem 3px #22222217;
+
+		&__information {
+			padding: 1rem;
+			background-color: rgba(0, 0, 0, 0.15);
+			box-shadow: 0.1rem 0.1rem 0.4rem #181818;
+			text-align: center;
+
+			&__text {
+				font-size: 1rem;
+				margin: .25rem 0 .25rem 0;
+				color: $white;
+			}
+		}
+
+		&__title {
+			font-size: 2rem;
+			margin-bottom: 1rem;
+			color: $white;
+		}
+
+		&__avatar {
+			width: 1.5rem;
+			height: 1.5rem;
+			border-radius: 50%;
+			margin: .5rem .3rem -.4rem .3rem;
+
+			user-drag: none; 
+			user-select: none;
+			-moz-user-select: none;
+			-webkit-user-drag: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+
+		&__body {
+			margin-top: 1rem;
+			color: #222222;
+			width: 100%;
+			white-space: pre-line;
+			color: $white;
+    		word-spacing: .05rem;
+    		line-height: 1.8rem;
+			font-family: 'Open Sans', sans-serif;
+			word-break: break-word;
+			
+			em, a {
+				font-family: 'Open Sans', serif;
+			}
+
+			p {
+				margin-top: 1rem;
+				color: #222222;
+				width: 100%;
+				white-space: pre-line;
+				color: $white;
+	    		word-spacing: .05rem;
+	    		line-height: 1.8rem;
+				font-family: 'Open Sans', sans-serif;
+			}
+
+    		img {
+    			margin-top: 1rem;
+    			margin-bottom: 1rem;
+    			width: 100%;
+    			border: .5rem solid $white;
+				user-drag: none; 
+				user-select: none;
+				-moz-user-select: none;
+				-webkit-user-drag: none;
+				-webkit-user-select: none;
+				-ms-user-select: none;
+    		}
+
+    		a {
+    			color: $white;
+    		}
+
+    		blockquote {
+				padding-left: 1rem;
+				margin-left: 1rem;
+				border-left: .5rem solid $white;
+				font-style: italic;
+			}
+			
+			ul {
+				margin-left: 2rem;
+
+				li {
+
+				}
+			}
+
+			ol {
+				margin-left: 2rem;
+
+				li {
+					padding-left: .5rem;
+				}
+			}
+		}
+	}
+}
+
+/**
+@media (max-width: 1300px) {
+	.post__share {
+		display: none;
+	}
+}*/
+
+@media (max-width: 1000px) {
+	.post {
+		padding: 1rem;
+	}
+}
+
+@media (max-width: 757px) {
+	.post__post__body img {
+		border: .5rem solid $white;
+	}
+}
+
+@media (max-width: 535px) {
+	.post__post__title {
+		font-size: 1.5rem;
+	}
+	.post__post__information__text {
+		font-size: .8rem;
+	}
+	.post__post__body {
+		font-size: .8rem;
+    	line-height: 1.4rem;
+	}
+	.post__post__avatar {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+}
+
+@media (max-width: 520px) {
+	.post {
+		padding: 1rem;
+		border: 1rem solid #222222;
+	}
+}
+
+@media (max-width: 400px) {
+	.post__post {
+		padding: 1rem;
+	}
+	.post {
+		border: 1rem solid #222222;
+		padding: 0rem;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+}
+
+@media (max-width: 375px) {
+	.post__post__title {
+		font-size: 1rem;
+	}
+	.post__post__information__text {
+		font-size: .7rem;
+	}
+	.post__post__body {
+		font-size: .8rem;
+    	line-height: 1.3rem;
+	}
+}

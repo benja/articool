@@ -1,0 +1,115 @@
+.profile__posts .postbox {
+    margin-top: 5rem;
+}
+
+.index .postbox {
+    margin-bottom: 1rem;
+}
+
+.postbox {
+    margin-bottom: -4rem;
+    padding: 1rem;
+    background-color: $black;
+    border-radius: 3px;
+    border-top: .3rem solid $white;
+    box-shadow: 0px 0px 1rem 3px #22222217;
+
+    &__title {
+        font-size: 1.25rem;
+        color: $white;
+        margin-bottom: .5rem;
+    }
+
+    &__tags {
+        font-family: 'Open Sans', sans-serif;
+        font-style: italic;
+    }
+
+    &__description {
+        color: #222222;
+        color: $white;
+        word-spacing: .05rem;
+        margin-top: .5rem;
+        margin-bottom: .5rem;
+        line-height: 1.5rem;
+        word-wrap: break-word;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    &__readmore {
+        color: $white;
+        font-family: 'Open Sans', serif;
+
+        a {
+            text-decoration: none;
+            color: $white;
+        }
+    }
+
+    &__avatar {
+        width: 1.2rem;
+        height: 1.2rem;
+        border-radius: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: .5rem .3rem -.4rem .3rem;
+
+        user-drag: none; 
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+}
+
+@media (max-width: 991px) {
+	.profilebox {
+        margin-top: 1rem;
+        margin-bottom: 0rem;
+        width: 100%;
+    }
+    
+    .profile__posts .postbox {
+        margin-top: 1rem;
+        margin-bottom: 0rem;
+    }
+}
+
+@media (max-width: 767px) {
+	.profilebox {
+        margin-top: 1rem;
+        margin-bottom: 0rem;
+        width: 100%;
+	}
+}
+
+@media (max-width: 650px) {
+	.profilebox {
+        margin-top: 1rem;
+        margin-bottom: 0rem;
+        width: 100%;
+
+        &__title {
+            font-size: 1rem;
+        }
+        
+        &__description {
+            font-size: .9rem;
+        }
+    }
+}
+
+@media (max-width: 540px) {
+	.profile__posts .postbox {
+        padding: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 0rem;
+        
+        &__description {
+            font-size: .9rem;
+            width: 100%;
+        }
+	}
+}

@@ -1,0 +1,239 @@
+{% extends "templates/base.volt" %}
+
+{% block title %}
+
+	{% for post in getPost %}
+		{% if post.post_active is 1 %}
+		«{{ post.post_title }}» by {{ postAuthorsTitle }}
+		{% else %}
+			This articool has been deleted
+		{% endif %}
+	{% endfor %}
+
+{% endblock %}
+
+{% block body_id %} post {% endblock %}
+
+{% block content %}
+
+<div class="col-xs-12 col-md-12 col-lg-12">
+	<div id="article__modal" style="display: block;" class="modal">
+	    <div class="modal__content">
+			<a href="javascript:history.go(-1)">
+				<span class="modal__content__close">&times;</span>
+			</a>
+
+	        {{ flash.output() }}
+	        <form id="editArticool" method="POST">
+
+	        	<input type="hidden" name="post_id" value="{{ post.post_id }}">
+
+				<h1 class="modal__form__title">Edit Articool</h1>
+				<div class="modal__form__divide"></div>
+				<h1 class="modal__form__title__small">Change your Articool title, and context all in here.</h1>
+
+				<div class="modal__form__input">
+					<input type="text" id="post_title" name="post_title" maxlength="255" autocomplete="off" value="{{ post.post_title }}" required/>
+					<label for="post_title">Articool Title</label>
+				</div>
+
+				<div class="modal__form__input">
+					<div name="post_body" id="post_body">{{ post.post_body }}</div><br>
+				</div>
+
+				<h1 class="modal__form__title">Additional Information</h1>
+				<div class="modal__form__divide"></div>
+				<h1 class="modal__form__title__small">You can add contributors to your article by writing their name in the box below, keep in mind that they will need an Articool account. Leave blank if nobody else contributed to the Articool. By selecting the Articool language, and genre, your Articool will appear under the specified categories, and will do better engagement-wise.</h1>
+
+	            <div class="modal__form__input">
+	                <select multiple id="post_authors" name="post_authors[]" data-placeholder="Contributors" class="chosen-select">
+					{% for author in getUsers %}
+						{% if post.user_id != author.user_id %}
+							<option value="{{ author.user_id }}">{{ author.first_name }} {{ author.last_name }} ({{ author.username }})</option>
+						{% endif %}
+					{% endfor %}
+
+					{% for authors in getAuthors  %}
+						{% if user.username != authors.username %}
+							<option selected value="{{ authors.users.user_id }}">{{ authors.users.first_name }} {{ authors.users.last_name }} ({{ authors.users.username }})</option>
+						{% endif %}
+					{% endfor %}
+					</select>
+	            </div>
+
+				<div class="modal__form__input two">
+					<select id="post_language" name="post_language" required>
+						{% if post.post_language is not null %}
+							<option value="{{ post.post_language }}" hidden selected>{{ post.post_language }}</option>
+						{% else %}
+							<option value="" disabled selected>Language</option>
+						{% endif %}
+						<option value="Afrikanns">Afrikanns</option>
+						<option value="Albanian">Albanian</option>
+						<option value="Arabic">Arabic</option>
+						<option value="Armenian">Armenian</option>
+						<option value="Basque">Basque</option>
+						<option value="Bengali">Bengali</option>
+						<option value="Bulgarian">Bulgarian</option>
+						<option value="Catalan">Catalan</option>
+						<option value="Cambodian">Cambodian</option>
+						<option value="Chinese">Chinese</option>
+						<option value="Croation">Croation</option>
+						<option value="Czech">Czech</option>
+						<option value="Danish">Danish</option>
+						<option value="Dutch">Dutch</option>
+						<option value="English">English</option>
+						<option value="Estonian">Estonian</option>
+						<option value="Fiji">Fiji</option>
+						<option value="Finnish">Finnish</option>
+						<option value="French">French</option>
+						<option value="Georgian">Georgian</option>
+						<option value="German">German</option>
+						<option value="Greek">Greek</option>
+						<option value="Gujarati">Gujarati</option>
+						<option value="Hebrew">Hebrew</option>
+						<option value="Hindi">Hindi</option>
+						<option value="Hungarian">Hungarian</option>
+						<option value="Icelandic">Icelandic</option>
+						<option value="Indonesian">Indonesian</option>
+						<option value="Irish">Irish</option>
+						<option value="Italian">Italian</option>
+						<option value="Japanese">Japanese</option>
+						<option value="Javanese">Javanese</option>
+						<option value="Korean">Korean</option>
+						<option value="Latin">Latin</option>
+						<option value="Latvian">Latvian</option>
+						<option value="Lithuanian">Lithuanian</option>
+						<option value="Macedonian">Macedonian</option>
+						<option value="Malay">Malay</option>
+						<option value="Malayalam">Malayalam</option>
+						<option value="Maltese">Maltese</option>
+						<option value="Maori">Maori</option>
+						<option value="Marathi">Marathi</option>
+						<option value="Mongolian">Mongolian</option>
+						<option value="Nepali">Nepali</option>
+						<option value="Norwegian">Norwegian</option>
+						<option value="Persian">Persian</option>
+						<option value="Polish">Polish</option>
+						<option value="Portuguese">Portuguese</option>
+						<option value="Punjabi">Punjabi</option>
+						<option value="Quechua">Quechua</option>
+						<option value="Romanian">Romanian</option>
+						<option value="Russian">Russian</option>
+						<option value="Samoan">Samoan</option>
+						<option value="Serbian">Serbian</option>
+						<option value="Slovak">Slovak</option>
+						<option value="Slovenian">Slovenian</option>
+						<option value="Spanish">Spanish</option>
+						<option value="Swahili">Swahili</option>
+						<option value="Swedish">Swedish</option>
+						<option value="Tamil">Tamil</option>
+						<option value="Tatar">Tatar</option>
+						<option value="Telugu">Telugu</option>
+						<option value="Thai">Thai</option>
+						<option value="Tibetan">Tibetan</option>
+						<option value="Tonga">Tonga</option>
+						<option value="Turkish">Turkish</option>
+						<option value="Ukranian">Ukranian</option>
+						<option value="Urdu">Urdu</option>
+						<option value="Uzbek">Uzbek</option>
+						<option value="Vietnamese">Vietnamese</option>
+						<option value="Welsh">Welsh</option>
+						<option value="Xhosa">Xhosa</option>
+					</select>
+
+					<select style="margin: 0;" id="post_genre" name="post_genre" required>
+						{% if post.post_language is not null %}
+							<option value="{{ post.post_genre }}" hidden selected>{{ post.post_genre }}</option>
+						{% else %}
+							<option value="" disabled selected>Genre</option>
+						{% endif %}
+						<optgroup label="Literature">
+							<option value="Analysis">Analysis</option>
+							<option value="Autobiography">Autobiography</option>
+							<option value="Biography">Biography</option>
+							<option value="Essay">Essay</option>
+							<option value="Fiction">Fiction</option>
+							<option value="Non-Fiction">Non-Fiction</option>
+							<option value="Poetry">Poetry</option>
+							<option value="Short Story">Short Story</option>
+						</optgroup>
+					</select>
+				</div>
+
+				<input type="hidden" id="session_identifier" value="{{ tokens.session_identifier }}" />
+				<input type="hidden" id="session_token" value="{{ tokens.session_token }}" />
+
+	            <input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}" />
+	            <div class="modal__form__input">
+	                <input type="submit" id="articool_submit" name="submit" value="Update Articool">
+	            </div>
+
+				<div id="feedback_message"></div>
+			</form>
+
+			<form method="POST" id="deleteArticool" action="{{ url('api/v1/post/delete-articool/{post_id}') }}">
+				<input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}" />
+				
+				<input type="hidden" id="session_identifier" value="{{ tokens.session_identifier }}" />
+				<input type="hidden" id="session_token" value="{{ tokens.session_token }}" />
+
+				<div style="font-style: italic; margin-top: 1rem;">
+					If you wish to delete this articool, click <input id="articool_delete" style="background-color: white; border: none; font-size: .97rem; text-decoration: underline; font-style: italic; cursor: pointer;" type="submit" name="submit" value="here ">
+				</div>
+				<div id="feedback_message"></div>
+			</form>
+
+	    </div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	
+	ClassicEditor
+		.create( document.querySelector( '#post_body' ), {
+			toolbar: [ 'bold', 'italic', 'underline', 'strikethrough', 'code', 'blockQuote', '|', 'link', 'bulletedList', 'numberedList', '|', 'undo', 'redo' ]
+		} )
+		.then( editor => {
+			console.log( editor );
+			post_body = editor;
+			
+		} )
+		.catch( error => {
+			console.error( error );
+		} );
+</script>
+
+<!-- Styling some of the CKEDITOR -->
+<style>
+	.ck-editor__editable {
+		min-height: 10rem;
+	}
+
+	.ck-editor__editable p {
+		font-family: 'Open Sans', sans-serif;
+		color: #222222;
+		margin-top: 1rem;
+		width: 100%;
+		word-spacing: .05rem;
+		line-height: 1.8rem;
+	}
+	.ck-editor__editable blockquote {
+		border-left: 0.5rem solid #222222;
+		font-style: italic;
+		padding-left: 1rem;
+		margin: 1rem 0 0 1rem;
+	}
+</style>
+
+<script type="text/javascript">
+$(".chosen-select").chosen({
+	no_results_text: "We can't find the author ",
+	width: "100%"
+}); 
+</script>
+
+{{ javascript_include("js/auth/editArticool.js") }}
+{{ javascript_include("js/auth/deleteArticool.js") }}
+
+{% endblock %}

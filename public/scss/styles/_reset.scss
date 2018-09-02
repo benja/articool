@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,700');
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif');
+* {
+    padding: 0;
+    margin: 0;
+	font-family: 'Bree Serif', serif;
+    box-sizing: border-box;
+}
+
+strong {
+    font-family: 'Open Sans', serif;
+    font-weight: bold;
+}
+
+bold {
+    font-family: 'Open Sans', serif;
+    font-weight: bold;
+}
+
+.ui.file.input input[type="file"] {
+    display: none;
+}
+
+::-moz-selection { /* Code for Firefox */
+    color: $white;;
+    background: $black;
+}
+
+::selection {
+    color: $white;
+    background: $black;
+}
+
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

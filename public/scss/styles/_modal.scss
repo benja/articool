@@ -1,0 +1,169 @@
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0; top: 0;
+	width: 100%; height: 100%;
+	overflow: auto;
+	color: $black;
+
+	&__form {
+
+		&__label {
+			width: 100%;
+			font-weight: bold;
+			font-size: 1.5rem;
+			display: inline;
+
+			&__small {
+				font-size: 1.15rem;
+				margin-left: .5rem;
+				display: inline;
+			}
+		}
+
+		&__divide {
+			display: block;
+			border: 0;
+			width: 5rem;
+			margin: 1rem 0;
+			border-top: 3px solid #222;
+		}
+
+		&__title {
+			font-size: 1.3rem;
+			margin: 0;
+
+			&__small {
+				font-size: 1rem;
+				font-size: .9rem;
+				color: #434343;
+				font-family: 'Open Sans', sans-serif;
+				font-weight: normal;
+				font-style: italic;
+			}
+		}
+
+		&__input {
+			position: relative;
+			margin-top: 1.5rem;
+
+			&.two {
+				display: inline-flex;
+				width: 100%;
+
+				select {
+					margin: 0 1rem 0 0;
+				}
+			}
+
+			select {
+				width: 50%;
+				transition: .2s;
+				color: $black;
+				background-color: #eee;
+				outline: none;
+				border: none;
+				font-size: 1.3rem;
+				padding: 1rem;
+			}
+
+			input {
+				width: 100%;
+				transition: .2s;
+				background-color: #eee;
+				outline: none;
+				border: none;
+				font-size: 1.3rem;
+				padding: 1rem;
+
+				&[type=submit] {
+					width: 100%;
+					color: $white;
+					background-color: $black;
+					border: none;
+
+					&:hover {
+						background-color: #1b1b1b;
+						cursor: pointer;
+					}
+				}
+			}
+
+			>label {
+				position: absolute;
+				top: 1rem;
+				font-size: 1.3rem;
+				margin-left: 1rem;
+				font-weight: thin;
+				text-transform: uppercase;
+				color: $black;
+				transition: top 200ms;
+			}
+
+			>input:focus + label,
+			>textarea:focus + label {
+				background: $black;
+				color: $white;
+				padding: 1px 6px;
+				z-index: 2;
+				text-transform: uppercase;
+				font-size: .8rem;
+				top: -1rem;
+				transform: rotate(-6deg);
+				left: -2.5rem;
+			}
+
+			>input:valid + label,
+			>textarea:valid + label {
+				background: $black;
+				color: $white;
+				padding: 1px 6px;
+				z-index: 2;
+				text-transform: uppercase;
+				font-size: .8rem;
+				top: -1rem;
+				transform: rotate(-6deg);
+				left: -2.5rem;
+			}
+
+		}
+	}
+
+	&__content {
+		background-color: #fefefe;
+		padding: 2rem;
+		border: 2rem solid $black;
+		border-style: groove;
+		min-height: 100%;
+
+		&__close {
+			color: $black;
+			float: right;
+			font-size: 2rem;
+			font-weight: bold;
+			margin-top: -1rem;
+
+			&:hover {
+				color: #696969;
+				text-decoration: none;
+				cursor: pointer;
+			}
+
+			&:focus {
+				color: #696969;
+				text-decoration: none;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+@media (max-width: 541px) {
+	.modal {
+
+		&__content {
+			border: 1rem solid $black;
+		}
+	}
+}

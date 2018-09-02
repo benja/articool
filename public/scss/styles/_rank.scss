@@ -1,0 +1,47 @@
+.rank {
+    background-color: $black;
+    color: $white;
+    padding: .3rem;
+    margin-top: .5rem;
+    border-radius: 3px;
+    font-size: .6rem;
+    letter-spacing: .05rem;
+    text-shadow: 0rem 0.05rem 0.1rem black;
+    
+
+    &:before {
+        content: "Enter rank";
+    }
+
+    &.user {
+        background-color: $user;
+
+        &:before {
+            content: "User";
+        }
+    }
+
+    &.approved {
+        background-color: $approved;
+
+        &:before {
+            content: "Approved";
+        }
+    }
+
+    &.moderator {
+        background-color: $moderator;
+
+        &:before {
+            content: "Moderator";
+        }
+    }
+
+    &.administrator {
+        background-color: $administrator;
+        
+        &:before {
+            content: "Administrator";
+        }
+    }
+}
