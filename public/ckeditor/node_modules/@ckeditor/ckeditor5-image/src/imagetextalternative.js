@@ -1,0 +1,36 @@
+/**
+ * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md.
+ */
+
+/**
+ * @module image/imagetextalternative
+ */
+
+import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
+import ImageTextAlternativeEditing from './imagetextalternative/imagetextalternativeediting';
+import ImageTextAlternativeUI from './imagetextalternative/imagetextalternativeui';
+
+/**
+ * The image text alternative plugin.
+ *
+ * It loads the {@link module:image/imagetextalternative/imagetextalternativeediting~ImageTextAlternativeEditing}
+ * and {@link module:image/imagetextalternative/imagetextalternativeui~ImageTextAlternativeUI} plugins.
+ *
+ * @extends module:core/plugin~Plugin
+ */
+export default class ImageTextAlternative extends Plugin {
+	/**
+	 * @inheritDoc
+	 */
+	static get requires() {
+		return [ ImageTextAlternativeEditing, ImageTextAlternativeUI ];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	static get pluginName() {
+		return 'ImageTextAlternative';
+	}
+}
