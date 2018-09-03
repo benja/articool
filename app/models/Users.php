@@ -134,40 +134,6 @@ class Users extends \Phalcon\Mvc\Model
         return parent::findFirst($parameters);
     }
 
-    /*
-        Custom made functions
-    */
-
-    public static function getPosts(int $user_id)
-    {
-        $user_id;
-        $posts = Posts::find([
-            'type'  => 'user_id',
-            'order' => 'created_at DESC',
-            'conditions' => 'user_id = :user_id: AND post_active = :post_active:',
-            'bind' => [
-                'user_id' => $user_id,
-                'post_active' => 1
-            ]
-        ]);
-
-        return $posts;
-    }
-
-
-    public static function getPost(int $post_id)
-    {
-        $post_id;
-        $post = Posts::find([
-            'type'  => 'user_id',
-            'conditions' => 'post_id = ' . $post_id,
-            'order' => 'created_at DESC'
-        ]);
-        
-        return $post;
-    }
-
-
     public static function getAuthors(int $post_id)
     {
         $post_id;
@@ -177,26 +143,6 @@ class Users extends \Phalcon\Mvc\Model
         ]);
         return $authors;
     }
-
-
-    public static function findToken(string $token)
-    {
-        $token;
-        $user = Users::findFirst([
-            'conditions' => 'token = :token:',
-            'bind' => [
-                'token' => $token
-            ]
-        ]);
-        return $user;
-    }
-
-
-    public static function getUsers()
-    {
-        return Users::find();
-    }
-
 
     public static function getApprovedAuthors()
     {

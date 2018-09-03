@@ -2,9 +2,9 @@
 
 {% block title %}
 		
-	{% for post in getPost %}
+	{% for post in getArticoolData %}
 		{% if post.post_active is 1 %}
-		«{{ post.post_title }}» by {{ postAuthorsTitle }}
+		«{{ post.post_title }}» by {{ getPostContributors }}
 		{% else %}
 			This articool has been deleted
 		{% endif %}
@@ -82,7 +82,7 @@
 		</div>
 
 		{% if post is defined and post.post_active != 0 %}
-			{% for post in getPost %}
+			{% for post in getArticoolData %}
 				<div class="post__post">
 					<p class="post__post__title">{{ post.post_title }}</p>
 					<div class="post__post__information">
@@ -94,8 +94,8 @@
 								{% endif %}
 							{% endif %}
 						</p>
-						<p class="post__post__information__text">{{ readTime }}</p>
-						<p class="post__post__information__text">{{ postAuthors }}</p>
+						<p class="post__post__information__text">Approximately a {{ readTime }} minute read</p>
+						<p class="post__post__information__text">{{ getArticoolAuthors }}</p>
 					</div>
 					<div class="post__post__body">{{ post.post_body }}</div>
 				</div>

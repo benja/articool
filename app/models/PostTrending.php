@@ -44,20 +44,6 @@ class PostTrending extends \Phalcon\Mvc\Model
         return 'post_trending';
     }
 
-    /*
-        Custom made functions
-    */
-
-    public static function getPosts()
-    {
-        $posts = PostTrending::find([
-            'order' => 'created_at DESC',
-        ]);
-
-        return $posts;
-    }
-
-
     /**
      * Allows to query a set of records that match the specified conditions
      *

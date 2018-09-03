@@ -4,9 +4,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>
 		
-	<?php foreach ($getPost as $post) { ?>
+	<?php foreach ($getArticoolData as $post) { ?>
 		<?php if ($post->post_active == 1) { ?>
-		«<?= $post->post_title ?>» by <?= $postAuthorsTitle ?>
+		«<?= $post->post_title ?>» by <?= $getPostContributors ?>
 		<?php } else { ?>
 			This articool has been deleted
 		<?php } ?>
@@ -127,7 +127,7 @@
 		</div>
 
 		<?php if (isset($post) && $post->post_active != 0) { ?>
-			<?php foreach ($getPost as $post) { ?>
+			<?php foreach ($getArticoolData as $post) { ?>
 				<div class="post__post">
 					<p class="post__post__title"><?= $post->post_title ?></p>
 					<div class="post__post__information">
@@ -139,8 +139,8 @@
 								<?php } ?>
 							<?php } ?>
 						</p>
-						<p class="post__post__information__text"><?= $readTime ?></p>
-						<p class="post__post__information__text"><?= $postAuthors ?></p>
+						<p class="post__post__information__text">Approximately a <?= $readTime ?> minute read</p>
+						<p class="post__post__information__text"><?= $getArticoolAuthors ?></p>
 					</div>
 					<div class="post__post__body"><?= $post->post_body ?></div>
 				</div>

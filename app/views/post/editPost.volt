@@ -2,9 +2,9 @@
 
 {% block title %}
 
-	{% for post in getPost %}
+	{% for post in getArticoolData %}
 		{% if post.post_active is 1 %}
-		«{{ post.post_title }}» by {{ postAuthorsTitle }}
+		«{{ post.post_title }}» by {{ getPostContributors }}
 		{% else %}
 			This articool has been deleted
 		{% endif %}
@@ -47,13 +47,13 @@
 
 	            <div class="modal__form__input">
 	                <select multiple id="post_authors" name="post_authors[]" data-placeholder="Contributors" class="chosen-select">
-					{% for author in getUsers %}
+					{% for author in getRegisteredUsers %}
 						{% if post.user_id != author.user_id %}
 							<option value="{{ author.user_id }}">{{ author.first_name }} {{ author.last_name }} ({{ author.username }})</option>
 						{% endif %}
 					{% endfor %}
 
-					{% for authors in getAuthors  %}
+					{% for authors in getArticoolAuthors  %}
 						{% if user.username != authors.username %}
 							<option selected value="{{ authors.users.user_id }}">{{ authors.users.first_name }} {{ authors.users.last_name }} ({{ authors.users.username }})</option>
 						{% endif %}

@@ -10,7 +10,7 @@
     	<div class="profile__box">
         <div class="profile__box__avatar" style="background-image: url({{ url('img/avatars/') }}{{ profile.avatar }})"></div>
     		<p class="profile__box__name">{{ profile.first_name }} {{ profile.last_name }}</p>
-    		<p class="profile__box__description">"{{ profile.description }}"</p>
+            <p class="profile__box__description">"{{ profile.description }}"</p>
 
             {% if profile.rank_id >= 2 %}
                 <div class="rank {% if profile.rank_id == 2 %}approved{% elseif profile.rank_id == 3 %}moderator{% elseif profile.rank_id == 4 %}administrator{% endif %}"></div>
@@ -48,7 +48,7 @@
                             <div class="modal__form__input">
                                 <select multiple id="post_authors" name="post_authors[]" data-placeholder="Contributors" class="chosen-select">
 
-                                {% for author in getUsers %}
+                                {% for author in getRegisteredUsers %}
                                     {% if user.username != author.username %}
 
                                         <option value="{{ author.user_id }}">{{ author.first_name }} {{ author.last_name }} ({{ author.username }})</option>
@@ -192,7 +192,7 @@
     <div class="col-xs-12 col col-md-12 col-lg-7">
         <div style="color: black;" class="profile__posts">
 
-        {% if getPosts|length is 0 %}
+        {% if getUserPosts|length is 0 %}
 
             <div class="profile__posts__none">
                 <i style="display: inline;" class="fa fa-exclamation" aria-hidden="true"></i>
@@ -201,7 +201,7 @@
 
         {% endif %}
 
-            {% for post in getPosts %}
+            {% for post in getUserPosts %}
                 {% if post.post_active == 1 %}
 
                 <div class="postbox">

@@ -2,46 +2,46 @@
 
 class PostController extends ControllerBase
 {
-    
-    // Post page
+
     public function postAction()
     {
-        // Pass profile information to view
-        $this->view->user =  $this->_user;
-        $this->view->getPost = Users::getPost($this->dispatcher->getParam('post_id'));
-        $this->view->isTrending = $this->isTrending($this->dispatcher->getParam('post_id'));
-        $this->view->readTime = Posts::getPostReadTime($this->dispatcher->getParam('post_id'));
-        $this->view->postAuthors = Posts::getPostAuthors($this->dispatcher->getParam('post_id'));
-        $this->view->postAuthorsTitle = Posts::getPostAuthorsTitle($this->dispatcher->getParam('post_id'));
+        $post_id = $this->dispatcher->getParam('post_id'); //define post_id from url
         
-
-        // Add 1+ view to post_views
-        $this->addPostView($this->dispatcher->getParam('post_id'));
+        // pass data to view
+        $this->view->user                = $this->_user;
+        $this->view->readTime            = $this->getArticoolReadTime($post_id);
+        $this->view->isTrending          = $this->isArticoolTrending($post_id);
+        $this->view->getArticoolData     = $this->getArticoolData($post_id);
+        $this->view->getArticoolAuthors  = $this->getArticoolAuthors($post_id);
+        $this->view->getPostContributors = $this->getPostContributors($post_id);
+        
+        $this->addPostView($post_id); // Add 1+ view to post_views
     }
 
     public function editPostAction()
     {
-        // Restrict guests from viewing this page
-        $this->restrictAccess('user');
-        $this->view->getUsers = Users::getUsers();
-        $post = Users::getPost($this->dispatcher->getParam('post_id'));
-        
-        // variables for allow edit
-        $creator_id = $post[0]->users->user_id;
-        $edit_id = $this->_user->user_id;
-        $rank_id = $this->_user->rank_id; //3 or higher is mod+admin
+        $this->restrictAccess('user'); // restrict access to users
+        $post_id = $this->dispatcher->getParam('post_id'); //define post_id
+        $post = $this->getArticoolData($post_id); // get post data
 
-        // if editor is not creator AND editor's rank is less than mod
+        // variables to determine whether or not user should be allowed to edit
+        $creator_id = $post[0]->users->user_id;
+        $edit_id    = $this->_user->user_id;
+        $rank_id    = $this->_user->rank_id; // 1 is user, 2 is approved, 3 is mod, 4 is admin
+
+        // if editor is not creator and editor's rank is less than mod, don't let them edit
         if($edit_id !== $creator_id && $rank_id < 3) {
             return $this->response->redirect($this->request->getHTTPReferer());
         }
 
-        // Pass profile information to view
-        $this->view->user =  $this->_user;
-        $this->view->getPost = Users::getPost($this->dispatcher->getParam('post_id'));
-        $this->view->getAuthors = Users::getAuthors($this->dispatcher->getParam('post_id'));
-        $this->view->postAuthorsTitle = Posts::getPostAuthorsTitle($this->dispatcher->getParam('post_id'));
+        // pass data to view
+        $this->view->user                = $this->_user;
+        $this->view->getArticoolData     = $this->getArticoolData($post_id);
+        $this->view->getArticoolAuthors  = $this->getArticoolAuthors($post_id);
+        $this->view->getPostContributors = $this->getPostContributors($post_id);
+        $this->view->getRegisteredUsers  = $this->getRegisteredUsers();
 
+        // if post is soft-deleted (not active) return editor back to previous page
         if($post[0]->post_active == 0) {
             return $this->response->redirect($this->request->getHTTPReferer());
         }
@@ -49,12 +49,11 @@ class PostController extends ControllerBase
 
     public function deletePostAction()
     {
-        // Restrict guests from viewing this page
-        $this->restrictAccess('user');
-        $post = Users::getPost($this->dispatcher->getParam('post_id'));
+        $this->restrictAccess('user'); // restrict access to user only
 
-        // If user's rank is under moderator, restrict access
-        if($this->_user->rank_id < 3) {
+        // if user is not moderator, don't give access to delete
+        $rank_id    = $this->_user->rank_id; // 1 is user, 2 is approved, 3 is mod, 4 is admin
+        if($rank_id < 3) {
             return $this->response->redirect($this->request->getHTTPReferer());
         }
     }

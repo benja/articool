@@ -5,17 +5,16 @@ class ProfileController extends ControllerBase
 
     public function getProfileAction()
     {
+        // if profile doesn't exist, return index
         if($this->_profile == NULL) {
-            return $this->ajaxResponse(true, $errors, '');
+            return $this->response->redirect('');
         }
 
-    	// Pass profile information to view
-    	$this->view->profile =  $this->_profile;
-    	$this->view->registered =  $this->_profile->created_at;
-        $this->view->user =  $this->_user;
-
-        $this->view->getUsers = Users::getUsers();
-        $this->view->getPosts = Users::getPosts($this->_profile->user_id);
+    	// pass data to view
+        $this->view->user               = $this->_user;
+        $this->view->profile            = $this->_profile;
+        $this->view->getRegisteredUsers = $this->getRegisteredUsers();
+        $this->view->getUserPosts       = $this->getUserPosts($this->_profile->user_id);
 
     }
 }

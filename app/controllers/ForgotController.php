@@ -5,18 +5,18 @@ class ForgotController extends ControllerBase
 
     public function indexAction()
     {
-    	$this->restrictAccess('guest');
+    	$this->restrictAccess('guest'); // restrict access to guest only
     }
 
     public function resetPasswordAction()
     {
-        
-        // If the token isn't valid, send then back to the forgotpassword page
-        $token = Users::findToken( $this->dispatcher->getParam('token') );
+        // check if token exists
+        $token = $this->findToken( $this->dispatcher->getParam('token') );
+
+        // if token doesn't exist, return forgot page
         if($token == NULL) {
             return $this->response->redirect('forgot');
         }
-        
     }
 
 }

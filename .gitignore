@@ -1,3 +1,6 @@
-# Ignore
+# Ignore personal data
 app/config/config.php
 app/config/services.php
+
+
+public/ckeditor/node_modules

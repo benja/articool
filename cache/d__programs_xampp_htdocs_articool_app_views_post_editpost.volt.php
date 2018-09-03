@@ -4,9 +4,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>
 
-	<?php foreach ($getPost as $post) { ?>
+	<?php foreach ($getArticoolData as $post) { ?>
 		<?php if ($post->post_active == 1) { ?>
-		«<?= $post->post_title ?>» by <?= $postAuthorsTitle ?>
+		«<?= $post->post_title ?>» by <?= $getPostContributors ?>
 		<?php } else { ?>
 			This articool has been deleted
 		<?php } ?>
@@ -79,13 +79,13 @@
 
 	            <div class="modal__form__input">
 	                <select multiple id="post_authors" name="post_authors[]" data-placeholder="Contributors" class="chosen-select">
-					<?php foreach ($getUsers as $author) { ?>
+					<?php foreach ($getRegisteredUsers as $author) { ?>
 						<?php if ($post->user_id != $author->user_id) { ?>
 							<option value="<?= $author->user_id ?>"><?= $author->first_name ?> <?= $author->last_name ?> (<?= $author->username ?>)</option>
 						<?php } ?>
 					<?php } ?>
 
-					<?php foreach ($getAuthors as $authors) { ?>
+					<?php foreach ($getArticoolAuthors as $authors) { ?>
 						<?php if ($user->username != $authors->username) { ?>
 							<option selected value="<?= $authors->users->user_id ?>"><?= $authors->users->first_name ?> <?= $authors->users->last_name ?> (<?= $authors->users->username ?>)</option>
 						<?php } ?>
