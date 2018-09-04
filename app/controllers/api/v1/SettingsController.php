@@ -6,7 +6,7 @@ use Phalcon\Image\Factory;
 
 use Phalcon\Validation\Message;
 
-use Phalcon\Validation\Validator\{PresenceOf, StringLength, Email, Alnum, Alpha, Uniqueness as UniquenessValidator};
+use Phalcon\Validation\Validator\{PresenceOf, StringLength, Email, Alnum, Alpha, Uniqueness as UniquenessValidator, File as FileValidator};
 
 use \ControllerBase;
 use \Users;
@@ -119,8 +119,33 @@ class SettingsController extends ControllerBase {
                 ]));
             }
 
+            /*
+            *   Validating the avatar uploaded
+            */
+            $filemessages = []; // define before
+            if($this->request->hasFiles() == true) {
+                $filevalidation = new Validation();
+                $file = new \Phalcon\Validation\Validator\File([
+                    'maxSize'      => '2M',
+                    'messageSize'  => 'Your avatar is too big. Max file size :max',
+                    'allowedTypes' => [
+                        'image/jpeg',
+                        'image/jpg',
+                        'image/png',
+                    ],
+                    'messageType'   => 'Allowed file types are JPEG, JPG, and PNG.',
+                    //'maxResolution' => '1000x1000',
+                    //'messageMaxResolution' => 'Max resolution of avatar is :max',
+                ]);
+
+                // then we add it to the validation list
+                $filevalidation->add('avatar', $file);
+                $filemessages = $filevalidation->validate($_FILES);
+            }
+
             // put errors in array
             $messages = $validation->validate($_POST);
+            $messages->appendMessages($filemessages); // append the filevalidation messages to main messages array
 
             // if user email_address is not set, user has not confirmed email
             if($auth->email_address == NULL) {
@@ -174,7 +199,7 @@ class SettingsController extends ControllerBase {
                 }
 
                 // check if files are uploaded
-				if($this->request->hasFiles() == true) {
+                if($this->request->hasFiles() == true) {
                     foreach($this->request->getUploadedFiles() as $file) {
                         if($file->getSize() > 0) {
 
@@ -190,7 +215,6 @@ class SettingsController extends ControllerBase {
                             $image = new \Phalcon\Image\Adapter\Gd('img/avatars/' . $newfilename);
                             $image->resize(300, null, \Phalcon\Image::WIDTH);
                             $image->save('img/avatars/' . $newfilename, 80);
-
                         }
                     }
                 }
