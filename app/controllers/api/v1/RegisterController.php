@@ -202,8 +202,8 @@ class RegisterController extends ControllerBase {
 
             // set cookie with token so we can get user info
             $this->cookies->set('session_token', $session_token, time() + 3600 * 24 * 30);
-
-            return $this->ajaxResponse(true, ['Successfully confirmed email-address'], 'ajax', $user->toArray());
+            
+            return $this->ajaxResponse(true, ['Successfully confirmed email-address'], '/', $user->toArray());
         }
         return $this->ajaxResponse(false, $messages, 'ajax');
     }
