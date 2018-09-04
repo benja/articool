@@ -159,6 +159,7 @@ class SettingsController extends ControllerBase {
                     // generate token
                     $token = bin2hex(openssl_random_pseudo_bytes(16));
 
+
                     //send email
 					$mail = $this->phpmailer;
 					$mail->setFrom('no-reply@benjaminakar.com', $this->appName);
@@ -176,7 +177,7 @@ class SettingsController extends ControllerBase {
 					$newemailtemplate = str_replace('{new_email_address}', $email_address, $newemailtemplate);
 
 					$mail->Subject = 'Confirm email-address changes';
-					$mail->Body = $newemailtemplate;
+                    $mail->Body = $newemailtemplate;
 					$mail->send();
                 }
 

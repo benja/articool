@@ -40,6 +40,14 @@ var password = $('#session_token').val();
         dataType: 'json',
         success: function (feedback) {
             $('#feedback_message').html(feedback.messages.join('<br />'));
+            
+            if(feedback.success == true) {
+                $('#settings_submit').prop('disabled', true);
+    
+                setTimeout(function() {
+                    $('#settings_submit').prop('disabled', false);
+                }, 3000);
+            }
         }
     });
     
