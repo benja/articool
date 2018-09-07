@@ -156,7 +156,7 @@ $di->set('phpmailer', function () {
     $mail->Host = 'smtp-relay.sendinblue.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'username';
-    $mail->Password = 'password';
+    $mail->Password = 'email';
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
@@ -175,7 +175,7 @@ $di->set('appName', function () {
 
 $di->set('appURL', function () {
 
-    $appURL = '//localhost/' . $this->get('appName');
+    $appURL = 'url path' . $this->appName();
 
     return $appURL;
 });

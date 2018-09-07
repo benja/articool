@@ -29,8 +29,15 @@ $.ajax({
     },
     dataType: 'json',
     success: function (feedback) {
-
         $('#feedback_message').html(feedback.messages.join('<br />'));
+        if(feedback.success == true) {
+            document.getElementById("securitySettings").reset();
+            $('#settings_submit').prop('disabled', true);
+
+            setTimeout(function() {
+                $('#settings_submit').prop('disabled', false);
+            }, 3000);
+        }
     }
 });
     
