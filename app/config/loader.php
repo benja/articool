@@ -21,12 +21,14 @@ $loader->registerFiles(
     ]
 );
 
-//
+/**
+ * Register API v1 namespace
+ */
 $loader->registerNamespaces(
     [
         'Api\v1' => $config->application->controllersDir . '/api/v1',
     ]
-    );
+);
 
 /**
  * Register Autoloader

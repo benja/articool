@@ -17,10 +17,7 @@ var genre = $('#post_genre').val();
 var username = $('#session_identifier').val();
 var password = $('#session_token').val();
 
-// get current window location ONLY PATHS, and split them up on the /. This will
-// generate a list of the different paths, so we can easily grab the post_id
-var url = window.location.pathname.split('/');
-var post_id = url[3];
+var post_id = window.location.pathname.match(/posts\/(\d+)/)[1]
 
     $.ajax({
         url: baseUrl + 'post/edit-articool/' + post_id,

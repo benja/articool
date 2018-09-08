@@ -378,7 +378,7 @@ class ControllerBase extends Controller
     public static function getArticoolAuthors($post_id)
     {
         $url = new Url();
-        $url->setBaseUri('/articool/'); // This has to change based on what directory it is in
+        $url->setBaseUri($_ENV['APP_DIR']);
 
         $author = Posts::findFirst($post_id);
         $contributor = PostAuthor::find([

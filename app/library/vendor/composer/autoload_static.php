@@ -6,6 +6,20 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit3cd53d9d4b66ae7bd2b26ec5ef17e2dc
 {
+    public static $prefixLengthsPsr4 = array (
+        'D' => 
+        array (
+            'Dotenv\\' => 7,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
+        ),
+    );
+
     public static $classMap = array (
         'EasyPeasyICS' => __DIR__ . '/..' . '/phpmailer/phpmailer/extras/EasyPeasyICS.php',
         'PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmailer.php',
@@ -20,6 +34,8 @@ class ComposerStaticInit3cd53d9d4b66ae7bd2b26ec5ef17e2dc
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3cd53d9d4b66ae7bd2b26ec5ef17e2dc::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3cd53d9d4b66ae7bd2b26ec5ef17e2dc::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit3cd53d9d4b66ae7bd2b26ec5ef17e2dc::$classMap;
 
         }, null, ClassLoader::class);

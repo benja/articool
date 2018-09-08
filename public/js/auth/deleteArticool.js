@@ -8,9 +8,7 @@ $(document).ready(function() {
 
 /* Ajax calls */
 $('#articool_delete').click(function() {
-
-var url = window.location.pathname.split('/');
-var post_id = url[3];
+var post_id = window.location.pathname.match(/posts\/(\d+)/)[1]
 
 var username = $('#session_identifier').val();
 var password = $('#session_token').val();

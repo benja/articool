@@ -36,24 +36,9 @@ class PostController extends ControllerBase {
                 ]
             ]));
 
-            // validation - check lengths
-            $validation->add(['post_title'], new StringLength([
-                'max'   =>  [
-                    'post_title'    =>  255
-                ],
-                'messageMaximum' => [
-                    'post_title'    =>  'That title is too long'
-                ]
-            ]));
-            
-            // make sure title doesnt contain html characters
-            $validation->add(['post_title'], new Alnum([
-                'message' => 'The title can only contain alphanumeric characters'
-            ]));
-
             $messages = $validation->validate($_POST);
 
-            $post_title     = $this->request->getPost('post_title');
+            $post_title     = strip_tags($this->request->getPost('post_title'));
             $post_body      = $this->request->getPost('post_body');
             $post_language  = $this->request->getPost('post_language');
             $post_genre     = $this->request->getPost('post_genre');
@@ -173,20 +158,15 @@ class PostController extends ControllerBase {
                 ]
             ]));
 
-            // make sure title doesnt contain html characters
-            $validation->add(['post_title'], new Alnum([
-                'message' => 'The title can only contain alphanumeric characters'
-            ]));
-
             // save all messages to array
             $messages = $validation->validate($_POST);
 
             // get inputs from post
-            $post_title = $this->request->getPost('post_title');
-            $post_body = $this->request->getPost('post_body');
-            $post_language = $this->request->getPost('post_language');
-            $post_genre = $this->request->getPost('post_genre');
-            $post_authors = ($this->request->getPost('post_authors') ? $this->request->getPost('post_authors') : NULL );
+            $post_title     = strip_tags($this->request->getPost('post_title'));
+            $post_body      = $this->request->getPost('post_body');
+            $post_language  = $this->request->getPost('post_language');
+            $post_genre     = $this->request->getPost('post_genre');
+            $post_authors   = ($this->request->getPost('post_authors') ? $this->request->getPost('post_authors') : NULL );
 
             $post = Posts::findFirst([
                 'conditions' => 'post_id = :post_id:',
@@ -215,11 +195,11 @@ class PostController extends ControllerBase {
 
             if(count($messages) == 0) {
                 // update post
-                $post->post_title = $post_title;
-                $post->post_body = $post_body;
-                $post->post_language = $post_language;
-                $post->post_genre = $post_genre;
-				$post->updated_at = date("Y-m-d H:i:s");
+                $post->post_title       = $post_title;
+                $post->post_body        = $post_body;
+                $post->post_language    = $post_language;
+                $post->post_genre       = $post_genre;
+				$post->updated_at       = date("Y-m-d H:i:s");
                 $post->update();
 
                 // delete authors before we add all new ones
