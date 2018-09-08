@@ -19,17 +19,17 @@
 
 	<!-- Twitter Tags -->
 	<meta name="twitter:title" content="{{ post.post_title }}" />
-	<meta name="twitter:site" content="https://articool.benjaminakar.com/posts/{{ post.post_id }}/" />
-	<meta name="twitter:image" content="https://articool.benjaminakar.com/img/logo/facebook-logo.png" />
+	<meta name="twitter:site" content="{{ appUrl }}posts/{{ post.post_id }}/" />
+	<meta name="twitter:image" content="{{ appUrl }}img/logo/facebook-logo.png" />
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:description" content="{{ short_body(post.post_body) }}" />
 
 	<!-- Facebook Tags -->
-	<meta property="og:url" content="https://articool.benjaminakar.com/posts/{{ post.post_id }}/" />
+	<meta property="og:url" content="{{ appUrl }}posts/{{ post.post_id }}/" />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="{{ post.post_title }}" />
 	<meta property="og:description" content="{{ short_body(post.post_body) }}" />
-	<meta property="og:image" content="https://articool.benjaminakar.com/img/logo/facebook-logo.png" />
+	<meta property="og:image" content="{{ appUrl }}img/logo/facebook-logo.png" />
 	<meta property="fb:app_id"	content="181778325703258" />
 {% endblock %}
 
