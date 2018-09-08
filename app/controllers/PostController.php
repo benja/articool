@@ -14,6 +14,8 @@ class PostController extends ControllerBase
         $this->view->getArticoolData     = $this->getArticoolData($post_id);
         $this->view->printAuthorsHtml    = $this->printAuthorsHtml($post_id); // authors printed in html
         $this->view->printAuthorsText    = $this->printAuthorsText($post_id); // authors printed in text (title)
+
+        $this->view->appName             = $_ENV['APP_NAME'];
         $this->view->appUrl              = $_ENV['APP_URL'];
         
         $this->addPostView($post_id); // Add 1+ view to post_views

@@ -20,21 +20,21 @@
         <?= $this->assets->outputJs() ?>
 
         
-<meta name="description" content="A platform where you are given the opportunity to express your feelings, thoughts, and interests – free of charge. You can write about politics, social issues, literature, or anything on your mind.">
-<meta name="keywords" content="articool, article">
-<meta name="author" content="Articool">
+<meta name="description" content="<?= $appDescription ?>">
+<meta name="keywords" content="<?= $appName ?>, article">
+<meta name="author" content="<?= $appName ?>">
 
 <!-- Twitter Tags -->
 <meta name="twitter:title" content="Articool - article platform!" />
-<meta name="twitter:site" content="https://articool.benjaminakar.com/" />
+<meta name="twitter:site" content="<?= $appUrl ?>" />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:description" content="A platform where you are given the opportunity to express your feelings, thoughts, and interests – free of charge. You can write about politics, social issues, literature, or anything on your mind." />
+<meta name="twitter:description" content="<?= $appDescription ?>" />
 
 <!-- Facebook Tags -->
-<meta property="og:url" content="https://articool.benjaminakar.com/" />
+<meta property="og:url" content="<?= $appUrl ?>" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Articool - article platform!" />
-<meta property="og:description" content="A platform where you are given the opportunity to express your feelings, thoughts, and interests – free of charge. You can write about politics, social issues, literature, or anything on your mind." />
+<meta property="og:description" content="<?= $appDescription ?>" />
 <meta property="fb:app_id"	content="181778325703258" />
 
     </head>
@@ -56,7 +56,7 @@
                 
 <div class="col-xs-12 col-md-12 col-lg-12">
 	<div class="index__logo__center">
-		<img class="index__logo" src="https://articool.benjaminakar.com/img/logo/logo-big.png" />
+		<img class="index__logo" src="<?= $appUrl ?>img/logo/logo-big.png" />
 	</div>
 </div>
 
@@ -77,7 +77,7 @@
 		<p class="postbox__description">"<?= 
                 strip_tags(
                     trim(
-                        preg_replace("/\s+/", " ", substr($post->posts->post_body, 0, 350))
+                        preg_replace("/<p>/", " ", substr($post->posts->post_body, 0, 350))
                     )
                 ) ?>..."</p>
 		<div class="postbox__readmore">
@@ -108,12 +108,12 @@
 		<p style="margin-bottom: 0;" class="postbox__title"><?= $post->post_title ?></p>
 		By <a style="text-decoration: none; color: #FFFFFF;" href="<?= $this->url->get('profile/') ?><?= $post->users->username ?>"><img style="width: 1.5rem; height: 1.5rem;" class="postbox__avatar" src="<?= $this->url->get('img/avatars/') ?><?= $post->users->avatar ?>"> <?= $post->users->first_name ?> <?= $post->users->last_name ?></a>
 
-		<p class="postbox__description">"<?= 
+		<p class="postbox__description">«<?= ltrim(
                 strip_tags(
                     trim(
-                        preg_replace("/\s+/", " ", substr($post->post_body, 0, 350))
+                        preg_replace("/<p>/", " ", substr($post->post_body, 0, 350))
                     )
-                ) ?>..."</p>
+                )) ?>...»</p>
 		<div class="postbox__readmore">
 			<a href="<?= $this->url->get('posts/') ?><?= $post->post_id ?>">
 				<i style="margin-right: .5rem;" class="fa fa-arrow-right" aria-hidden="true"></i> Read More
@@ -141,7 +141,7 @@
 		<a href="<?= $this->url->get('profile/') ?><?= $user->username ?>">
 			<div class="index__user__box">
 				<h1 class="index__user__box__name"><?= $user->first_name ?> <?= $user->last_name ?></h1>
-				<h1 class="index__user__box__description">"<?= $user->description ?>"</h1>
+				<h1 class="index__user__box__description">«<?= $user->description ?>»</h1>
 				<?php if ($user->rank_id >= 2) { ?>
 					<div class="rank <?php if ($user->rank_id == 2) { ?>approved<?php } elseif ($user->rank_id == 3) { ?>moderator<?php } elseif ($user->rank_id == 4) { ?>administrator<?php } ?>"></div>
 				<?php } ?>

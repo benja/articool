@@ -43,7 +43,7 @@
     	<div class="profile__box">
         <div class="profile__box__avatar" style="background-image: url(<?= $this->url->get('img/avatars/') ?><?= $profile->avatar ?>)"></div>
     		<p class="profile__box__name"><?= $profile->first_name ?> <?= $profile->last_name ?></p>
-            <p class="profile__box__description">"<?= $profile->description ?>"</p>
+            <p class="profile__box__description">«<?= $profile->description ?>»</p>
 
             <?php if ($profile->rank_id >= 2) { ?>
                 <div class="rank <?php if ($profile->rank_id == 2) { ?>approved<?php } elseif ($profile->rank_id == 3) { ?>moderator<?php } elseif ($profile->rank_id == 4) { ?>administrator<?php } ?>"></div>
@@ -108,7 +108,7 @@
                                     <option value="Czech">Czech</option>
                                     <option value="Danish">Danish</option>
                                     <option value="Dutch">Dutch</option>
-                                    <option value="English">English</option>
+                                    <option value="English" selected>English</option>
                                     <option value="Estonian">Estonian</option>
                                     <option value="Fiji">Fiji</option>
                                     <option value="Finnish">Finnish</option>
@@ -239,12 +239,12 @@
 
                 <div class="postbox">
                     <p class="postbox__title"><?= $post->post_title ?></p>
-                    <p class="postbox__description">"<?= 
+                    <p class="postbox__description">«<?= 
                 strip_tags(
                     trim(
-                        preg_replace("/\s+/", " ", substr($post->post_body, 0, 350))
+                        preg_replace("/<p>/", " ", substr($post->post_body, 0, 350))
                     )
-                ) ?>..."</p>
+                ) ?>...»</p>
                     <div class="postbox__readmore">
                         <a href="<?= $this->url->get('posts/') ?><?= $post->post_id ?>">
                             <i style="margin-right: .5rem;" class="fa fa-arrow-right" aria-hidden="true"></i> Read More

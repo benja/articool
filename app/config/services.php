@@ -63,7 +63,7 @@ $di->setShared('view', function () {
                 return '
                 strip_tags(
                     trim(
-                        preg_replace("/\s+/", " ", substr(' . $resolvedArgs . ', 0, 350))
+                        preg_replace("/<p>/", " ", substr(' . $resolvedArgs . ', 0, 350))
                     )
                 )';
             });

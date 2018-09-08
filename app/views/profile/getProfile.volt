@@ -10,7 +10,7 @@
     	<div class="profile__box">
         <div class="profile__box__avatar" style="background-image: url({{ url('img/avatars/') }}{{ profile.avatar }})"></div>
     		<p class="profile__box__name">{{ profile.first_name }} {{ profile.last_name }}</p>
-            <p class="profile__box__description">"{{ profile.description }}"</p>
+            <p class="profile__box__description">«{{ profile.description }}»</p>
 
             {% if profile.rank_id >= 2 %}
                 <div class="rank {% if profile.rank_id == 2 %}approved{% elseif profile.rank_id == 3 %}moderator{% elseif profile.rank_id == 4 %}administrator{% endif %}"></div>
@@ -75,7 +75,7 @@
                                     <option value="Czech">Czech</option>
                                     <option value="Danish">Danish</option>
                                     <option value="Dutch">Dutch</option>
-                                    <option value="English">English</option>
+                                    <option value="English" selected>English</option>
                                     <option value="Estonian">Estonian</option>
                                     <option value="Fiji">Fiji</option>
                                     <option value="Finnish">Finnish</option>
@@ -206,7 +206,7 @@
 
                 <div class="postbox">
                     <p class="postbox__title">{{ post.post_title }}</p>
-                    <p class="postbox__description">"{{ short_body(post.post_body) }}..."</p>
+                    <p class="postbox__description">«{{ short_body(post.post_body) }}...»</p>
                     <div class="postbox__readmore">
                         <a href="{{ url('posts/') }}{{ post.post_id }}">
                             <i style="margin-right: .5rem;" class="fa fa-arrow-right" aria-hidden="true"></i> Read More

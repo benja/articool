@@ -3,21 +3,21 @@
 {% block title %} Articool {% endblock %}
 
 {% block meta %}
-<meta name="description" content="A platform where you are given the opportunity to express your feelings, thoughts, and interests – free of charge. You can write about politics, social issues, literature, or anything on your mind.">
-<meta name="keywords" content="articool, article">
-<meta name="author" content="Articool">
+<meta name="description" content="{{ appDescription }}">
+<meta name="keywords" content="{{ appName }}, article">
+<meta name="author" content="{{ appName }}">
 
 <!-- Twitter Tags -->
 <meta name="twitter:title" content="Articool - article platform!" />
-<meta name="twitter:site" content="https://articool.benjaminakar.com/" />
+<meta name="twitter:site" content="{{ appUrl }}" />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:description" content="A platform where you are given the opportunity to express your feelings, thoughts, and interests – free of charge. You can write about politics, social issues, literature, or anything on your mind." />
+<meta name="twitter:description" content="{{ appDescription }}" />
 
 <!-- Facebook Tags -->
-<meta property="og:url" content="https://articool.benjaminakar.com/" />
+<meta property="og:url" content="{{ appUrl }}" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Articool - article platform!" />
-<meta property="og:description" content="A platform where you are given the opportunity to express your feelings, thoughts, and interests – free of charge. You can write about politics, social issues, literature, or anything on your mind." />
+<meta property="og:description" content="{{ appDescription }}" />
 <meta property="fb:app_id"	content="181778325703258" />
 {% endblock %}
 

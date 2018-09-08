@@ -30,13 +30,13 @@
         <?= $this->assets->outputJs() ?>
 
         
-	<meta name="description" content="<?= 
+	<meta name="description" content="<?= ltrim(
                 strip_tags(
                     trim(
-                        preg_replace("/\s+/", " ", substr($post->post_body, 0, 350))
+                        preg_replace("/<p>/", " ", substr($post->post_body, 0, 350))
                     )
-                ) ?>">
-	<meta name="keywords" content="articool, article, post, <?= $post->users->first_name ?> <?= $post->users->last_name ?>">
+                )) ?>">
+	<meta name="keywords" content="<?= $appName ?>, article, post, <?= $post->users->first_name ?> <?= $post->users->last_name ?>">
 	<meta name="author" content="<?= $post->users->first_name ?> <?= $post->users->last_name ?>">
 
 	<!-- Twitter Tags -->
@@ -44,23 +44,23 @@
 	<meta name="twitter:site" content="<?= $appUrl ?>posts/<?= $post->post_id ?>/" />
 	<meta name="twitter:image" content="<?= $appUrl ?>img/logo/facebook-logo.png" />
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:description" content="<?= 
+	<meta name="twitter:description" content="<?= ltrim(
                 strip_tags(
                     trim(
-                        preg_replace("/\s+/", " ", substr($post->post_body, 0, 350))
+                        preg_replace("/<p>/", " ", substr($post->post_body, 0, 350))
                     )
-                ) ?>" />
+                )) ?>" />
 
 	<!-- Facebook Tags -->
 	<meta property="og:url" content="<?= $appUrl ?>posts/<?= $post->post_id ?>/" />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="<?= $post->post_title ?>" />
-	<meta property="og:description" content="<?= 
+	<meta property="og:description" content="<?= ltrim(
                 strip_tags(
                     trim(
-                        preg_replace("/\s+/", " ", substr($post->post_body, 0, 350))
+                        preg_replace("/<p>/", " ", substr($post->post_body, 0, 350))
                     )
-                ) ?>" />
+                )) ?>" />
 	<meta property="og:image" content="<?= $appUrl ?>img/logo/facebook-logo.png" />
 	<meta property="fb:app_id"	content="181778325703258" />
 

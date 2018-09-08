@@ -13,8 +13,8 @@
 {% endblock %}
 
 {% block meta %}
-	<meta name="description" content="{{ short_body(post.post_body) }}">
-	<meta name="keywords" content="articool, article, post, {{ post.users.first_name }} {{ post.users.last_name }}">
+	<meta name="description" content="{{ short_body(post.post_body)|left_trim }}">
+	<meta name="keywords" content="{{ appName }}, article, post, {{ post.users.first_name }} {{ post.users.last_name }}">
 	<meta name="author" content="{{ post.users.first_name }} {{ post.users.last_name }}">
 
 	<!-- Twitter Tags -->
@@ -22,13 +22,13 @@
 	<meta name="twitter:site" content="{{ appUrl }}posts/{{ post.post_id }}/" />
 	<meta name="twitter:image" content="{{ appUrl }}img/logo/facebook-logo.png" />
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:description" content="{{ short_body(post.post_body) }}" />
+	<meta name="twitter:description" content="{{ short_body(post.post_body)|left_trim }}" />
 
 	<!-- Facebook Tags -->
 	<meta property="og:url" content="{{ appUrl }}posts/{{ post.post_id }}/" />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="{{ post.post_title }}" />
-	<meta property="og:description" content="{{ short_body(post.post_body) }}" />
+	<meta property="og:description" content="{{ short_body(post.post_body)|left_trim }}" />
 	<meta property="og:image" content="{{ appUrl }}img/logo/facebook-logo.png" />
 	<meta property="fb:app_id"	content="181778325703258" />
 {% endblock %}
