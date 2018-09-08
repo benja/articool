@@ -4,7 +4,7 @@
 		
 	{% for post in getArticoolData %}
 		{% if post.post_active is 1 %}
-		«{{ post.post_title }}» by {{ getPostContributors }}
+		«{{ post.post_title }}» by {{ printAuthorsText }}
 		{% else %}
 			This articool has been deleted
 		{% endif %}
@@ -95,7 +95,7 @@
 							{% endif %}
 						</p>
 						<p class="post__post__information__text">Approximately a {{ readTime }} minute read</p>
-						<p class="post__post__information__text">{{ getArticoolAuthors }}</p>
+						<p class="post__post__information__text">{{ printAuthorsHtml }}</p>
 					</div>
 					<div class="post__post__body">{{ post.post_body }}</div>
 				</div>

@@ -12,8 +12,8 @@ class PostController extends ControllerBase
         $this->view->readTime            = $this->getArticoolReadTime($post_id);
         $this->view->isTrending          = $this->isArticoolTrending($post_id);
         $this->view->getArticoolData     = $this->getArticoolData($post_id);
-        $this->view->getArticoolAuthors  = $this->getArticoolAuthors($post_id);
-        $this->view->getPostContributors = $this->getPostContributors($post_id);
+        $this->view->printAuthorsHtml    = $this->printAuthorsHtml($post_id); // authors printed in html
+        $this->view->printAuthorsText    = $this->printAuthorsText($post_id); // authors printed in text (title)
         $this->view->appUrl              = $_ENV['APP_URL'];
         
         $this->addPostView($post_id); // Add 1+ view to post_views
@@ -38,8 +38,8 @@ class PostController extends ControllerBase
         // pass data to view
         $this->view->user                = $this->_user;
         $this->view->getArticoolData     = $this->getArticoolData($post_id);
-        $this->view->getArticoolAuthors  = $this->getArticoolAuthors($post_id);
-        $this->view->getPostContributors = $this->getPostContributors($post_id);
+        $this->view->printAuthorsId      = $this->printAuthorsId($post_id); // in edit articool
+        $this->view->printAuthorsText    = $this->printAuthorsText($post_id); // for title
         $this->view->getRegisteredUsers  = $this->getRegisteredUsers();
 
         // if post is soft-deleted (not active) return editor back to previous page

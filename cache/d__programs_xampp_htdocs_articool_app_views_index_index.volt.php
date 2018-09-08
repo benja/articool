@@ -71,22 +71,22 @@
 <!-- Statistics Section -->
 <section class="stats">
 	<div class="stats__boxes">
-		
-		<div class="stats__boxes--entry">
-			<div class="stats__boxes--number">230</div>
-			<div class="stats__boxes--description">Articools Written</div>
-			<div class="stats__boxes--hr"></div>
-		</div>
 
 		<div class="stats__boxes--entry">
-			<div class="stats__boxes--number">102,304</div>
-			<div class="stats__boxes--description">Articools Read</div>
-			<div class="stats__boxes--hr"></div>
-		</div>
-
-		<div class="stats__boxes--entry">
-			<div class="stats__boxes--number">24</div>
+			<div class="stats__boxes--number"><?= $getRegisteredUsers ?></div>
 			<div class="stats__boxes--description">Authors</div>
+			<div class="stats__boxes--hr"></div>
+		</div>
+
+		<div class="stats__boxes--entry">
+			<div class="stats__boxes--number"><?= $getAllArticoolViews ?></div>
+			<div class="stats__boxes--description">People Reached</div>
+			<div class="stats__boxes--hr"></div>
+		</div>
+
+		<div class="stats__boxes--entry">
+			<div class="stats__boxes--number"><?= $getWrittenArticools ?></div>
+			<div class="stats__boxes--description">Articools Written</div>
 			<div class="stats__boxes--hr"></div>
 		</div>
 

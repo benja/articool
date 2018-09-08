@@ -4,7 +4,7 @@
 
 	{% for post in getArticoolData %}
 		{% if post.post_active is 1 %}
-		«{{ post.post_title }}» by {{ getPostContributors }}
+		«{{ post.post_title }}» by {{ printAuthorsText }}
 		{% else %}
 			This articool has been deleted
 		{% endif %}
@@ -23,7 +23,6 @@
 				<span class="modal__content__close">&times;</span>
 			</a>
 
-	        {{ flash.output() }}
 	        <form id="editArticool" method="POST">
 
 	        	<input type="hidden" name="post_id" value="{{ post.post_id }}">
@@ -47,17 +46,19 @@
 
 	            <div class="modal__form__input">
 	                <select multiple id="post_authors" name="post_authors[]" data-placeholder="Contributors" class="chosen-select">
+					
 					{% for author in getRegisteredUsers %}
 						{% if post.user_id != author.user_id %}
 							<option value="{{ author.user_id }}">{{ author.first_name }} {{ author.last_name }} ({{ author.username }})</option>
 						{% endif %}
 					{% endfor %}
 
-					{% for authors in getArticoolAuthors  %}
+					{% for authors in printAuthorsId %}
 						{% if user.username != authors.username %}
 							<option selected value="{{ authors.users.user_id }}">{{ authors.users.first_name }} {{ authors.users.last_name }} ({{ authors.users.username }})</option>
 						{% endif %}
 					{% endfor %}
+
 					</select>
 	            </div>
 

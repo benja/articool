@@ -134,29 +134,6 @@ class Users extends \Phalcon\Mvc\Model
         return parent::findFirst($parameters);
     }
 
-    public static function getAuthors(int $post_id)
-    {
-        $post_id;
-        $authors = PostAuthor::find([
-            'type'  => 'user_id',
-            'conditions' => 'post_id = ' . $post_id
-        ]);
-        return $authors;
-    }
-
-    public static function getApprovedAuthors()
-    {
-        $users = Users::find([
-            'conditions' => 'rank_id >= :rank_id: AND active = :active:',
-            'bind' => [
-                'rank_id' => 2,
-                'active' => 1
-            ]
-        ]);
-
-        return $users;
-    }
-
     // since users isn't related to sessions, we need to get the sessions values FOR the user somehow.
     // therefore we find the session values through a query search
     public static function getAuthTokens($user_id)

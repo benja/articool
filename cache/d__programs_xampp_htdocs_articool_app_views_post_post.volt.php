@@ -6,7 +6,7 @@
 		
 	<?php foreach ($getArticoolData as $post) { ?>
 		<?php if ($post->post_active == 1) { ?>
-		«<?= $post->post_title ?>» by <?= $getPostContributors ?>
+		«<?= $post->post_title ?>» by <?= $printAuthorsText ?>
 		<?php } else { ?>
 			This articool has been deleted
 		<?php } ?>
@@ -41,8 +41,8 @@
 
 	<!-- Twitter Tags -->
 	<meta name="twitter:title" content="<?= $post->post_title ?>" />
-	<meta name="twitter:site" content="https://articool.benjaminakar.com/posts/<?= $post->post_id ?>/" />
-	<meta name="twitter:image" content="https://articool.benjaminakar.com/img/logo/facebook-logo.png" />
+	<meta name="twitter:site" content="<?= $appUrl ?>posts/<?= $post->post_id ?>/" />
+	<meta name="twitter:image" content="<?= $appUrl ?>img/logo/facebook-logo.png" />
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:description" content="<?= 
                 strip_tags(
@@ -52,7 +52,7 @@
                 ) ?>" />
 
 	<!-- Facebook Tags -->
-	<meta property="og:url" content="https://articool.benjaminakar.com/posts/<?= $post->post_id ?>/" />
+	<meta property="og:url" content="<?= $appUrl ?>posts/<?= $post->post_id ?>/" />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="<?= $post->post_title ?>" />
 	<meta property="og:description" content="<?= 
@@ -61,7 +61,7 @@
                         preg_replace("/\s+/", " ", substr($post->post_body, 0, 350))
                     )
                 ) ?>" />
-	<meta property="og:image" content="https://articool.benjaminakar.com/img/logo/facebook-logo.png" />
+	<meta property="og:image" content="<?= $appUrl ?>img/logo/facebook-logo.png" />
 	<meta property="fb:app_id"	content="181778325703258" />
 
     </head>
@@ -140,7 +140,7 @@
 							<?php } ?>
 						</p>
 						<p class="post__post__information__text">Approximately a <?= $readTime ?> minute read</p>
-						<p class="post__post__information__text"><?= $getArticoolAuthors ?></p>
+						<p class="post__post__information__text"><?= $printAuthorsHtml ?></p>
 					</div>
 					<div class="post__post__body"><?= $post->post_body ?></div>
 				</div>

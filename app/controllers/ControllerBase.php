@@ -375,7 +375,7 @@ class ControllerBase extends Controller
     /*
     *   Get articool authors and print
     */
-    public static function getArticoolAuthors($post_id)
+    public static function printAuthorsHtml($post_id)
     {
         $url = new Url();
         $url->setBaseUri($_ENV['APP_DIR']);
@@ -395,7 +395,7 @@ class ControllerBase extends Controller
             '. $url->get('profile/' . $helper->users->username) .'
             "> <img class="post__post__avatar" src="
             ' . $url->get('img/avatars/' . $helper->users->avatar) . '
-            ">'. $helper->users->first_name . " " . $helper->users->last_name .' </a>';
+            ">'. $helper->users->first_name . " " . $helper->users->last_name .'</a>';
         }
 
         // get the last element in array, push in "and" before the last element, add an empty array before the front to add comma, authorlist is the list with all of the contributors
@@ -409,13 +409,12 @@ class ControllerBase extends Controller
         "> <img class="post__post__avatar" src="
         ' . $url->get('img/avatars/' . $author->users->avatar) . '
         ">'. $author->users->first_name . " " . $author->users->last_name .'</a>' . $authorlist;
-
     }
 
     /*
     *   Get post authors in a string rather than with HTML output
     */
-    public static function getPostContributors($post_id)
+    public static function printAuthorsText($post_id)
     {
         $author = Posts::findFirst($post_id);
         $contributor = PostAuthor::find([
@@ -440,6 +439,19 @@ class ControllerBase extends Controller
         return $author->users->first_name . " " . $author->users->last_name . "" . $authorlist;
     }
 
+    /**
+     * Put all authors connected to a post in an array
+     */
+    public static function printAuthorsId($post_id)
+    {
+        $post_id;
+        $authors = PostAuthor::find([
+            'type'  => 'user_id',
+            'conditions' => 'post_id = ' . $post_id
+        ]);
+        return $authors;
+    }
+
     /*
     *   Check if token exists for user
     */
@@ -454,6 +466,39 @@ class ControllerBase extends Controller
         ]);
         return $user;
     }
+
+    /**
+     * Get all written articools on the entire platform
+     */
+     public static function getWrittenArticools()
+     {
+        $posts = Posts::find([
+            /*
+            'conditions' => 'post_active = :post_active:',
+            'bind' => [
+                'post_active' => 1
+            ]*/
+        ]);
+
+        return count($posts); // count all rows
+     }
+
+
+     /**
+      * Get all articool's views, put them into one array, and add them, return total
+      */
+     public static function getAllArticoolViews()
+     {
+        $posts = Posts::find();
+
+        $postsviews = [];
+        foreach($posts as $post) {
+            array_push($postsviews, $post->post_views);
+        }
+
+        $views = number_format( array_sum($postsviews) );
+        return $views;
+     }
 
 }
 
