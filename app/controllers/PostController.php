@@ -6,7 +6,7 @@ class PostController extends ControllerBase
     public function postAction()
     {
         $post_id = $this->dispatcher->getParam('post_id'); //define post_id from url
-        
+
         // pass data to view
         $this->view->user                = $this->_user;
         $this->view->readTime            = $this->getArticoolReadTime($post_id);
@@ -14,6 +14,7 @@ class PostController extends ControllerBase
         $this->view->getArticoolData     = $this->getArticoolData($post_id);
         $this->view->getArticoolAuthors  = $this->getArticoolAuthors($post_id);
         $this->view->getPostContributors = $this->getPostContributors($post_id);
+        $this->view->appUrl              = $_ENV['APP_URL'];
         
         $this->addPostView($post_id); // Add 1+ view to post_views
     }

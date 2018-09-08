@@ -106,13 +106,13 @@
 
 					<div class="post__share__buttons">
 						<div class="post__share facebook">
-							<a href="//www.facebook.com/sharer/sharer.php?u=articool.benjaminakar.com/posts/{{ post.post_id }}&src=sdkpreparse" target="_blank">
+							<a href="//www.facebook.com/sharer/sharer.php?u={{ appUrl }}posts/{{ post.post_id }}&src=sdkpreparse" target="_blank">
 								<i class="fa fa-facebook-official" aria-hidden="true"></i>
 							</a>
 						</div>
 
 						<div class="post__share twitter">
-							<a href="//twitter.com/intent/tweet?text=Take+a+look+at+this+articool!&via=articool_pf&url=https://articool.benjaminakar.com/posts/{{ post.post_id }}" target="_blank">
+							<a href="//twitter.com/intent/tweet?text=Take+a+look+at+this+articool!&via=articool_pf&url={{ appUrl }}posts/{{ post.post_id }}" target="_blank">
 								<i class="fa fa-twitter-square" aria-hidden="true"></i>
 							</a>
 						</div>
