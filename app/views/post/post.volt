@@ -124,6 +124,10 @@
 	{% endif %}
 	</div>
 
+	<script>
+		history.pushState({}, null, '{{ appUrl }}posts/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}');
+ 	</script>
+
     {{ javascript_include("js/auth/trendArticool.js") }}
 
 {% endblock %}

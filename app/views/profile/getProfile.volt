@@ -25,7 +25,6 @@
                     <div class="modal__content">
                         <span class="modal__content__close">&times;</span>
 
-                        {{ flash.output() }}
                         <form id="postArticool" method="POST" action="{{ url('api/v1/post/post-articool') }}">
 
                             <h1 class="modal__form__title">New Articool</h1>
@@ -208,7 +207,7 @@
                     <p class="postbox__title">{{ post.post_title }}</p>
                     <p class="postbox__description">«{{ short_body(post.post_body) }}...»</p>
                     <div class="postbox__readmore">
-                        <a href="{{ url('posts/') }}{{ post.post_id }}">
+                        <a href="{{ url('posts/') }}{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
                             <i style="margin-right: .5rem;" class="fa fa-arrow-right" aria-hidden="true"></i> Read More
                         </a>
                     </div>

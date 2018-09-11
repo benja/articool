@@ -467,11 +467,11 @@ class ControllerBase extends Controller
         return $user;
     }
 
-    /**
-     * Get all written articools on the entire platform
-     */
-     public static function getWrittenArticools()
-     {
+    /*
+    *   Get all written articools on the entire platform
+    */
+    public static function getWrittenArticools()
+    {
         $posts = Posts::find([
             /*
             'conditions' => 'post_active = :post_active:',
@@ -481,14 +481,14 @@ class ControllerBase extends Controller
         ]);
 
         return count($posts); // count all rows
-     }
+    }
 
 
-     /**
-      * Get all articool's views, put them into one array, and add them, return total
-      */
-     public static function getAllArticoolViews()
-     {
+    /*
+    *   Get all articool's views, put them into one array, and add them, return total
+    */
+    public static function getAllArticoolViews()
+    {
         $posts = Posts::find();
 
         $postsviews = [];
@@ -498,7 +498,7 @@ class ControllerBase extends Controller
 
         $views = number_format( array_sum($postsviews) );
         return $views;
-     }
+    }
 
 }
 

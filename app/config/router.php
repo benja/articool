@@ -239,13 +239,14 @@ $router->add(
 );
 
 $router->add(
-    '/posts/{post_id}',
+    '/posts/{post_id}/:params',
     [
         'controller' => 'post',
         'action'     => 'post',
-        'post_id'    => 1
+        'post_id'    => 1,
+        'title'      => 2,
     ]
-);
+)->setName('show-post');
 
 $router->add(
     '/posts/{post_id}/edit',

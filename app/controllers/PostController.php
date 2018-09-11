@@ -5,7 +5,7 @@ class PostController extends ControllerBase
 
     public function postAction()
     {
-        $post_id = $this->dispatcher->getParam('post_id'); //define post_id from url
+        $post_id   = $this->dispatcher->getParam('post_id'); //define post_id from url
 
         // pass data to view
         $this->view->user                = $this->_user;

@@ -169,6 +169,10 @@
 	<?php } ?>
 	</div>
 
+	<script>
+		history.pushState({}, null, '<?= $appUrl ?>posts/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower("$post->post_title"))))) ?>');
+ 	</script>
+
     <?= $this->tag->javascriptInclude('js/auth/trendArticool.js') ?>
 
 

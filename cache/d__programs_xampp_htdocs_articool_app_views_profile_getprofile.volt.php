@@ -58,7 +58,6 @@
                     <div class="modal__content">
                         <span class="modal__content__close">&times;</span>
 
-                        <?= $this->flash->output() ?>
                         <form id="postArticool" method="POST" action="<?= $this->url->get('api/v1/post/post-articool') ?>">
 
                             <h1 class="modal__form__title">New Articool</h1>
@@ -246,7 +245,7 @@
                     )
                 ) ?>...»</p>
                     <div class="postbox__readmore">
-                        <a href="<?= $this->url->get('posts/') ?><?= $post->post_id ?>">
+                        <a href="<?= $this->url->get('posts/') ?><?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower("$post->post_title"))))) ?>">
                             <i style="margin-right: .5rem;" class="fa fa-arrow-right" aria-hidden="true"></i> Read More
                         </a>
                     </div>
