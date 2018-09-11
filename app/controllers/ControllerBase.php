@@ -180,13 +180,13 @@ class ControllerBase extends Controller
 
             case 'guest':
                 if(!empty($this->_user)) {
-                    return $this->response->redirect('articools'/*$this->request->getHTTPReferer()*/);
+                    return $this->response->redirect('explore'/*$this->request->getHTTPReferer()*/);
                 }
                 break;
 
             case 'user':
                 if(empty($this->_user)) {
-                    return $this->response->redirect('articools'/*$this->request->getHTTPReferer()*/);
+                    return $this->response->redirect('explore'/*$this->request->getHTTPReferer()*/);
                 }
                 break;
 

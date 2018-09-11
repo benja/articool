@@ -177,9 +177,9 @@ $router->addPost(
 
 
 $router->add(
-    '/articools',
+    '/explore',
     [
-        'controller' => 'articools'
+        'controller' => 'explore'
     ]
 );
 
