@@ -75,7 +75,7 @@
 
 		<p class="postbox__description">«{{ short_body(post.post_body)|left_trim }}...»</p>
 		<div class="postbox__readmore">
-			<a href="{{ url('posts/') }}{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
+			<a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
 				<i style="margin-right: .5rem;" class="fa fa-arrow-right" aria-hidden="true"></i> Read More
 			</a>
 		</div>

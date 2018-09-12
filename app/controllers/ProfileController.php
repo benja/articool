@@ -16,6 +16,9 @@ class ProfileController extends ControllerBase
         $this->view->getRegisteredUsers = $this->getRegisteredUsers();
         $this->view->getUserPosts       = $this->getUserPosts($this->_profile->user_id);
 
+        $this->view->appName             = $_ENV['APP_NAME'];
+        $this->view->appUrl              = $_ENV['APP_URL'];
+
     }
 }
 
