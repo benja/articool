@@ -111,13 +111,13 @@
 						</button>
 					</form>
 
-					<a style="display: inline;" href="<?= $this->url->get('posts/') ?><?= $post->post_id ?>/edit">
+					<a style="display: inline;" href="<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower("$post->post_title"))))) ?>/edit">
 						<i style="padding-right: .3rem;" class="fa fa-pencil" aria-hidden="true"></i> Edit Articool
 					</a>
 				
 				<?php } elseif ($post->users->username == $user->username) { ?>
 					<!-- Always show edit articool option to author -->
-					<a style="display: inline;" href="<?= $this->url->get('posts/') ?><?= $post->post_id ?>/edit">
+					<a style="display: inline;" href="<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower("$post->post_title"))))) ?>/edit">
 						<i style="padding-right: .3rem;" class="fa fa-pencil" aria-hidden="true"></i> Edit Articool
 					</a>
 				<?php } ?>

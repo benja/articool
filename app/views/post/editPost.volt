@@ -175,6 +175,7 @@
 
 			<form method="POST" id="deleteArticool" action="{{ url('api/v1/post/delete-articool/{post_id}') }}">
 				<input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}" />
+				<input type="hidden" id="username" value="{{ user.username }}" />
 				
 				<input type="hidden" id="session_identifier" value="{{ tokens.session_identifier }}" />
 				<input type="hidden" id="session_token" value="{{ tokens.session_token }}" />
@@ -188,6 +189,10 @@
 	    </div>
 	</div>
 </div>
+
+<script>
+	history.replaceState({}, 'title', '{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}/edit' );
+</script>
 
 <script type="text/javascript">
 	

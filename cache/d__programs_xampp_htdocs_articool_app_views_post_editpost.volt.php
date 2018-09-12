@@ -207,6 +207,7 @@
 
 			<form method="POST" id="deleteArticool" action="<?= $this->url->get('api/v1/post/delete-articool/{post_id}') ?>">
 				<input type="hidden" name="<?= $this->security->getTokenKey() ?>" value="<?= $this->security->getToken() ?>" />
+				<input type="hidden" id="username" value="<?= $user->username ?>" />
 				
 				<input type="hidden" id="session_identifier" value="<?= $tokens->session_identifier ?>" />
 				<input type="hidden" id="session_token" value="<?= $tokens->session_token ?>" />
@@ -220,6 +221,10 @@
 	    </div>
 	</div>
 </div>
+
+<script>
+	history.replaceState({}, 'title', '<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower("$post->post_title"))))) ?>/edit' );
+</script>
 
 <script type="text/javascript">
 	

@@ -17,7 +17,7 @@ var genre = $('#post_genre').val();
 var username = $('#session_identifier').val();
 var password = $('#session_token').val();
 
-var post_id = window.location.pathname.match(/posts\/(\d+)/)[1]
+var post_id = window.location.pathname.match(/\/(\d+)/)[1]
 
     $.ajax({
         url: baseUrl + 'post/edit-articool/' + post_id,

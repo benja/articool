@@ -44,6 +44,9 @@ class PostController extends ControllerBase
         $this->view->printAuthorsText    = $this->printAuthorsText($post_id); // for title
         $this->view->getRegisteredUsers  = $this->getRegisteredUsers();
 
+        $this->view->appName             = $_ENV['APP_NAME'];
+        $this->view->appUrl              = $_ENV['APP_URL'];
+
         // if post is soft-deleted (not active) return editor back to previous page
         if($post[0]->post_active == 0) {
             return $this->response->redirect($this->request->getHTTPReferer());

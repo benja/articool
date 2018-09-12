@@ -249,11 +249,12 @@ $router->add(
 );
 
 $router->add(
-    '/posts/{post_id}/edit',
+    '/{user}/:int/:params/edit',
     [
         'controller' => 'post',
         'action'     => 'editPost',
-        'post_id'    => 1
+        'user'       => 1,
+        'post_id'    => 2
     ]
 );
 

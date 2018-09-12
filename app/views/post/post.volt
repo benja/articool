@@ -66,13 +66,13 @@
 						</button>
 					</form>
 
-					<a style="display: inline;" href="{{ url('posts/') }}{{ post.post_id }}/edit">
+					<a style="display: inline;" href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}/edit">
 						<i style="padding-right: .3rem;" class="fa fa-pencil" aria-hidden="true"></i> Edit Articool
 					</a>
 				
 				{% elseif post.users.username == user.username %}
 					<!-- Always show edit articool option to author -->
-					<a style="display: inline;" href="{{ url('posts/') }}{{ post.post_id }}/edit">
+					<a style="display: inline;" href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}/edit">
 						<i style="padding-right: .3rem;" class="fa fa-pencil" aria-hidden="true"></i> Edit Articool
 					</a>
 				{% endif %}

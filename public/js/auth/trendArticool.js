@@ -8,7 +8,7 @@ $(document).ready(function() {
 /* Ajax calls */
 $('#articool_trend').click(function() {
 
-var post_id = window.location.pathname.match(/posts\/(\d+)/)[1]
+var post_id = window.location.pathname.match(/\/(\d+)/)[1]
 
 var username = $('#session_identifier').val();
 var password = $('#session_token').val();

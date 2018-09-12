@@ -161,7 +161,7 @@ $di->set('phpmailer', function () {
     $mail->Username = $_ENV['EMAIL_USER'];
     $mail->Password = $_ENV['EMAIL_PASS'];
     $mail->SMTPSecure = 'tls';
-    $mail->Port = 587;
+    $mail->Port = $_ENV['EMAIL_PORT'];
 
     return $mail;
 });
