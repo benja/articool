@@ -10,19 +10,15 @@
 
     <div class="col-xs-12 col-md-6 col-lg-6">
 
-<!-- Not sure how accurate this is, but i wanna implement ajax and display
-     a success message for like 3 seconds -->
-     {% if flash.output() is not null %}
-     <div class="alert is-error">
-         <span>
-             <label class="alert__title">ERROR</label>
-         </span>
-         <ul>
-             <li>{{ flash.output() }}</li>
-         </ul>
-     </div>
-     {% endif %}
-     
+    <div id="alert_div" class="alert hidden">
+        <span>
+            <label id="alert_title" class="alert__title">ERROR</label>
+        </span>
+        <ul>
+            <div id="feedback_message"></div>
+        </ul>
+    </div>
+
     <form id="forgotNewPassword" class="forgot__form" method="POST" action="{{ url('api/v1/forgot/set-new-password/{token}') }}">
 
         <input type="hidden" name="token" value="{{ dispatcher.getParam('token') }}">
@@ -44,7 +40,6 @@
             <input id="forgot_submit" type="submit" value="Update">
         </div>
 
-        <div id="feedback_message"></div>
     </form>
     </div>
     

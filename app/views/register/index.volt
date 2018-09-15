@@ -11,6 +11,15 @@
 
 <div class="col-xs-12 col-md-6 col-lg-6">
 
+	<div id="alert_div" class="alert hidden">
+		<span>
+			<label id="alert_title" class="alert__title">ERROR</label>
+		</span>
+		<ul>
+			<div id="feedback_message"></div>
+		</ul>
+	</div>
+
 	<!-- BODY -->
 	<form id="registerForm" class="register__form" method="POST" action="{{ url('api/v1/auth/register') }}">
 
@@ -44,8 +53,6 @@
 		<div class="register__form__input">
 			<input id="register_submit" type="submit" value="Become Author" />
 		</div>
-
-		<div id="feedback_message"></div>
 
 	</form>
 	<!-- BODY -->

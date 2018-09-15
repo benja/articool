@@ -2,7 +2,7 @@ a:11:{i:0;s:130:"<!DOCTYPE html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>";s:5:"title";N;i:1;s:1179:"</title>
+        <title>";s:5:"title";N;i:1;s:1155:"</title>
         
         <link rel="apple-touch-icon" sizes="76x76" href="<?= $this->url->get('img/favicon/apple-touch-icon.png?v=OmyYv82BBp') ?>">
         <link rel="icon" type="image/png" sizes="32x32" href="<?= $this->url->get('img/favicon/favicon-32x32.png?v=OmyYv82BBp') ?>">
@@ -12,8 +12,8 @@ a:11:{i:0;s:130:"<!DOCTYPE html>
         <link rel="shortcut icon" href="<?= $this->url->get('img/favicon/favicon.ico?v=OmyYv82BBp') ?>">
         <meta name="theme-color" content="#ffffff">
 
-        <meta name="twitter:image" content="https://articool.benjaminakar.com/img/logo/facebook-logo.png" />
-	    <meta property="og:image" content="https://articool.benjaminakar.com/img/logo/facebook-logo.png" />
+        <meta name="twitter:image" content="https://articool.blog/img/logo/facebook-logo.png" />
+	    <meta property="og:image" content="https://articool.blog/img/logo/facebook-logo.png" />
 
         <!-- Output CSS & JS from controllerbase -->
         <?= $this->assets->outputCss() ?>

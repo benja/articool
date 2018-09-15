@@ -31,6 +31,15 @@
 <div class="col-xs-12 col-md-8 col-lg-8">
     <p class="settings__title">Security Settings</p>
 
+    <div id="alert_div" class="alert hidden">
+        <span>
+            <label id="alert_title" class="alert__title">ERROR</label>
+        </span>
+        <ul>
+            <div id="feedback_message"></div>
+        </ul>
+    </div>
+
     <form id="securitySettings" class="settings__form" method="POST" action="{{ url('api/v1/settings/security-settings') }}" enctype="multipart/form-data">
 
         <div class="settings__form__input">
@@ -56,8 +65,7 @@
         <div class="settings__form__input">
             <input id="settings_submit" type="submit" name="submit" value="Update" />
         </div>
-
-        <div style="color:black;" id="feedback_message"></div>
+        
     </form>
 </div>
 <!-- BODY -->

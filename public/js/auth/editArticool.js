@@ -35,6 +35,23 @@ var post_id = window.location.pathname.match(/\/(\d+)/)[1]
         dataType: 'json',
         success: function (feedback) {
 
+            // display error messages properly through our alert div
+            if( feedback.success == false) {
+                $('#alert_div').removeClass('hidden'); 
+                $('#alert_div').removeClass('is-success'); 
+                $('#alert_div').addClass('is-error'); 
+                $('#alert_title').html('ERROR');
+            } else if(feedback.success == true) {
+                $('#alert_div').removeClass('hidden');
+                $('#alert_div').removeClass('is-error');
+                $('#alert_div').addClass('is-success'); 
+                $('#alert_title').html('SUCCESS');
+                
+                setTimeout(function(){
+                    $('#alert_div').addClass('hidden');
+                }, 2000);
+            }
+
             // i chose not to redirect the user back, incase they want to make a fix again
             $('#feedback_message').html(feedback.messages.join('<br />'));
         }

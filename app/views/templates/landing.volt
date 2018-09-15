@@ -12,8 +12,8 @@
         <link rel="shortcut icon" href="{{ url('img/favicon/favicon.ico?v=OmyYv82BBp') }}">
         <meta name="theme-color" content="#ffffff">
 
-        <meta name="twitter:image" content="https://articool.benjaminakar.com/img/logo/facebook-logo.png" />
-	    <meta property="og:image" content="https://articool.benjaminakar.com/img/logo/facebook-logo.png" />
+        <meta name="twitter:image" content="https://articool.blog/img/logo/facebook-logo.png" />
+	    <meta property="og:image" content="https://articool.blog/img/logo/facebook-logo.png" />
 
         <!-- Output CSS from controllerbase -->
         {{ assets.outputCss() }}

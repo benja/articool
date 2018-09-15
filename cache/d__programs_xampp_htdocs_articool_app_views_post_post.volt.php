@@ -22,8 +22,8 @@
         <link rel="shortcut icon" href="<?= $this->url->get('img/favicon/favicon.ico?v=OmyYv82BBp') ?>">
         <meta name="theme-color" content="#ffffff">
 
-        <meta name="twitter:image" content="https://articool.benjaminakar.com/img/logo/facebook-logo.png" />
-	    <meta property="og:image" content="https://articool.benjaminakar.com/img/logo/facebook-logo.png" />
+        <meta name="twitter:image" content="https://articool.blog/img/logo/facebook-logo.png" />
+	    <meta property="og:image" content="https://articool.blog/img/logo/facebook-logo.png" />
 
         <!-- Output CSS & JS from controllerbase -->
         <?= $this->assets->outputCss() ?>
@@ -83,6 +83,15 @@
                 
 	<div class="col-xs-12 col-md-12 col-lg-12">
 
+		<div id="alert_div" class="alert hidden">
+			<span>
+				<label id="alert_title" class="alert__title">ERROR</label>
+			</span>
+			<ul>
+				<div id="feedback_message"></div>
+			</ul>
+		</div>
+		
 		<div class="post__header">
 			<div class="post__header__back">
 					<a href="javascript:history.go(-1)">

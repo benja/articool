@@ -38,6 +38,15 @@
 {% block content %}
 	<div class="col-xs-12 col-md-12 col-lg-12">
 
+		<div id="alert_div" class="alert hidden">
+			<span>
+				<label id="alert_title" class="alert__title">ERROR</label>
+			</span>
+			<ul>
+				<div id="feedback_message"></div>
+			</ul>
+		</div>
+		
 		<div class="post__header">
 			<div class="post__header__back">
 					<a href="javascript:history.go(-1)">

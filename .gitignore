@@ -3,3 +3,4 @@ public/ckeditor/node_modules
 docker/*
 cache/*
 .env
+public/img/*

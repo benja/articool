@@ -5,33 +5,36 @@
 	font-size: 1rem;
 	padding: .5rem;
 	transition: .5s;
-	margin-bottom: 2.5rem;
-	margin-top: .5rem;
+	margin: 1rem 0 0.5rem 0;
 	border-radius: 3px;
-	border-top: .3rem solid $white;
-	box-shadow: 0px 0px 1rem 3px #22222217;
+	box-shadow: 0px 0px 3rem 2px #22222217;
 
 	li {
 		list-style-type: none;
 	}
 }
 
+.hidden {
+	display: none;
+}
+
 .is-success {
-	background-color: #67be74;
-	color: white;
+	background-color: $white;
+	color: $black;
+	border: .25rem solid #67be74;
 
 	.alert__title {
-		color: white;
+		color: #67be74;
 		font-size: 1.1rem;
 	}
 }
 
 .is-error {
-	background-color: #cf4343;
+	background-color: $white;
 	color: $black;
+	border: .25rem solid #ff6666;
 
 	.alert__title {
-		color: $black;
-		font-size: 1.1rem;
+		color: #ff6666;
 	}
 }

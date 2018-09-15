@@ -22,8 +22,8 @@
         <link rel="shortcut icon" href="<?= $this->url->get('img/favicon/favicon.ico?v=OmyYv82BBp') ?>">
         <meta name="theme-color" content="#ffffff">
 
-        <meta name="twitter:image" content="https://articool.benjaminakar.com/img/logo/facebook-logo.png" />
-	    <meta property="og:image" content="https://articool.benjaminakar.com/img/logo/facebook-logo.png" />
+        <meta name="twitter:image" content="https://articool.blog/img/logo/facebook-logo.png" />
+	    <meta property="og:image" content="https://articool.blog/img/logo/facebook-logo.png" />
 
         <!-- Output CSS & JS from controllerbase -->
         <?= $this->assets->outputCss() ?>
@@ -200,9 +200,15 @@
 	            <input type="hidden" name="<?= $this->security->getTokenKey() ?>" value="<?= $this->security->getToken() ?>" />
 	            <div class="modal__form__input">
 	                <input type="submit" id="articool_submit" name="submit" value="Update Articool">
-	            </div>
-
-				<div id="feedback_message"></div>
+				</div>
+				<div id="alert_div" class="alert hidden">
+					<span>
+						<label id="alert_title" class="alert__title">ERROR</label>
+					</span>
+					<ul>
+						<div id="feedback_message"></div>
+					</ul>
+				</div>
 			</form>
 
 			<form method="POST" id="deleteArticool" action="<?= $this->url->get('api/v1/post/delete-articool/{post_id}') ?>">
@@ -215,7 +221,6 @@
 				<div style="font-style: italic; margin-top: 1rem;">
 					If you wish to delete this articool, click <input id="articool_delete" style="background-color: white; border: none; font-size: .97rem; text-decoration: underline; font-style: italic; cursor: pointer;" type="submit" name="submit" value="here ">
 				</div>
-				<div id="feedback_message"></div>
 			</form>
 
 	    </div>
@@ -244,6 +249,7 @@
 
 <!-- Styling some of the CKEDITOR -->
 <style>
+
 	.ck-editor__editable {
 		min-height: 10rem;
 	}
@@ -260,8 +266,74 @@
 		border-left: 0.5rem solid #222222;
 		font-style: italic;
 		padding-left: 1rem;
-		margin: 1rem 0 0 1rem;
+		margin: 1rem 0 1rem 1rem;
 	}
+
+	.ck-editor__editable em, a, i, u, s, code, ul, li, ol {
+		font-family: 'Open Sans', serif;
+		color: #222222;
+	}
+
+	.ck-editor__editable p {
+		margin-top: 1rem;
+		color: #222222;
+		width: 100%;
+		white-space: pre-line;
+		color: #222222;
+		word-spacing: .05rem;
+		line-height: 1.8rem;
+		font-family: 'Open Sans', sans-serif;
+	}
+
+	.ck-editor__editable img {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		width: 100%;
+		border: .5rem solid #222222;
+		user-drag: none; 
+		user-select: none;
+		-moz-user-select: none;
+		-webkit-user-drag: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+
+	.ck-editor__editable a {
+		color: #222222;
+		border-bottom: .15rem solid #222222;
+		text-decoration: none;
+	}
+
+	.ck-editor__editable blockquote {
+		background-color: #7373731f;
+		width: fit-content;
+		padding: .5rem 1rem .5rem 1rem;
+		margin: 1rem 0 0 1rem;
+		border-left: .25rem solid #222222;
+		font-style: italic;
+	}
+
+	.ck-editor__editable blockquote p {
+		margin-top: 0;
+	}
+
+	.ck-editor__editable ul, ol {
+		margin: 1rem 0 0 2rem;
+	}
+
+	.ck-editor__editable li {
+		padding-left: .5rem;
+	}
+
+	.ck-editor__editable code {
+		background-color: #eeeeee;
+		font-family: monospace;
+		padding: 0.25rem 0.3rem 0.25rem .3rem;
+		color: #222222;
+		border-radius: .2rem;
+		border: 2px solid #dadada;
+	}
+
 </style>
 
 <script type="text/javascript">

@@ -145,7 +145,7 @@ class RegisterController extends ControllerBase {
             $mail->Body = $registertemplate;
             $mail->send();
             
-            return $this->ajaxResponse(true, ['Successfully registered account'], 'ajax', $user->toArray());
+            return $this->ajaxResponse(true, ['Successfully registered account, check your email to confirm your email-address.'], 'ajax', $user->toArray());
         }
         return $this->ajaxResponse(false, $messages, 'ajax');
     }
