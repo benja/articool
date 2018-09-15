@@ -68,21 +68,21 @@
 
 						<button id="articool_trend" type="submit" class="post__header__edit__trending">
 							{% if isTrending is 0 %}
-							<i id="trendingStatus" class="fa fa-star-o" aria-hidden="true"></i> Trending
+							<i id="trendingStatus" class="far fa-star" aria-hidden="true"></i> Trending
 							{% else %}
-							<i id="trendingStatus" class="fa fa-star" aria-hidden="true"></i> Trending
+							<i id="trendingStatus" class="fas fa-star" aria-hidden="true"></i> Trending
 							{% endif %}
 						</button>
 					</form>
 
 					<a style="display: inline;" href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}/edit">
-						<i style="padding-right: .3rem;" class="fa fa-pencil" aria-hidden="true"></i> Edit Articool
+						<i style="padding-right: .3rem;" class="fas fa-pencil-alt" aria-hidden="true"></i> Edit Articool
 					</a>
 				
 				{% elseif post.users.username == user.username %}
 					<!-- Always show edit articool option to author -->
 					<a style="display: inline;" href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}/edit">
-						<i style="padding-right: .3rem;" class="fa fa-pencil" aria-hidden="true"></i> Edit Articool
+						<i style="padding-right: .3rem;" class="fas fa-pencil-alt" aria-hidden="true"></i> Edit Articool
 					</a>
 				{% endif %}
 
@@ -116,15 +116,30 @@
 					<div class="post__share__buttons">
 						<div class="post__share facebook">
 							<a href="//www.facebook.com/sharer/sharer.php?u={{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}&src=sdkpreparse" target="_blank">
-								<i class="fa fa-facebook-official" aria-hidden="true"></i>
+								<i class="fab fa-facebook"></i>
 							</a>
 						</div>
 
 						<div class="post__share twitter">
 							<a href="//twitter.com/intent/tweet?text=Take+a+look+at+this+articool+by+{{ printAuthorsText }}!+«{{ post.post_title }}»&via=articool_pf&url={{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}" target="_blank">
-								<i class="fa fa-twitter-square" aria-hidden="true"></i>
+								<i class="fab fa-twitter-square"></i>
 							</a>
 						</div>
+
+						<div class="post__share linkedin">
+							<a href="//www.linkedin.com/shareArticle?url={{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}&title=«{{ post.post_title }}»&summary=Take a look at this articool by {{ printAuthorsText }}!" target="_blank">
+								<i class="fab fa-linkedin"></i>
+							</a>
+						</div>
+
+						<div class="post__share googleplus">
+							<a href="//plus.google.com/share?url={{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}" target="_blank">
+								<i class="fab fa-google-plus-square"></i>
+							</a>
+						</div>
+
+						
+
 					</div>
 				</div>
 			{% endfor %}

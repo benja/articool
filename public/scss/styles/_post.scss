@@ -94,13 +94,37 @@
 		.twitter {
 			color: $black;
 			font-size: 2rem;
-			width: 1rem;
+			width: 2.5rem;
 			a {
 				color: $black;
 			}
 			a:hover {
 				color: #0084b4;
 			}
+		}
+
+		.linkedin {
+			color: $black;
+			font-size: 2rem;
+			width: 2.5rem;
+			a {
+				color: $black;
+			}
+			a:hover {
+				color: #0077B5;
+			}	
+		}
+
+		.googleplus {
+			color: $black;
+			font-size: 2rem;
+			width: 2.5rem;
+			a {
+				color: $black;
+			}
+			a:hover {
+				color: #dd4b39;
+			}	
 		}
 	}
 
@@ -187,6 +211,12 @@
 				color: $white;
 				border-bottom: .15rem solid $white;
 				text-decoration: none;
+				transition: .1s;
+
+				&:hover {
+					padding: 0 .15rem 0 .15rem;
+					transition: .1s;
+				}
     		}
 
     		blockquote {

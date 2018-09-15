@@ -7,11 +7,13 @@ navbar__button.onclick = function() {
     navbar.className = 'navbar';
 }
 
-window.onclick = function(event) {
+// remove navbar on click (div around navbar)
+$(window).on('click', function(event) {
     if(event.target == navbar) {
         navbar.className = 'navbar hidden';
     }
-}
+});
+
 /*
 
 Removed due to bad user experience. Would open menu while writing an articool.

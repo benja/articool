@@ -25,7 +25,9 @@ class ControllerBase extends Controller
         $this->assets->addCss("css/chosen.css");
         $this->assets->addCss("css/style.css");
         $this->assets->addCss("css/grid.css");
-        $this->assets->addCss("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", false);
+        $this->assets->addCss("//use.fontawesome.com/releases/v5.3.1/css/all.css", false);
+
+
         $this->assets->addJs("js/libraries/chosen.js");
         $this->assets->addJs("ckeditor/build/ckeditor.js");
 
@@ -368,6 +370,10 @@ class ControllerBase extends Controller
         $text = str_word_count($post->post_body); // Get the text wordcount
         $wordperminute = 200; // Average words per minute for a slow reader
         $readtime = floor( ($text / $wordperminute) ); // Wordcount / average words per minute, then we round it down using floor.
+
+        if($readtime == 0) {
+            $readtime = "< 1"; // instead of saying 0 minute 
+        }
 
         return $readtime;
     }

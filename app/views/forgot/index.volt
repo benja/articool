@@ -30,7 +30,7 @@
         value="{{ security.getToken() }}" />
 
         <div class="forgot__form__input">
-            <input id="forgot_submit" type="submit" value="Send Instructions">
+            <input id="forgot_submit" type="submit" value="Send Password Reset Instructions">
         </div>
 
     </form>

@@ -26,12 +26,12 @@ var password = $('#session_token').val();
         success: function (feedback) {
 
             // change star css on click
-            if( $('#trendingStatus').hasClass('fa-star-o') ) {
-                $('#trendingStatus').removeClass('fa-star-o');
-                $('#trendingStatus').addClass('fa-star');
-            } else if( $('#trendingStatus').hasClass('fa-star') ) {
-                $('#trendingStatus').removeClass('fa-star');
-                $('#trendingStatus').addClass('fa-star-o');
+            if( $('#trendingStatus').hasClass('far fa-star') ) {
+                $('#trendingStatus').removeClass('far fa-star');
+                $('#trendingStatus').addClass('fas fa-star');
+            } else if( $('#trendingStatus').hasClass('fas fa-star') ) {
+                $('#trendingStatus').removeClass('fas fa-star');
+                $('#trendingStatus').addClass('far fa-star');
             }
 
             // display error messages properly through our alert div

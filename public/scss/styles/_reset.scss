@@ -36,3 +36,20 @@ input {
     -moz-appearance: none;
     appearance: none;
 }
+
+/*
+ *  Custom scroll wheel
+ */
+
+::-webkit-scrollbar {
+    width: .5rem;
+    box-shadow: 0.5rem 0.5rem 0.5rem $white;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $dark;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: $dark;
+}

@@ -31,6 +31,8 @@
 	<nav class="welcome__navbar">
 		<ul class="welcome__navbar--links">
 			<li class="welcome__navbar--entry"><a href="{{ url('login') }}">Login</a></li>
+			<li class="welcome__navbar--entry"><a href="{{ url('explore') }}">Explore</a></li>
+			<li class="welcome__navbar--entry"><a href="{{ url('register') }}">Register</a></li>
 		</ul>
 	</nav>
 
@@ -48,6 +50,20 @@
 		<a class="welcome__footer--arrow" href="#information"></a>
 	</div>
 </section>
+
+<!-- Explore Section -->
+<section class="explore">
+		<div class="explore__content">
+	
+			<div class="explore__text">
+				<div class="explore__text--big">
+					Take a look at what our authors are already publishing!
+				</div>
+			</div>
+	
+			<a class="explore__button" href="{{ url('explore') }}">Explore Articools</a>
+		</div>
+	</section>
 
 <!-- Statistics Section -->
 <section class="stats">

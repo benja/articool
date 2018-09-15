@@ -39,6 +39,26 @@
         }
     }
 
+    /** Because we have a logout button as a (input) from form, we need this **/
+    input {
+        background-color: transparent;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+        font-size: 1.5rem;
+        transition: .2s;
+
+        &:hover {
+            background-color: $white;
+            transition: .2s;
+            color: $black;
+        }
+
+        &:active {
+            transform: scale(.9);
+        }
+    }
+
     &__elements {
         text-align: center;
         color: $white;
@@ -55,7 +75,7 @@
                 background-color: $white;
                 transition: .2s;
                 
-                li {
+                li, input {
                     color: $black;
                 }
             }

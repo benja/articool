@@ -2,9 +2,9 @@
 <div id="navbar" class="navbar hidden">
     <div class="navbar__elements">
 
-        <a href="{{ url('') }}">
+        <a href="{{ url('explore') }}">
             <div class="navbar__elements__element">
-                <li>Home</li>
+                <li>Explore</li>
             </div>
         </a>
 
@@ -19,9 +19,7 @@
                 <input type="hidden" id="session_identifier" value="{{ tokens.session_identifier }}" />
                 <input type="hidden" id="session_token" value="{{ tokens.session_token }}" />
                 
-                <div class="navbar__elements__element">
-                    <input id="logout_submit" class="navbar__elements__element" type="submit" value="Logout">
-                </div>
+                <input id="logout_submit" class="navbar__elements__element" type="submit" value="Logout">
             </a>
         </form>
 
@@ -43,6 +41,12 @@
         <a href="{{ url('') }}">
             <div class="navbar__elements__element">
                 <li>Home</li>
+            </div>
+        </a>
+
+        <a href="{{ url('explore') }}">
+            <div class="navbar__elements__element">
+                <li>Explore</li>
             </div>
         </a>
 

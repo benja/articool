@@ -201,6 +201,7 @@
 	            <div class="modal__form__input">
 	                <input type="submit" id="articool_submit" name="submit" value="Update Articool">
 				</div>
+				
 				<div id="alert_div" class="alert hidden">
 					<span>
 						<label id="alert_title" class="alert__title">ERROR</label>
@@ -209,6 +210,7 @@
 						<div id="feedback_message"></div>
 					</ul>
 				</div>
+
 			</form>
 
 			<form method="POST" id="deleteArticool" action="<?= $this->url->get('api/v1/post/delete-articool/{post_id}') ?>">

@@ -25,15 +25,6 @@
                     <div class="modal__content">
                         <span class="modal__content__close">&times;</span>
 
-                        <div id="alert_div" class="alert hidden">
-                            <span>
-                                <label id="alert_title" class="alert__title">ERROR</label>
-                            </span>
-                            <ul>
-                                <div id="feedback_message"></div>
-                            </ul>
-                        </div>
-
                         <form id="postArticool" method="POST" action="{{ url('api/v1/post/post-articool') }}">
 
                             <h1 class="modal__form__title">New Articool</h1>
@@ -165,6 +156,15 @@
 
                             <div class="modal__form__input">
                                 <input id="articool_submit" type="submit" name="submit" value="Publish Articool" />
+                            </div>
+
+                            <div id="alert_div" class="alert hidden">
+                                <span>
+                                    <label id="alert_title" class="alert__title">ERROR</label>
+                                </span>
+                                <ul>
+                                    <div id="feedback_message"></div>
+                                </ul>
                             </div>
 
                         </form>

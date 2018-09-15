@@ -31,6 +31,19 @@ input {
   -moz-appearance: none;
   appearance: none; }
 
+/*
+ *  Custom scroll wheel
+ */
+::-webkit-scrollbar {
+  width: .5rem;
+  box-shadow: 0.5rem 0.5rem 0.5rem #FFFFFF; }
+
+::-webkit-scrollbar-thumb {
+  background: #131313; }
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #131313; }
+
 .login {
   background-color: #FFFFFF;
   display: flex;
@@ -287,11 +300,27 @@ input {
     .post__share .twitter {
       color: #222222;
       font-size: 2rem;
-      width: 1rem; }
+      width: 2.5rem; }
       .post__share .twitter a {
         color: #222222; }
       .post__share .twitter a:hover {
         color: #0084b4; }
+    .post__share .linkedin {
+      color: #222222;
+      font-size: 2rem;
+      width: 2.5rem; }
+      .post__share .linkedin a {
+        color: #222222; }
+      .post__share .linkedin a:hover {
+        color: #0077B5; }
+    .post__share .googleplus {
+      color: #222222;
+      font-size: 2rem;
+      width: 2.5rem; }
+      .post__share .googleplus a {
+        color: #222222; }
+      .post__share .googleplus a:hover {
+        color: #dd4b39; }
   .post__post {
     margin-bottom: 1rem;
     background-color: #222222;
@@ -357,7 +386,11 @@ input {
       .post__post__body a {
         color: #FFFFFF;
         border-bottom: 0.15rem solid #FFFFFF;
-        text-decoration: none; }
+        text-decoration: none;
+        transition: .1s; }
+        .post__post__body a:hover {
+          padding: 0 .15rem 0 .15rem;
+          transition: .1s; }
       .post__post__body blockquote {
         background-color: #7373731f;
         width: fit-content;
@@ -1179,7 +1212,8 @@ input[type=checkbox]:checked + label > span:before {
   z-index: 1001;
   width: 100%;
   height: 100%;
-  font-size: 2rem; }
+  font-size: 2rem;
+  /** Because we have a logout button as a (input) from form, we need this **/ }
   .navbar__button {
     display: flex;
     flex-direction: row;
@@ -1200,6 +1234,19 @@ input[type=checkbox]:checked + label > span:before {
       padding: 0 .5rem .3rem .5rem; }
       .navbar__button button:hover {
         cursor: pointer; }
+  .navbar input {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    font-size: 1.5rem;
+    transition: .2s; }
+    .navbar input:hover {
+      background-color: #FFFFFF;
+      transition: .2s;
+      color: #222222; }
+    .navbar input:active {
+      transform: scale(0.9); }
   .navbar__elements {
     text-align: center;
     color: #FFFFFF; }
@@ -1213,7 +1260,7 @@ input[type=checkbox]:checked + label > span:before {
       .navbar__elements__element:hover {
         background-color: #FFFFFF;
         transition: .2s; }
-        .navbar__elements__element:hover li {
+        .navbar__elements__element:hover li, .navbar__elements__element:hover input {
           color: #222222; }
       .navbar__elements__element:active {
         transform: scale(0.9); }
@@ -1468,11 +1515,15 @@ input[type=checkbox]:checked + label > span:before {
     top: 0;
     right: 0; }
     .welcome__navbar--links {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
       list-style: none; }
       .welcome__navbar--links a {
         text-decoration: none;
         color: #FFFFFF; }
     .welcome__navbar--entry {
+      padding: 0 .5rem;
       opacity: .75; }
   .welcome__body {
     display: flex;
@@ -1645,6 +1696,56 @@ input[type=checkbox]:checked + label > span:before {
 @media (max-height: 500px) {
   .information__right--image {
     width: 50%; } }
+.explore {
+  height: 35vh;
+  background-color: #A346FF;
+  box-shadow: inset 0 0 20px 1px #8b16ff; }
+  .explore__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; }
+  .explore__button {
+    background: #FFFFFF;
+    color: #222222;
+    text-decoration: none;
+    box-shadow: 3px 4px 15px rgba(0, 0, 0, 0.25);
+    border-radius: .1rem;
+    font-size: 1.65rem;
+    margin: 2.5rem 0 0rem 0;
+    padding: 1rem 2rem;
+    transition: .2s;
+    animation: 2.5s notice forwards infinite; }
+  .explore__text {
+    color: #FFFFFF;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25); }
+    .explore__text--big {
+      font-size: 1.65rem; }
+
+@media (max-width: 880px) {
+  .explore__button {
+    font-size: 1.3rem; }
+  .explore__text--big {
+    font-size: 1.4rem; } }
+@media (max-width: 640px) {
+  .explore {
+    height: 100%; }
+    .explore__content {
+      padding: 3rem 0 3rem 0; }
+    .explore__button {
+      font-size: 100%; }
+    .explore__text--big {
+      text-align: center;
+      font-size: 1.2rem;
+      width: 100%;
+      padding: 0 2rem 0 2rem; } }
+@media (max-height: 600px) {
+  .explore {
+    min-height: 40vh;
+    height: 100%; }
+    .explore__content {
+      padding: 3rem 0 3rem 0; } }
 .stats {
   height: 30vh;
   background-color: #131313; }
