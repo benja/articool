@@ -4,7 +4,8 @@
   padding: 0;
   margin: 0;
   font-family: 'Bree Serif', serif;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  letter-spacing: .03rem; }
 
 strong {
   font-family: 'Open Sans', serif;
