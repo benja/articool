@@ -26,8 +26,7 @@
     }
 
     &__description {
-        color: #222222;
-        color: $white;
+        color: #dcdcdc;
         word-spacing: .05rem;
         margin-top: .5rem;
         margin-bottom: .5rem;
@@ -96,7 +95,7 @@
         }
         
         &__description {
-            font-size: .9rem;
+            font-size: 1rem;
         }
     }
 }
@@ -108,7 +107,7 @@
         margin-bottom: 0rem;
         
         &__description {
-            font-size: .9rem;
+            font-size: 1rem;
             width: 100%;
         }
 	}

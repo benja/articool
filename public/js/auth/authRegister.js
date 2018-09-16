@@ -48,7 +48,7 @@ $.ajax({
 
             setTimeout(function(){
                 $('#alert_div').addClass('hidden');
-            }, 2000);
+            }, 2500);
         }
 
         $('#feedback_message').html(feedback.messages.join('<br />'));
