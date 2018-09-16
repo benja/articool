@@ -36,7 +36,7 @@
 
 -->
 
-<div class="col-xs-12 col-md-4 col-lg-4">
+<div class="col-xs-12 col-md-12 col-lg-4">
 	<h1 class="index__title">Trending Articools</h1>
 
 	{% for post in getTrendingPosts %}
@@ -65,7 +65,7 @@
 
 -->
 
-<div class="col-xs-12 col-md-4 col-lg-4">
+<div class="col-xs-12 col-md-12 col-lg-4">
 	<h1 class="index__title">New Articools</h1>
 
 	{% for post in getPosts %}
@@ -94,7 +94,7 @@
 
 -->
 
-<div class="col-xs-12 col-md-4 col-lg-4">
+<div class="col-xs-12 col-md-12 col-lg-4">
 	<h1 class="index__title">Approved Authors</h1>
 
 	{% for user in getApprovedAuthors %}
