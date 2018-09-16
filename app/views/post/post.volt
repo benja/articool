@@ -19,13 +19,13 @@
 
 	<!-- Twitter Tags -->
 	<meta name="twitter:title" content="{{ post.post_title }}" />
-	<meta name="twitter:site" content="{{ appUrl }}posts/{{ post.post_id }}/" />
+	<meta name="twitter:site" content="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}" />
 	<meta name="twitter:image" content="{{ appUrl }}img/logo/facebook-logo.png" />
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:description" content="{{ short_body(post.post_body)|left_trim }}" />
 
 	<!-- Facebook Tags -->
-	<meta property="og:url" content="{{ appUrl }}posts/{{ post.post_id }}/" />
+	<meta property="og:url" content="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}/" />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="{{ post.post_title }}" />
 	<meta property="og:description" content="{{ short_body(post.post_body)|left_trim }}" />
