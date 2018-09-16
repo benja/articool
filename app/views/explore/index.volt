@@ -41,12 +41,12 @@
 
 	{% for post in getTrendingPosts %}
 	<div class="postbox">
-		<p style="margin-bottom: 0;" class="postbox__title">{{ post.posts.post_title }}</p>
+		<a href="{{ appUrl }}@{{ post.posts.users.username }}/{{ post.posts.post_id }}/{{ createTitleSlug(post.posts.post_title) }}"><p style="margin-bottom: 0;" class="postbox__title">{{ post.posts.post_title }}</p></a>
 		By <a style="text-decoration: none; color: #FFFFFF;" href="{{ url('profile/') }}{{ post.posts.users.username }}"><img style="width: 1.5rem; height: 1.5rem;" class="postbox__avatar" src="{{ url('img/avatars/') }}{{ post.posts.users.avatar }}"> {{ post.posts.users.first_name }} {{ post.posts.users.last_name }}</a>
 
 		<p class="postbox__description">"{{ short_body(post.posts.post_body) }}..."</p>
 		<div class="postbox__readmore">
-			<a href="{{ url('posts/') }}{{ post.posts.post_id }}">
+			<a href="{{ appUrl }}@{{ post.posts.users.username }}/{{ post.posts.post_id }}/{{ createTitleSlug(post.posts.post_title) }}">
 				<i style="margin-right: .5rem;" class="fa fa-arrow-right" aria-hidden="true"></i> Read More
 			</a>
 		</div>
@@ -70,7 +70,7 @@
 
 	{% for post in getPosts %}
 	<div class="postbox">
-		<p style="margin-bottom: 0;" class="postbox__title">{{ post.post_title }}</p>
+		<a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}"><p style="margin-bottom: 0;" class="postbox__title">{{ post.post_title }}</p></a>
 		By <a style="text-decoration: none; color: #FFFFFF;" href="{{ url('profile/') }}{{ post.users.username }}"><img style="width: 1.5rem; height: 1.5rem;" class="postbox__avatar" src="{{ url('img/avatars/') }}{{ post.users.avatar }}"> {{ post.users.first_name }} {{ post.users.last_name }}</a>
 
 		<p class="postbox__description">«{{ short_body(post.post_body)|left_trim }}...»</p>

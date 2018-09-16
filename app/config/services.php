@@ -68,7 +68,7 @@ $di->setShared('view', function () {
                 )';
             });
             $compiler->addFunction('createTitleSlug', function($resolvedArgs, $exprArgs) {
-                return 'str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower("'. $resolvedArgs .'")))))';
+                return 'str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower('. $resolvedArgs .')))))';
             });
 
             return $volt;

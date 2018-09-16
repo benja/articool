@@ -120,13 +120,13 @@
 						</button>
 					</form>
 
-					<a style="display: inline;" href="<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower("$post->post_title"))))) ?>/edit">
+					<a style="display: inline;" href="<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower($post->post_title))))) ?>/edit">
 						<i style="padding-right: .3rem;" class="fas fa-pencil-alt" aria-hidden="true"></i> Edit Articool
 					</a>
 				
 				<?php } elseif ($post->users->username == $user->username) { ?>
 					<!-- Always show edit articool option to author -->
-					<a style="display: inline;" href="<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower("$post->post_title"))))) ?>/edit">
+					<a style="display: inline;" href="<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower($post->post_title))))) ?>/edit">
 						<i style="padding-right: .3rem;" class="fas fa-pencil-alt" aria-hidden="true"></i> Edit Articool
 					</a>
 				<?php } ?>
@@ -144,7 +144,7 @@
 							<?= date('j F Y H:i', strtotime($post->created_at)) ?> <?php if ($post->created_at != $post->updated_at) { ?> - Updated <?= date('j F Y H:i', strtotime($post->updated_at)) ?> <?php } ?>
 							<?php if (isset($user->username)) { ?>
 								<?php if ($post->users->username == $user->username || $user->rank_id >= 3) { ?>
-									| <i class="fa fa-eye" aria-hidden="true"></i> <?= $post->post_views ?> <?php if ($post->post_views == 1) { ?> view <?php } else { ?> views <?php } ?>
+									| <i class="far fa-eye" aria-hidden="true"></i> <?= $post->post_views ?> <?php if ($post->post_views == 1) { ?> view <?php } else { ?> views <?php } ?>
 								<?php } ?>
 							<?php } ?>
 						</p>
@@ -160,25 +160,25 @@
 
 					<div class="post__share__buttons">
 						<div class="post__share facebook">
-							<a href="//www.facebook.com/sharer/sharer.php?u=<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower("$post->post_title"))))) ?>&src=sdkpreparse" target="_blank">
+							<a href="//www.facebook.com/sharer/sharer.php?u=<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower($post->post_title))))) ?>&src=sdkpreparse" target="_blank">
 								<i class="fab fa-facebook"></i>
 							</a>
 						</div>
 
 						<div class="post__share twitter">
-							<a href="//twitter.com/intent/tweet?text=Take+a+look+at+this+articool+by+<?= $printAuthorsText ?>!+«<?= $post->post_title ?>»&via=articool_pf&url=<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower("$post->post_title"))))) ?>" target="_blank">
+							<a href="//twitter.com/intent/tweet?text=Take+a+look+at+this+articool+by+<?= $printAuthorsText ?>!+«<?= $post->post_title ?>»&via=articool_pf&url=<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower($post->post_title))))) ?>" target="_blank">
 								<i class="fab fa-twitter-square"></i>
 							</a>
 						</div>
 
 						<div class="post__share linkedin">
-							<a href="//www.linkedin.com/shareArticle?url=<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower("$post->post_title"))))) ?>&title=«<?= $post->post_title ?>»&summary=Take a look at this articool by <?= $printAuthorsText ?>!" target="_blank">
+							<a href="//www.linkedin.com/shareArticle?url=<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower($post->post_title))))) ?>&title=«<?= $post->post_title ?>»&summary=Take a look at this articool by <?= $printAuthorsText ?>!" target="_blank">
 								<i class="fab fa-linkedin"></i>
 							</a>
 						</div>
 
 						<div class="post__share googleplus">
-							<a href="//plus.google.com/share?url=<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower("$post->post_title"))))) ?>" target="_blank">
+							<a href="//plus.google.com/share?url=<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower($post->post_title))))) ?>" target="_blank">
 								<i class="fab fa-google-plus-square"></i>
 							</a>
 						</div>
@@ -194,7 +194,7 @@
 	</div>
 
 	<script>
-		history.replaceState({}, 'title', '<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower("$post->post_title"))))) ?>' );
+		history.replaceState({}, 'title', '<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower($post->post_title))))) ?>' );
  	</script>
 
     <?= $this->tag->javascriptInclude('js/auth/trendArticool.js') ?>

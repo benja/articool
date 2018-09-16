@@ -244,7 +244,7 @@
                 <?php if ($post->post_active == 1) { ?>
 
                 <div class="postbox">
-                    <p class="postbox__title"><?= $post->post_title ?></p>
+                    <a href="<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower($post->post_title))))) ?>"><p class="postbox__title"><?= $post->post_title ?></p></a>
                     <p class="postbox__description">«<?= 
                 strip_tags(
                     trim(
@@ -252,7 +252,7 @@
                     )
                 ) ?>...»</p>
                     <div class="postbox__readmore">
-                        <a href="<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower("$post->post_title"))))) ?>">
+                        <a href="<?= $appUrl ?>@<?= $post->users->username ?>/<?= $post->post_id ?>/<?= str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower($post->post_title))))) ?>">
                             <i style="margin-right: .5rem;" class="fa fa-arrow-right" aria-hidden="true"></i> Read More
                         </a>
                     </div>

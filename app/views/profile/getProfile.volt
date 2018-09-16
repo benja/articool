@@ -211,7 +211,7 @@
                 {% if post.post_active == 1 %}
 
                 <div class="postbox">
-                    <p class="postbox__title">{{ post.post_title }}</p>
+                    <a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}"><p class="postbox__title">{{ post.post_title }}</p></a>
                     <p class="postbox__description">«{{ short_body(post.post_body) }}...»</p>
                     <div class="postbox__readmore">
                         <a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">

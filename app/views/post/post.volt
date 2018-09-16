@@ -99,7 +99,7 @@
 							{{ format_date(post.created_at) }} {% if post.created_at != post.updated_at %} - Updated {{ format_date(post.updated_at) }} {% endif %}
 							{% if user.username is defined %}
 								{% if post.users.username == user.username or user.rank_id >= 3 %}
-									| <i class="fa fa-eye" aria-hidden="true"></i> {{ post.post_views }} {% if post.post_views is 1 %} view {% else %} views {% endif %}
+									| <i class="far fa-eye" aria-hidden="true"></i> {{ post.post_views }} {% if post.post_views is 1 %} view {% else %} views {% endif %}
 								{% endif %}
 							{% endif %}
 						</p>

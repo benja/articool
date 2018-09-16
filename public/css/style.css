@@ -907,7 +907,7 @@ input[type=checkbox]:checked + label > span:before {
         transition: .2s;
         max-width: 100%;
         min-width: 100%;
-        min-height: 6rem;
+        min-height: 11rem;
         font-size: 1.3rem;
         padding: 1rem;
         border-radius: 3px;
@@ -1239,7 +1239,7 @@ input[type=checkbox]:checked + label > span:before {
     cursor: pointer;
     border: none;
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     transition: .2s; }
     .navbar input:hover {
       background-color: #FFFFFF;
@@ -1329,11 +1329,11 @@ input[type=checkbox]:checked + label > span:before {
   .rank.moderator {
     background-color: #df9914; }
     .rank.moderator:before {
-      content: "Moderator"; }
+      content: "Mod"; }
   .rank.administrator {
-    background-color: #c21d23; }
+    background-color: #ff474e; }
     .rank.administrator:before {
-      content: "Administrator"; }
+      content: "Admin"; }
 
 .admin {
   padding: 2rem;

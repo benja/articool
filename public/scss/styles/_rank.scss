@@ -33,7 +33,7 @@
         background-color: $moderator;
 
         &:before {
-            content: "Moderator";
+            content: "Mod";
         }
     }
 
@@ -41,7 +41,7 @@
         background-color: $administrator;
         
         &:before {
-            content: "Administrator";
+            content: "Admin";
         }
     }
 }

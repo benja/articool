@@ -57,7 +57,7 @@
 	
 			<div class="explore__text">
 				<div class="explore__text--big">
-					Take a look at what our authors are already publishing!
+					Take a look at what our authors are writing about!
 				</div>
 			</div>
 	

@@ -44,15 +44,15 @@
             </div>
         </a>
 
-        <a href="{{ url('explore') }}">
-            <div class="navbar__elements__element">
-                <li>Explore</li>
-            </div>
-        </a>
-
         <a href="{{ url('login') }}">
             <div class="navbar__elements__element">
                 <li>Login</li>
+            </div>
+        </a>
+
+        <a href="{{ url('explore') }}">
+            <div class="navbar__elements__element">
+                <li>Explore</li>
             </div>
         </a>
 

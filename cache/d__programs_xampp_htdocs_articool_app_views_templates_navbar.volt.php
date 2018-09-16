@@ -44,15 +44,15 @@
             </div>
         </a>
 
-        <a href="<?= $this->url->get('explore') ?>">
-            <div class="navbar__elements__element">
-                <li>Explore</li>
-            </div>
-        </a>
-
         <a href="<?= $this->url->get('login') ?>">
             <div class="navbar__elements__element">
                 <li>Login</li>
+            </div>
+        </a>
+
+        <a href="<?= $this->url->get('explore') ?>">
+            <div class="navbar__elements__element">
+                <li>Explore</li>
             </div>
         </a>
 
