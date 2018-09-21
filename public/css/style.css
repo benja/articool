@@ -1350,83 +1350,6 @@ input[type=checkbox]:checked + label > span:before {
     .rank.administrator:before {
       content: "Admin"; }
 
-.admin {
-  padding: 2rem;
-  border: 2rem solid #222222;
-  border-style: groove;
-  min-height: 100vh; }
-  .admin__actions button {
-    border: none;
-    outline: none;
-    background-color: #222222;
-    color: #FFFFFF;
-    padding: .5rem;
-    cursor: pointer; }
-  .admin__users {
-    background-color: #eeeeee;
-    display: flex;
-    flex-direction: column; }
-    .admin__users__title {
-      font-size: 1rem;
-      padding: .5rem;
-      font-weight: bold; }
-    .admin__users__user {
-      justify-content: space-between;
-      display: inline-flex;
-      align-items: center;
-      background-color: #2222220f;
-      border-top: .1rem solid #eeeeee;
-      padding: 1rem;
-      width: 100%; }
-      .admin__users__user__avatar {
-        min-width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        user-drag: none;
-        user-select: none;
-        -moz-user-select: none;
-        -webkit-user-drag: none;
-        -webkit-user-select: none;
-        -ms-user-select: none; }
-  .admin__ban {
-    background-color: #eeeeee;
-    display: flex;
-    flex-direction: column;
-    margin-top: 1rem; }
-    .admin__ban__title {
-      font-size: 1rem;
-      padding: .5rem;
-      font-weight: bold; }
-    .admin__ban__bans {
-      background-color: #eeeeee;
-      display: flex;
-      flex-direction: column; }
-      .admin__ban__bans__title {
-        font-size: 1rem;
-        padding: .5rem;
-        font-weight: bold; }
-      .admin__ban__bans__ban {
-        justify-content: space-between;
-        display: inline-flex;
-        align-items: center;
-        background-color: #2222220f;
-        border-top: .1rem solid #eeeeee;
-        padding: 1rem;
-        width: 100%; }
-    .admin__ban__ip form {
-      display: inline-flex; }
-    .admin__ban__ip input {
-      padding: .5rem;
-      margin: .5rem;
-      outline: none;
-      border: none; }
-
-@media (max-width: 540px) {
-  .admin {
-    border: 1rem solid #222222; } }
 .profile__posts .postbox {
   margin-top: 5rem; }
 
@@ -1460,6 +1383,8 @@ input[type=checkbox]:checked + label > span:before {
     font-family: 'Open Sans', serif; }
     .postbox__readmore a {
       text-decoration: none;
+      color: #FFFFFF; }
+    .postbox__readmore i {
       color: #FFFFFF; }
   .postbox__avatar {
     width: 1.2rem;

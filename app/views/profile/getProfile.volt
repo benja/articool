@@ -140,10 +140,12 @@
                                         <option value="Analysis">Analysis</option>
                                         <option value="Autobiography">Autobiography</option>
                                         <option value="Biography">Biography</option>
+                                        <option value="Chronicle">Chronicle</option>
                                         <option value="Essay">Essay</option>
                                         <option value="Fiction">Fiction</option>
                                         <option value="Non-Fiction">Non-Fiction</option>
                                         <option value="Poetry">Poetry</option>
+                                        <option value="Popular-Science">Popular Science</option>
                                         <option value="Short Story">Short Story</option>
                                     </optgroup>
                                 </select>
