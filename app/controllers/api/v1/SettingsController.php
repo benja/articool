@@ -101,7 +101,7 @@ class SettingsController extends ControllerBase {
             $last_name = $this->request->getPost('last_name');
             $email_address = $this->request->getPost('email_address');
             $avatar = $this->request->getPost('avatar');
-            $description = $this->request->getPost('description');
+            $description = strip_tags($this->request->getPost('description'));
 
             // check if username is taken by another user
             if($username != $auth->username) {

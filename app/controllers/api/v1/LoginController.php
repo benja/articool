@@ -60,7 +60,7 @@ class LoginController extends ControllerBase {
         // if no errors
         if(count($messages) == 0) {
             //if user checked remember me
-            if($remember_me == "on") {
+            if($remember_me == "true") {
                 // generate token
                 $random = new Random();
                 $bytes = $random->bytes();
