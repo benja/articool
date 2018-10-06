@@ -25,7 +25,7 @@
                     <p>Why do some users have a colored background on their profile?</p>
                 </div>
                 <div class="faqpage__list--answer">
-                    <p>Upon reaching <strong>x</strong> amount of people, you will unlock a feature that allows you to customize your background color. Check your profile page to see the amount of people you have reached.</p>
+                    <p>Upon reaching <strong>1,000</strong> amount of people, you will unlock a feature that allows you to customize your background color. This number may increase in the future. Check your profile page to see the amount of people you have reached.</p>
                 </div>
             </div>
 
@@ -44,6 +44,15 @@
                 </div>
                 <div class="faqpage__list--answer">
                     <p>From your profile page, click on the "+" button. This will prompt you with a window where you can write and publish an articool.</p>
+                </div>
+            </div>
+
+            <div class="faqpage__list--box">
+                <div class="faqpage__list--question">
+                    <p>I successfully logged in, but I'm not logged in?</p>
+                </div>
+                <div class="faqpage__list--answer">
+                    <p>If this happens, reset your browser's cache and try logging in again. If this does not solve the issue, please email us at <strong>support@articool.blog</strong></p>
                 </div>
             </div>
 

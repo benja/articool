@@ -200,7 +200,7 @@
                 <div class="profile__info">
                     <div class="profile__info--image" style="background-image: url({{ url('img/avatars/') }}{{ profile.avatar }});"></div>
                     <h1 class="profile__info--name">{{ profile.first_name }} {{ profile.last_name }}</h1>
-                    <p class="profile__info--username">(@benjaminakar)</p>
+                    <p class="profile__info--username">(@{{ profile.username }})</p>
                     
                     {% if profile.rank_id >= 2 %}
                     <div class="role {% if profile.rank_id == 2 %}verified{% elseif profile.rank_id == 3 %}mod{% elseif profile.rank_id == 4 %}admin{% endif %}">{% if profile.rank_id == 2 %}verified{% elseif profile.rank_id == 3 %}mod{% elseif profile.rank_id == 4 %}admin{% endif %}</div>

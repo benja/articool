@@ -5,9 +5,11 @@
             <h1 class="nav__left--text">articool</h1>
         </a>
 
+        <!--
         <form>
             <input class="nav__left--input" type="text" placeholder="Search for Author...">
         </form>
+        -->
     </div>
     <div class="nav__right">
         <div id="nav__user" class="nav__user" style="background-image: url({{ url('img/avatars/') }}{{ user.avatar }})"></div>
@@ -65,9 +67,11 @@
             <h1 class="nav__left--text">articool</h1>
         </a>
 
+        <!--
         <form>
             <input class="nav__left--input" type="text" placeholder="Search for Author...">
         </form>
+        -->
     </div>
     <div class="nav__right">
         <div id="nav__user" class="nav__user" style="background-image: url({{ url('img/avatars/') }}default.jpg)"></div>

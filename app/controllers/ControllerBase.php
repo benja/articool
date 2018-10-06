@@ -294,7 +294,7 @@ class ControllerBase extends Controller
     public static function getApprovedAuthors()
     {
         $users = Users::find([
-            'conditions' => 'rank_id >= :rank_id: AND active = :active:',
+            'conditions' => 'rank_id = :rank_id: AND active = :active:',
             'bind' => [
                 'rank_id' => 2,
                 'active' => 1
