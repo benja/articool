@@ -1,25 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,700');
-@import url('https://fonts.googleapis.com/css?family=Bree+Serif');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400');
+
 * {
     padding: 0;
     margin: 0;
-	font-family: 'Bree Serif', serif;
     box-sizing: border-box;
-    letter-spacing: .03rem;
-}
-
-strong {
-    font-family: 'Open Sans', serif;
-    font-weight: bold;
-}
-
-bold {
-    font-family: 'Open Sans', serif;
-    font-weight: bold;
-}
-
-.ui.file.input input[type="file"] {
-    display: none;
 }
 
 ::-moz-selection { /* Code for Firefox */
@@ -32,25 +18,15 @@ bold {
     background: $black;
 }
 
+/*
 input {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-}
+}*/
 
-/*
- *  Custom scroll wheel
- */
+/* CKEDITOR link etc being under modal fix */
 
-::-webkit-scrollbar {
-    width: .5rem;
-    box-shadow: 0.5rem 0.5rem 0.5rem $white;
-}
-
-::-webkit-scrollbar-thumb {
-    background: $dark;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: $dark;
+.ck.ck-reset_all, .ck.ck-reset_all * {
+    z-index: 35000;
 }

@@ -40,7 +40,7 @@ class ForgotController extends ControllerBase {
 
         // if user is not found
         if(empty($user) && count($messages) == 0) {
-            $messages->appendMessage( new Message('The user was not found in our database') );
+            $messages->appendMessage( new Message('The account was not found') );
             $this->security->hash(rand());
         }
 
@@ -97,7 +97,7 @@ class ForgotController extends ControllerBase {
     	$password = $this->request->getPost('password');
     	$confirm_password = $this->request->getPost('confirm_password');
         $token = $this->dispatcher->getParam('token');
-        
+
         // find user by token
         $user = Users::findFirst([
             'conditions' => 'token = :token:',
@@ -116,13 +116,27 @@ class ForgotController extends ControllerBase {
         if($password != $confirm_password) {
             $messages->appendMessage( new Message('The passwords do not match') );
         }
-
         // if no errors
         if(count($messages) == 0) {
             // set user's new password, remove token and update
             $user->password = $this->security->hash($password);
             $user->token = NULL;
             $user->update();
+
+            // find previous sessions so we can delete them before we generate the new one
+            $previous_sessions = Sessions::find([
+                'conditions' => 'user_id = :user_id:',
+                'bind'  =>  [
+                    'user_id' => $user->user_id
+                ]
+            ]);
+
+            // delete previous sessions
+            foreach($previous_sessions as $oldsession) {
+                $oldsession->delete();
+            }
+
+            
 
             // function from logincontroller (rememberme checked) to log user in
             // generate token

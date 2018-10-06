@@ -261,14 +261,15 @@ class ControllerBase extends Controller
     /*
     *   Get last 10 posts to display on index
     */
-    public static function getLatestPosts()
+    public static function getLatestPosts(string $genre)
     {
         $posts = Posts::find([
-            'conditions' => 'post_active = :post_active:',
+            'conditions' => 'post_active = :post_active: AND post_genre = :post_genre:',
             'limit' => 10,
             'order' => 'created_at DESC',
             'bind' => [
-                'post_active' => 1
+                'post_active' => 1,
+                'post_genre' => $genre
             ]
         ]);
 
@@ -300,6 +301,8 @@ class ControllerBase extends Controller
             ]
         ]);
 
+        
+
         return $users;
     }
 
@@ -317,6 +320,51 @@ class ControllerBase extends Controller
                 'user_id' => $user_id,
                 'post_active' => 1
             ]
+        ]);
+
+        return $posts;
+    }
+
+    /*
+    *   Get user total people reached
+    */
+    public static function getPeopleReached(int $user_id)
+    {
+        $user_id;
+        $posts = Posts::find([
+            'type'  => 'user_id',
+            'order' => 'created_at DESC',
+            'conditions' => 'user_id = :user_id: AND post_active = :post_active:',
+            'bind' => [
+                'user_id' => $user_id,
+                'post_active' => 1
+            ]
+        ]);
+
+        $postsviews = []; // create empty array
+        foreach($posts as $post) { //push each post_views value into postviews array
+            array_push($postsviews, $post->post_views);
+        }
+
+        $views = array_sum($postsviews); // sum up all values
+        return $views;
+    }
+
+    /*
+    *   Get all user popular posts by id
+    */
+    public static function getUserPopularPosts(int $user_id)
+    {
+        $user_id;
+        $posts = Posts::find([
+            'type'  => 'user_id',
+            'order' => 'post_views DESC',
+            'conditions' => 'user_id = :user_id: AND post_active = :post_active:',
+            'bind' => [
+                'user_id' => $user_id,
+                'post_active' => 1
+            ],
+            'limit' => 10
         ]);
 
         return $posts;
@@ -372,7 +420,7 @@ class ControllerBase extends Controller
         $readtime = floor( ($text / $wordperminute) ); // Wordcount / average words per minute, then we round it down using floor.
 
         if($readtime == 0) {
-            $readtime = "< 1"; // instead of saying 0 minute 
+            $readtime = "1"; // instead of saying 0 minute 
         }
 
         return $readtime;
@@ -397,11 +445,7 @@ class ControllerBase extends Controller
         ]);
 
         foreach($contributor as $helper) {
-            $contributors[] = '<a style="text-decoration: none; color: #FFF;" href="
-            '. $url->get('profile/' . $helper->users->username) .'
-            "> <img class="post__post__avatar" src="
-            ' . $url->get('img/avatars/' . $helper->users->avatar) . '
-            ">'. $helper->users->first_name . " " . $helper->users->last_name .'</a>';
+            $contributors[] = '<a href="'. $url->get('author/' . $helper->users->username) .'">' . $helper->users->first_name . " " . $helper->users->last_name .'</a>';
         }
 
         // get the last element in array, push in "and" before the last element, add an empty array before the front to add comma, authorlist is the list with all of the contributors
@@ -410,11 +454,7 @@ class ControllerBase extends Controller
         array_unshift($contributors, '');
         $authorlist = implode(', ', $contributors);
 
-        return 'Written by <a style="text-decoration: none; color: #FFF;" href="
-        '. $url->get('profile/' . $author->users->username) .'
-        "> <img class="post__post__avatar" src="
-        ' . $url->get('img/avatars/' . $author->users->avatar) . '
-        ">'. $author->users->first_name . " " . $author->users->last_name .'</a>' . $authorlist;
+        return 'Written by <a href="'. $url->get('author/' . $author->users->username) .'">'. $author->users->first_name . " " . $author->users->last_name .'</a>' . $authorlist;
     }
 
     /*

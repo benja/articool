@@ -26,25 +26,23 @@ $.ajax({
         /* If user logged in, send to profile */
         if(feedback.success == true) {
             setTimeout(function() {
-                window.location.href = basePath + 'profile/' + feedback.data.username;
-            }, 1000);
+                window.location.href = basePath + 'author/' + feedback.data.username;
+            }, 1500);
         }
 
         // display error messages properly through our alert div
         if( feedback.success == false) {
-            $('#alert_div').removeClass('hidden'); 
             $('#alert_div').removeClass('is-success'); 
             $('#alert_div').addClass('is-error'); 
-            $('#alert_title').html('ERROR');
+            $('#alert_title').html('Whoops, error o.O');
         } else if(feedback.success == true) {
-            $('#alert_div').removeClass('hidden');
             $('#alert_div').removeClass('is-error');
             $('#alert_div').addClass('is-success'); 
-            $('#alert_title').html('SUCCESS');
+            $('#alert_title').html('Wohoo, success!');
 
             setTimeout(function(){
-                $('#alert_div').addClass('hidden');
-            }, 2000);
+                $('#alert_div').removeClass('is-success');
+            }, 1500);
         }
 
         $('#feedback_message').html(feedback.messages.join('<br />'));

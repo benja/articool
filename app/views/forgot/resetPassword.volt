@@ -4,48 +4,61 @@
 {% block body_id %}forgot{% endblock %}
 
 {% block content %}
-    <div class="col-xs-12 col-md-3 col-lg-3">
-        <!-- Something -->
-    </div>
+<div class="authpage">
+	<div class="authpage__content">
 
-    <div class="col-xs-12 col-md-6 col-lg-6">
+		<div class="authpage__left">
 
-    <div id="alert_div" class="alert hidden">
-        <span>
-            <label id="alert_title" class="alert__title">ERROR</label>
-        </span>
-        <ul>
-            <div id="feedback_message"></div>
-        </ul>
-    </div>
+			<div class="authpage__left--box">
+				<!--<h1 class="authpage__left--title">Forgot</h1>
+				<p class="authpage__left--description">Text</p>-->
 
-    <form id="forgotNewPassword" class="forgot__form" method="POST" action="{{ url('api/v1/forgot/set-new-password/{token}') }}">
+				<h2 class="authpage__left--smalltitle">Reset Password</h2>
+				<ul class="authpage__left--list">
+					<li>Fill in the form on the right side, and we will change your password. It's that simple!</li>
+				</ul>
 
-        <input type="hidden" name="token" value="{{ dispatcher.getParam('token') }}">
+				<a class="authpage__left--goback" href="javascript:history.go(-1)">
+					<i class="fas fa-arrow-left"></i>
+					<p style="color: white;">Go Back</p>
+				</a>
+			</div>
 
-        <div class="forgot__form__input">
-            <input type="password" id="password" name="password" required>
-            <label for="password">New Password</label>
-        </div>
-        
-        <div class="forgot__form__input">
-            <input type="password" id="confirm_password" name="confirm_password" required>
-            <label for="confirm_password">Confirm Password</label>
-        </div>
+		</div>
 
-        <input type="hidden" name="{{ security.getTokenKey() }}"
-        value="{{ security.getToken() }}" />
+		<div class="authpage__right">
 
-        <div class="forgot__form__input">
-            <input id="forgot_submit" type="submit" value="Update">
-        </div>
+			<form id="forgotNewPassword" method="POST" action="{{ url('api/v1/forgot/set-new-password/{token}') }}">
+				<input type="hidden" name="token" value="{{ dispatcher.getParam('token') }}">
+                <div class="input__div">
+					<h1 class="authpage__right--title">Forgot</h1>
 
-    </form>
-    </div>
-    
-    <div class="col-xs-12 col-md-3 col-lg-3">
-    <!-- Something -->
-    </div>
+					<div class="input__box">
+						<div id="alert_div" class="feedback">
+							<h1 id="alert_title" class="feedback--title">TITLE</h1>
+							<div id="feedback_message" class="feedback__messages">message</div>
+						</div>
+					</div>
 
-    {{ javascript_include('js/auth/forgotNewPassword.js') }}
+					<div class="input__box">
+						<h1 class="input__box--title">New Password</h1>
+						<input class="input__box--field" type="password" id="password" name="password" placeholder="Enter your new password" required>
+					</div>
+
+					<div class="input__box">
+						<h1 class="input__box--title">Confirm Password</h1>
+						<input class="input__box--field" type="password" id="confirm_password" name="confirm_password" placeholder="Repeat your password" required>
+					</div>
+
+					<input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}" />
+
+					<div class="input__box">
+						<input class="input__box--field fullwidth button success" type="submit" id="forgot_submit" value="Update Password">
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{{ javascript_include('js/auth/forgotNewPassword.js') }}
 {% endblock %}

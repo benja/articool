@@ -82,6 +82,16 @@ $router->addPost(
     ]
 );
 
+// extension settings
+$router->addPost(
+    '/api/v1/settings/extension-settings',
+    [
+        'namespace'     =>  'Api\v1',
+        'controller'    =>  'settings',
+        'action'        =>  'extensionSettings'
+    ]
+);
+
 /*
  *  LOGINCONTROLLER
  */
@@ -175,6 +185,29 @@ $router->addPost(
 
 /* -------------------------------------------------- */
 
+$router->add(
+    '/faq',
+    [
+        'controller' => 'legal',
+        'action'     => 'faq'
+    ]
+);
+
+$router->add(
+    '/terms',
+    [
+        'controller' => 'legal',
+        'action'     => 'terms'
+    ]
+);
+
+$router->add(
+    '/privacy',
+    [
+        'controller' => 'legal',
+        'action'     => 'privacy'
+    ]
+);
 
 $router->add(
     '/explore',
@@ -223,6 +256,15 @@ $router->add(
 );
 
 $router->add(
+    '/author/{username}',
+    [
+        'controller' => 'profile',
+        'action'     => 'getProfile',
+        'username'   => 1
+    ]
+);
+
+$router->add(
     '/settings/profile',
     [
         'controller' => 'settings',
@@ -239,20 +281,18 @@ $router->add(
 );
 
 $router->add(
-    '/{user}/:int/:params',
+    '/settings/extension',
     [
-        'controller' => 'post',
-        'action'     => 'post',
-        'user'       => 1,
-        'post_id'    => 2
+        'controller' => 'settings',
+        'action'     => 'extension'
     ]
 );
 
 $router->add(
-    '/{user}/:int/:params/edit',
+    '/{user}/:int/:params',
     [
         'controller' => 'post',
-        'action'     => 'editPost',
+        'action'     => 'post',
         'user'       => 1,
         'post_id'    => 2
     ]

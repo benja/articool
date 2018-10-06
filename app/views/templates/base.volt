@@ -35,24 +35,12 @@
         {% block meta %}{% endblock %}
     </head>
 
-    <body id="body" class="{% block body_id %} {% endblock %}">
-    
-        <!-- Navbar button -->
-        <div class="navbar__button">
-            <button id="navbar__button">menu</button>
-        </div>
-
-        <!-- Navbar -->
-        {{ partial('templates/navbar') }}
-
+    <body>
         {{ javascript_include("js/config.js") }}
-        <div class="{% block containerclass %}{% endblock %}container">
-            <div class="row">
-                <!-- Content for website / body -->
-                {% block content %}
-                {% endblock %}
-            </div>
-        </div>
+
+        <!-- Content for website / body -->
+        {% block content %}
+        {% endblock %}
 
         <!-- Cooikie warning -->
         {{ partial('templates/partials/cookies') }}

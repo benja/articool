@@ -26,7 +26,8 @@ class RegisterController extends ControllerBase {
                 'first_name'    => 'Enter your first name',
                 'last_name'     => 'Enter your last name',
                 'email_address' => 'Enter your email-address',
-                'password'      => 'Enter a password'
+                'password'      => 'Enter a password',
+                'accepttos'     => 'You have to accept the ToS and Privacy Policy to create an account'
             ]
         ]));
 
@@ -82,6 +83,13 @@ class RegisterController extends ControllerBase {
         $last_name = $this->request->getPost('last_name');
         $email_address = $this->request->getPost('email_address');
         $password = $this->request->getPost('password');
+        $accepttos = $this->request->getPost('accepttos');
+
+        // if user has not accepted tos
+        if($accepttos == "false") {
+            $messages->appendMessage( new Message('You have to accept the ToS and Privacy Policy to register'));
+            return $this->ajaxResponse(false, $messages, 'ajax');
+        }
 
         // register allowed
         $registerAllowed = 1;

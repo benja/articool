@@ -304,4 +304,48 @@ class SettingsController extends ControllerBase {
         return $this->ajaxResponse($auth, ['No authorization'], 'ajax');
     }
 
+
+    public function extensionSettingsAction()
+    {
+        $auth = $this->checkAuth(1); // user has to be registered
+
+        if($auth) {
+
+            $validation = new Validation();
+
+            // check if inputs are there
+            $validation->add(['background'], new PresenceOf([
+                'message' => [
+                    'background'       => 'Please select a background',
+                ]
+            ]));
+
+            // put errors into array
+            $messages = $validation->validate($_POST);
+
+            // Get form values and set them to variables
+            $background = $this->request->getPost('background');
+
+            if(count($messages) == 0) {
+
+                //get user info
+                $user = Users::findFirst([
+                    'conditions' => 'user_id = :user_id:',
+                    'bind'       => [
+                        'user_id'  =>  $auth->user_id
+                    ]
+                ]);
+                
+                // hash new password and update
+                $user->background = $background;
+                $user->save();
+                
+                return $this->ajaxResponse(true, ['Extension settings updated'], 'ajax');
+            }
+            return $this->ajaxResponse(false, $messages, 'ajax');
+            
+        }
+        return $this->ajaxResponse($auth, ['No authorization'], 'ajax');
+    }
+
 }

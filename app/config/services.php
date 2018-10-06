@@ -63,12 +63,15 @@ $di->setShared('view', function () {
                 return '
                 strip_tags(
                     trim(
-                        preg_replace("/<p>/", " ", substr(' . $resolvedArgs . ', 0, 350))
+                        preg_replace("/<p>/", " ", substr(' . $resolvedArgs . ', 0, 300))
                     )
                 )';
             });
             $compiler->addFunction('createTitleSlug', function($resolvedArgs, $exprArgs) {
                 return 'str_replace(" ", "-", preg_replace("/\s{2,}/", " ", preg_replace("/[^a-z0-9 ]+/", "", trim(strtolower('. $resolvedArgs .')))))';
+            });
+            $compiler->addFunction('niceNumber', function($resolvedArgs, $exprArgs) {
+                return 'number_format(' .$resolvedArgs .')';
             });
 
             return $volt;

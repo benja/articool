@@ -3,8 +3,8 @@
 <div class="cookie">
     <div class="cookie__left">
         <h1 class="cookie__text">
-            <b>Articool</b> uses cookies to offer you a better browsing experience.
-            By browsing our site you hereby accept our use of cookies.
+            Articool uses cookies to offer you a better browsing experience.
+            By browsing our site you hereby accept our use of <a href="privacypolicy.php" target="_blank">cookies</a>.
         </h1>
     </div>
 

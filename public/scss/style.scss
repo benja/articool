@@ -1,19 +1,22 @@
 @import 'variables/_global';
 @import 'styles/_reset';
 
-@import 'styles/_login';
-@import 'styles/_profile';
-@import 'styles/_post';
-@import 'styles/_button';
-@import 'styles/_modal';
-@import 'styles/_register';
-@import 'styles/_checkbox';
-@import 'styles/_index';
-@import 'styles/_settings';
-@import 'styles/_alert';
-@import 'styles/_cookie';
-@import 'styles/_forgot';
-@import 'styles/_navbar';
-@import 'styles/_rank';
-@import 'styles/_postbox';
+@import 'styles/partials/_articoolbox';
+@import 'styles/partials/_role';
+@import 'styles/partials/_nav';
+@import 'styles/partials/_postmodal';
+@import 'styles/partials/_buttons';
+@import 'styles/partials/_input';
+@import 'styles/partials/_feedback';
+@import 'styles/partials/_footer';
+@import 'styles/partials/_cookie';
+@import 'styles/partials/_background';
+
 @import 'styles/_frontpage';
+@import 'styles/_explorepage';
+@import 'styles/_profilepage';
+@import 'styles/_postpage';
+@import 'styles/_authpage';
+@import 'styles/_settingspage';
+@import 'styles/_faqpage';
+@import 'styles/_legalpage';

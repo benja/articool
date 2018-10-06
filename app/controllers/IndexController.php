@@ -6,9 +6,9 @@ class IndexController extends ControllerBase
     public function indexAction()
     {
         // Analytics on landing page
-        $this->view->getAllArticoolViews = $this->getAllArticoolViews();
-        $this->view->getWrittenArticools = $this->getWrittenArticools();
-        $this->view->getRegisteredUsers  = count($this->getRegisteredUsers());
+        $this->view->allArticoolViews = $this->getAllArticoolViews();
+        $this->view->writtenArticools = $this->getWrittenArticools();
+        $this->view->registeredUsers  = count($this->getRegisteredUsers());
         
         $this->view->appName             = $_ENV['APP_NAME'];
         $this->view->appUrl              = $_ENV['APP_URL'];
