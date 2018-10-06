@@ -1,0 +1,84 @@
+.legalpage {
+    margin-top: 5rem;
+    flex: 1;
+    
+    &__box {
+        margin: 0 auto;
+        height: 100%;
+        width: 75%;
+        padding: 2rem;
+
+        &--text {
+
+            h1, h2 {
+                margin: .5rem 0;
+                font-size: 2rem;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 400;
+                color: #131313;
+            }
+
+            h3, h4 {
+                margin: 1rem 0;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 400;
+            }
+
+            h3 {
+                font-size: 1.8rem;
+            }
+
+            h4 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                margin-top: 1rem;
+                font-size: 1rem;
+                line-height: 2rem;
+                white-space: pre-line;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 400;
+            }
+
+            a {
+                text-decoration: none;
+                color: #1e1e1e;
+                border-bottom: .15rem solid #7D7D7D;
+                transition: .1s;
+
+                &:hover {
+                    border-color: #131313;
+                    transition: .1s;
+                }
+            }
+
+            blockquote {
+                margin: 1rem 0;
+                padding: .5rem 0;
+                width: fit-content;
+                display: inline-flex;
+                color: #131313e3;
+                font-style: italic;
+
+                &:before {
+                    content: '"';
+                    font-size: 2rem;
+                    font-style: normal;
+                    font-weight: bold;
+                }
+            }
+
+            ul, ol {
+                margin-left: 3rem;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 400;
+                
+                li {
+                    padding: .5rem 0;
+                }
+            }
+
+        }
+    }
+}

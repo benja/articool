@@ -1,0 +1,129 @@
+.articoolboxes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    a {
+        text-decoration: none;
+        margin-left: 1rem;
+    }
+
+    &__box {
+        font-family: 'Bree Serif', 'Open Sans', sans-serif;
+        width: 22rem; // 20rem
+        border-radius: .2rem;
+        margin: 1rem 0;
+
+        box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.3);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: .1s;
+
+        &--overlay {
+            height: 100%;
+            border-radius: .2rem;
+
+            &.analysis {
+                background: rgba(62, 8, 8, 0.88);
+            }
+
+            &.autobiography {
+                background: rgba(46, 67, 116, 0.88);
+            }
+
+            &.biography {
+                background: rgba(50, 15, 50, 0.88);
+            }
+
+            &.chronicle {
+                background: rgba(111, 106, 35, 0.88);
+            }
+            
+            &.essay {
+                background: rgba(48, 94, 54, 0.88);
+            }
+
+            &.fiction {
+                background: rgba(51, 38, 65, 0.88);
+            }
+
+            &.nonfiction {
+                background: rgba(108, 83, 56, 0.88);
+            }
+
+            &.poetry {
+                background: rgba(52, 69, 77, 0.88);
+            }
+
+            &.popularscience {
+                background: rgba(65, 45, 100, 0.88);
+            }
+
+            &.shortstory {
+                background: rgba(106, 82, 27, 0.88);
+            }
+
+        }
+        
+        &:hover {
+            transform: scale(.98);
+            transition: .1s;
+        } 
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding: 1rem;
+        color: $white;
+    
+        &--title {
+            font-size: 1.4rem;
+            font-weight: 100;
+            text-align: left;
+            font-family: 'Bree Serif', 'Open Sans', sans-serif;
+        }
+
+        &--break {
+            border-top: .15rem solid $white;
+            margin: .5rem 0 0 .1rem;
+            width: 1rem;
+        }
+
+        &--genre {
+            font-family: 'Open Sans', sans-serif;
+            color: #D7D7D7;
+            margin: .25rem 0 .5rem;
+            font-size: 1rem;
+            font-style: italic;
+            text-transform: lowercase;
+
+            &:before {
+                content: "tags: ";
+                margin-right: .1rem;
+            }
+        }
+
+        &--description {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            color: #D7D7D7;
+            margin: .5rem 0 0;
+            min-height: 8rem;
+            font-size: 1rem;
+            word-break: break-word;
+            white-space: pre-wrap;
+        }
+
+        &--authors {
+            text-align: left;
+        }
+
+        &--views {
+            text-align: right;
+        }
+
+    }
+} 

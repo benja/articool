@@ -1,0 +1,299 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+    background: #131313;
+    min-height: 5rem;
+    width: 100%;
+    position: fixed;
+    top:0;
+    z-index: 10000;
+
+    &__left {
+        display: flex;
+        justify-content: flex-start;
+        display: inline-flex;
+        padding: 1rem 3rem;
+
+        a {
+            text-decoration: none;
+        }
+    
+        &--text {
+            font-family: 'Bree Serif', 'Open Sans', sans-serif;
+            font-weight: 300;
+            font-size: 2rem;
+            color: white;
+        }
+
+        &--input {
+            border: none;
+            background: white;
+            border-radius: .1rem;
+            padding: .5rem;
+            margin: .6rem 0 0 3rem;
+            height: 1.8rem;
+            letter-spacing: .05rem;
+            width: 15rem;
+            font-family: 'Open Sans', sans-serif;
+
+            &::placeholder {
+                font-style: italic;
+            }
+
+        }
+    }
+
+    &__right {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        margin: auto 0;
+    }
+
+    &__user {
+        height: 3rem;
+        width: 3rem;
+        border-radius: .2rem;
+        border: 0.1rem solid #ffffff;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: 0px 0px 1rem 3px #22222217;
+        user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+
+        margin-right: 3rem;
+        cursor: pointer;
+    }
+
+
+    &__search {
+        font-family: 'Bree Serif', 'Open Sans', sans-serif;
+        font-weight: 100;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
+        position: fixed;
+        background: white;
+        top: 4rem;
+        left: 13rem;
+        width: 15rem;
+        z-index: 50000;
+        padding: .5rem;
+        border-radius: .2rem;
+
+        display: none;
+
+        &.show {
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        &--entry {
+            background: white;
+            color: #131313;
+            padding: .5rem;
+            transition: .1s;
+            border-radius: .2rem;
+            
+            display: flex;
+
+            &:hover, &.active {
+                background: #131313;
+                color: white;
+                transition: .1s;
+            }
+        }
+        
+        &--image {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: .2rem;
+            border: 0.15rem solid #ffffff;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            box-shadow: 0px 0px 1rem 3px #22222217;
+            user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+    
+            margin-right: 1rem;
+            cursor: pointer;
+        }
+
+        &--name {
+            font-size: 1.1rem;
+            display: inline-flex;
+            justify-content: flex-start;
+            margin: auto 0;
+        }
+
+        &--result {
+            color: rgba(30, 30, 30, 0.5);
+            padding: .5rem;
+
+            &:after {
+                content: " results...";
+            }
+        }
+    }
+}
+
+.user__nav {
+    background: #131313;
+    border-radius: .2rem;
+    padding: 2rem;
+    margin: 5rem;
+    min-width: 15rem;
+    max-width: 15rem;
+    min-height: 15rem;
+    color: white;
+
+    position: fixed;
+    right: -2rem;
+    top: -.1rem;
+
+    font-family: 'Bree Serif', 'Open Sans', sans-serif;
+    font-weight: 100;
+    font-size: 1.3rem;
+    text-align: center;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
+    display: none;
+    z-index: 500;
+    
+    &.show {
+        display: block;
+    }
+
+    &--image {
+        height: 3rem;
+        width: 3rem;
+        border-radius: .2rem;
+        border: 0.1rem solid #ffffff;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: 0px 0px 1rem 3px #22222217;
+        user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        margin: 0 auto;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    &--name {
+        margin: 1rem 0 2rem;
+        text-decoration: none;
+        color: white;
+        transition: .1s;
+
+        &:hover {
+            color: gray;
+            transition: .1s;
+        }
+    }
+
+    &--entry {
+        margin: .5rem 0;
+
+        a {
+            color: white;
+            text-decoration: none;
+            transition: .1s;
+
+            &:hover {
+                color: gray;
+                transition: .1s;
+            }
+        }
+
+        input[type="submit"] {
+            font-family: 'Bree Serif', 'Open Sans', sans-serif;
+            font-weight: 100;
+            color: white;
+            font-size: 1.3rem;
+            border:none;
+            background: transparent;
+            outline: none;
+            cursor: pointer;
+            transition: .1s;
+            
+            &:hover {
+                color: gray;
+                transition: .1s;
+            }
+        }
+
+    }
+
+    ul {
+
+        li {
+            list-style-type: none;
+            font-weight: 100;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .nav {
+
+        &__left--input {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 420px) {
+
+    .explorepage .section .author .author__image {
+        display: none;
+    }
+
+    .explorepage .section .author .author__info {
+        width: 95%;
+    }
+}
+
+.slideup {
+    animation: slideup .5s forwards;
+}
+
+.slidedown {
+    animation: slidedown .5s forwards;
+}
+
+@keyframes slideup {
+    from {
+        transform: translateY(0rem);
+    }
+
+    to {
+        transform: translateY(-5rem);
+    }
+}
+
+@keyframes slidedown {
+    from {
+        transform: translateY(-5rem);
+    }
+
+    to {
+        transform: translateY(0rem);
+    }
+}

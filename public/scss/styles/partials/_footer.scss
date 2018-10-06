@@ -1,0 +1,92 @@
+.appfooter {
+    padding: 3rem;
+    background-color: #131313;
+
+    &__list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        &--entry {
+            color: white;
+            letter-spacing: .025rem;
+            padding: 0.5rem;
+
+            a {
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 100;
+                text-decoration: none;
+                opacity: .8;
+                color: white;
+                transition: .1s;
+
+                &:hover {
+                    opacity: 1;
+                    transition: .1s;
+                }
+            }
+
+            li {
+                list-style-type: none;
+                margin: .5rem 0;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 100;
+                font-size: .9rem;
+            }
+        }
+
+        &--company {
+            font-family: 'Bree Serif', sans-serif;
+            font-weight: 100;
+            font-size: 1.5rem;
+        }
+
+        &--description {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 100;
+            width: 15rem;
+            font-size: .9rem;
+            margin: .5rem 0;
+        }
+
+        &--title {
+            font-family: 'Bree Serif', sans-serif;
+            font-weight: 100;
+            font-size: 1rem;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .appfooter__list {
+        flex-direction: column;
+        justify-content: center;
+
+        &--description, &--entry {
+            margin: 0 auto;
+        }
+    }
+
+    .appfooter__list--entry {
+        margin: .5rem 0;
+    }
+
+    .appfooter {
+        padding: 1.5rem;
+        text-align: center;
+    }
+    
+    .appfooter__list--entry.company .appfooter__list--description {
+        display: none;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .appfooter__list {
+        &--description, &--entry {
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+}

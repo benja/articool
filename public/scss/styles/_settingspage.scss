@@ -1,0 +1,215 @@
+.settingspage {
+    margin-top: 5rem;
+
+    &__content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 2rem;
+    }
+
+    &__left {
+        margin: 2rem;
+        width: 30%;
+
+        &--info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(180deg, #161616 0%, #131313 100%);
+            border-radius: .2rem;
+            padding: 2rem;
+            color: white;
+            margin-bottom: .5rem;
+        }
+
+        &--center {
+            margin: 0 auto;
+        }
+
+        &--image {
+            height: 10rem;
+            width: 10rem;
+            border-radius: .2rem;
+            border: 0.25rem solid #ffffff;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            box-shadow: 0px 0px 1rem 3px #22222217;
+            user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+
+        &--removeimage {
+            font-family: 'Bree Serif', 'Open Sans', sans-serif;
+            width: 100%;
+            padding: .5rem 0;
+            margin-top: 1rem;
+            border-radius: .2rem;
+            border: .1rem solid;
+            color: #ff8989;
+            background: transparent;
+            cursor: pointer;
+            transition: .1s;
+
+            &:hover {
+                color: white;
+                border-color: #ff8989;
+                transition: .1s;
+            }
+        }
+
+        &--name {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin: .8rem 0 .3rem;
+            color: white;
+            text-align: center;
+        }
+
+        &--username {
+            font-family: 'Open Sans', sans-serif;
+            font-size: .9rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            color: white;
+            opacity: .8;
+            text-align: center;
+        }
+
+        &--menu {
+            display: flex;
+            flex-direction: column;
+
+            a {
+                text-decoration: none;
+            }
+        }
+
+        &--button {
+            background: #4B4B4B;
+            padding: 1rem;
+            border-radius: .2rem;
+            color: white;
+            font-family: 'Bree Serif', 'Open Sans', sans-serif;
+            font-weight: 100;
+            text-align: center;
+            margin-bottom: .5rem;
+            transition: .1s;
+
+            &:hover {
+                transform: scale(.99);
+                transition: .1s;
+            }
+
+            &.active {
+                background: #131313;
+            }
+        }
+    }
+
+    &__right {
+
+        .feedback {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            width: 88%;
+        }
+
+        &--box {
+            border-radius: .2rem;
+            margin: 2rem 1rem;
+        }
+
+        .input__div {
+            padding: 0;
+            padding-left: 2rem;
+        }
+
+        .input__box {
+            margin: 0;
+            margin-bottom: 1rem;
+
+            textarea {
+                min-width: 30rem !important;
+                max-width: 30rem;
+            }
+        }
+
+        .input__box--field {
+            min-width: 30rem;
+        }
+    }
+
+}
+
+@media (max-width: 1200px) {
+
+    .settingspage {
+        &__content {
+            flex-direction: column;
+            padding: 0;
+        }
+
+        &__left {
+            width: 100%;
+            margin: 0;
+
+            &--info {
+                border-radius: 0;
+            }
+
+            &--button {
+                margin: .5rem 2rem;
+            }
+        }
+        
+        &__right {
+            width: 100%;
+            padding: 0;
+
+            .feedback {
+                margin-left: 0;
+                margin-right: 0;
+                max-width: 100%;
+                width: unset;
+                margin: .5rem 2rem;
+            }
+
+            &--box {
+                margin: 2rem;
+            }
+
+            .input__div {
+                margin-top: 1rem;
+                padding-left: 0;
+            }
+
+            .input__box--field {
+                min-width: 100%;
+            }
+            
+            .input__box textarea {
+                min-width: 100% !important;
+            }
+        }
+    }
+
+}
+
+@media (max-width: 800px) {
+    .settingspage__right--box {
+        margin: 2rem;
+    }
+
+    .settingspage__right .input__div {
+        padding-left: 0;
+    }
+}

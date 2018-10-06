@@ -1,0 +1,191 @@
+.input {
+
+    &__div {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+
+        .three {
+            display: inline-flex;
+            justify-content: space-between;
+            width: 100%;
+            
+            .input__box {
+                min-width: 32%;
+
+                &--field {
+                    width: 100%;
+                }
+            }
+        }
+
+        .inline {
+            .input__box--filebutton, p, .input__box--field {
+                display: inline-block;
+            }
+
+            p {
+                margin: 0 .5rem;
+            }
+
+            .input__box--title {
+                display: inline;
+            }
+
+            .input__box--helpcircle {
+                display: inline-block;
+                margin-bottom: .5rem;
+            }
+        }
+        
+        .checkbox {
+            min-width: 30rem;
+        }
+    }
+
+    &__box {
+        margin: 1rem 0;
+        border-radius: .2rem;
+        font-size: 1rem;
+
+        font-family: 'Bree Serif', 'Open Sans', sans-serif;
+        font-weight: 100;
+        border: none;
+
+        &.end {
+            display: flex;
+            justify-content: flex-end;
+        }
+    
+        &--title {
+            font-size: 1.2rem;
+            margin-bottom: .5rem;
+            font-weight: 100;
+            color: #131313;
+        }
+
+        &--helpcircle {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-left: .5rem;
+            border-radius: 15rem;
+            background: #131313;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+
+            font-family: 'Bree Serif', 'Open Sans', sans-serif;
+            font-weight: 100;
+        }
+
+        &--helpbox {
+            width: 15rem;
+            padding: 1rem;
+            border-radius: .2rem;
+            box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.25);
+            display: none;
+            background: #131313;
+            position: absolute;
+            z-index: 1000;
+
+            span {
+                font-size: .8rem;
+                color: white;
+                white-space: pre-wrap;
+
+                font-family: 'Bree Serif', 'Open Sans', sans-serif;
+                font-weight: 100;
+            }
+        }
+
+        &--filebutton {
+            border-radius: .2rem;
+            padding: .8rem;
+            font-size: 1rem;
+            width: 8.5rem;
+            cursor: pointer;
+            display: block;
+            border: none;
+            background: #494949;
+            color: white;
+
+            font-family: 'Bree Serif', 'Open Sans', sans-serif;
+            font-weight: 100;
+
+        }
+
+        &--field {
+            font-family: 'Bree Serif', 'Open Sans', sans-serif;
+            font-weight: 100;
+            border: none;
+            background: #EAEAEA;
+            border-radius: .2rem;
+            padding: .8rem;
+            font-size: 1.1rem;
+            min-width: 15rem;
+            display: block;
+            
+            &::placeholder {
+                color: #979797;
+                font-family: 'Bree Serif', 'Open Sans', sans-serif;
+                font-weight: 100;
+            }
+            
+            &.fullwidth {
+                width: 100%;
+            }
+        }
+
+        input[type=file] {
+            display: none;
+        }
+
+        input[type=checkbox] {
+            margin-right: 1rem;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 8rem;
+            max-height: 100%;
+            min-width: 100% !important;
+            max-width: 100%;   
+        }
+    }
+}
+
+// Help button box popup
+.input__box--helpcircle:hover .input__box--helpbox {
+    display: block;
+}
+
+@media (max-width: 1150px) {
+    .input__div .three {
+        display: block;
+    }
+}
+
+@media (max-width: 710px) {
+    .input__div .inline {
+        .input__box--filebutton, .input__box--field {
+            display: block;
+        }
+
+        .input__box--field {
+            width: 100%;
+        }
+    }
+
+    .input__div .inline p {
+        margin: 1rem 0;
+    }
+
+    .input__box.end {
+        justify-content: flex-start;
+    }
+    
+    .button {
+        width: 100%;
+        display: block;
+    }
+}

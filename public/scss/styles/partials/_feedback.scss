@@ -1,0 +1,36 @@
+.feedback {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin: 0 auto;
+    border-radius: .2rem;
+    background: #1a1a1a;
+    color: white;
+
+    font-family: 'Bree Serif', 'Open Sans', sans-serif;
+    font-weight: 300;
+    display: none;
+
+    &--title {
+        font-size: 1rem;
+        font-weight: 100;
+    }
+
+    &__messages {
+        margin-top: .5rem;
+    }
+
+    &.is-error {
+        display: block;
+
+        .feedback--title {
+            color: #ff8989;
+        }
+    }
+
+    &.is-success {
+        display: block;
+        .feedback--title {
+            color: #92ff88;
+        }
+    }
+}

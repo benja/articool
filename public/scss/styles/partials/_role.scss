@@ -1,0 +1,22 @@
+.role {
+    font-family: 'Bree Serif', 'Open Sans', sans-serif;
+    font-weight: 100;
+    margin: 0 auto;
+    width: fit-content;
+    font-size: .8rem;
+    border-radius: .2rem;
+    padding: 0 .5rem;
+
+    &.verified {
+        background: #7F7DFF;
+    }
+
+    &.admin {
+        background: #FF5757;
+    }
+
+    &.mod {
+        background: #FFA857;
+    }
+
+}

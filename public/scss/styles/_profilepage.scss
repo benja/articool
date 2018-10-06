@@ -1,0 +1,314 @@
+.profilepage {
+    width: 100%;
+
+    &__content {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+    }
+
+    &__left {
+        background: linear-gradient(180deg, #161616 0%, #131313 100%);
+    
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+        width: 35%;
+        min-height: 100vh;
+
+        position: fixed;
+        top: 5rem; bottom: 0; left: 0; //top: 5rem; for navbar
+        overflow-y: auto;
+
+        .profile {
+            margin: 0 auto;
+            height: 100%;
+            padding: 5rem;
+
+            &__info {
+                flex-direction: column;
+                font-family: 'Open Sans', sans-serif;
+                color: white;
+                text-align: center;
+                padding: 2rem;
+
+                border-radius: .2rem;
+                text-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
+                background: rgba(0, 0, 0, 0.40);
+
+                &--image {
+                    height: 10rem;
+                    width: 10rem;
+                    border-radius: .2rem;
+                    border: 0.25rem solid #ffffff;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    box-shadow: 0px 0px 1rem 3px #22222217;
+                    user-drag: none;
+                    user-select: none;
+                    -moz-user-select: none;
+                    -webkit-user-drag: none;
+                    -webkit-user-select: none;
+                    -ms-user-select: none;
+
+                    margin: 0 auto;
+                }
+
+                &--name {
+                    font-size: 1.4rem;
+                    margin: .8rem 0 .3rem;
+                }
+
+                &--username {
+                    font-size: .9rem;
+                    opacity: .8;
+                    font-weight: bold;
+                    margin-bottom: 1rem;
+                }
+
+                &--description {
+                    font-style: italic;
+                    font-size: 1rem;
+                    margin: 1rem auto;
+                    line-height: 1.5rem;
+                    width: 80%;
+                    font-weight: 300;
+                }
+
+                &--subscribe {
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: normal;
+                    border-radius: .2rem;
+                    border: none;
+                    background: white;
+                    padding: .5rem 1rem;
+                    letter-spacing: .05rem;
+                    transition: .1s;
+                    margin-top: .5rem;
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(.98);
+                        transition: .1s;
+                    }
+
+                }
+            }
+
+            &__stats {
+                display: flex;
+                flex-direction: row;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: bold;
+
+                &--entry {
+                    text-align: center;
+                    margin-top: 1rem;
+                    width: 100%;
+                    padding: 1rem;
+                }
+
+                &--value {
+                    font-size: 1.5rem;
+                    letter-spacing: .05rem;
+                    color: white;
+
+                }
+
+                &--description {
+                    font-size: 1rem;
+                    letter-spacing: .05rem;
+                    color: white;
+                    opacity: .6;
+                }
+
+            }
+        }
+    }
+
+    &__right {
+        width: 65%;
+        position: fixed;
+        top: 5rem; bottom: 0; right: 0; //top: 5rem; for navbar
+        overflow-y: scroll;
+        padding-top: 1rem;
+
+        .articoolboxes {
+            flex-direction: column;
+
+            a {
+                margin: 0;
+            }
+        }
+
+        .articools {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin: 1rem 1rem 2rem;
+
+            &--title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+                font-weight: 100;
+                text-align: left;
+                font-family: 'Bree Serif', 'Open Sans', sans-serif;
+
+                &.nomargin {
+                    margin: 1rem 0rem 1rem;
+                }
+            }
+
+            &--new {
+                padding: 3rem;
+                border-radius: .2rem;
+                min-width: 20rem;
+                background: rgba(0, 0, 0, 0.8);
+                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+                text-align: center;
+                color: white;
+                font-size: 2rem;
+                font-weight: bold;
+                font-family: 'Bree Serif', sans-serif;
+                cursor: pointer;
+                transition: .1s;
+
+                animation: pulse 2s infinite;
+
+                &:hover {
+                    transform: scale(.98);
+                    transition: .1s;
+                } 
+            }
+
+
+            &--none {
+                font-size: 1rem;
+                margin-top: -1.15rem;
+                padding: 1rem 0;
+                font-family: 'Bree Serif', sans-serif;
+                font-weight: 100;
+            }
+        }
+
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(.98);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 1500px) {
+    .profilepage__left {
+        .profile {
+            padding: 3rem;
+        }
+
+        .profile__info--description {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 1205px) {
+    .profilepage__left {
+        position: unset;
+        margin-top: 5rem;
+        min-height: 100%;
+        width: 100%;
+        overflow: hidden;
+
+        .profile__info--description {
+            width: 65%;
+        }
+
+        .profile__info--subscribe {
+            font-size: 1rem;
+        }
+    
+        .profile__stats--entry {
+            margin: 0;
+            padding: 1rem;
+        }
+
+        .profile {
+            padding: 0;
+        }
+    }
+
+    .profilepage__content {
+        flex-direction: column;
+    }
+
+    .profilepage__right {
+        position: unset;
+        width: 100%;
+        overflow: hidden;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .postmodal__content .input__div {
+        padding: 0rem;
+    }
+
+    .postmodal__title {
+        padding-left: 0;
+    }
+
+    .profilepage__left {
+        .profile__info--description {
+            width: 100%;
+        }
+    }
+
+    .profilepage__right {
+
+        .articoolboxes {
+            padding: 0;
+        }
+
+        .articools {
+            flex-direction: column;
+
+            &--title {
+                margin: 0;
+            }
+        }
+
+        .articoolboxes__box {
+            width: 100%;
+        }
+
+        .articools--new {
+            margin-top: 1rem;
+        }
+    }
+
+    .postmodal__content {
+        top: 0; bottom: 0;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+/* HEIGHT */
+
+@media (max-height: 850px) {
+    .profilepage .profile__stats {
+        flex-direction: column;
+        margin-bottom: 8rem;
+    }
+}

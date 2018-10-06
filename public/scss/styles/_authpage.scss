@@ -1,0 +1,173 @@
+.authpage {
+
+    &__content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    &__left {
+        width: 50%;
+        background: linear-gradient(180deg, #1B1B1B 0%, #000000 100%);
+        color: white;
+        text-align: center;
+
+        &--goback {
+            text-decoration: none;
+            margin-top: 1rem;
+            color: white;
+            opacity: .7;
+            font-family: 'Bree Serif', sans-serif;
+
+            p {
+                color: white;
+                margin-left: .5rem;
+                display: inline;
+            }
+        }
+        
+        &--box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            margin: auto auto;
+            width: 75%;
+        }
+
+        &--title {
+            font-size: 4rem;
+            font-family: 'Bree Serif', 'Open Sans', sans-serif;
+            font-weight: 100;
+        }
+
+        &--description {
+            font-size: 1rem;
+            line-height: 2rem;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        &--smalltitle {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-family: 'Bree Serif', 'Open Sans', sans-serif;
+            font-weight: 100;
+        }
+
+        &--list {
+            text-decoration: none;
+            list-style-type: none;
+            font-style: italic;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 1.2rem;
+
+            li {
+                padding: 1rem 0;
+            }
+        }
+    }
+
+    &__right {
+        width: 50%;
+
+        .feedback {
+        }
+
+        &--title {
+            font-size: 3rem;
+            font-family: 'Bree Serif', 'Open Sans', sans-serif;
+            font-weight: 100;
+            text-align: center;
+            margin-bottom: .5rem;
+            color: #131313;
+        }
+
+        a {
+            text-decoration: none;
+            color: #1e1e1e;
+            border-bottom: .15rem solid #7D7D7D;
+            transition: .1s;
+
+            &:hover {
+                border-color: #131313;
+                transition: .1s;
+            }
+        }
+    }
+
+}
+
+@media (min-width: 520px) {
+    .authpage .input__box--field {
+        min-width: 30rem;
+    }
+
+    .authpage .input__box {
+        margin: 1rem auto;
+
+        &.feedback {
+            margin: 0;
+        }
+    }
+
+    .authpage .input__div {
+        min-height: 100vh;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1050px) {
+    .authpage {
+
+        &__content {
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        &__left {
+            width: 100%;
+            padding: 1rem;
+        }
+
+        &__right {
+            width: 100%;
+        }
+    }
+
+    .authpage .input__div {
+        min-height: unset;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .authpage .input__box {
+        margin: 1rem 0;
+    }
+
+    .authpage .input__box--field {
+        width: 100%;
+    }
+
+    .authpage .input__div .checkbox {
+        min-width: 100%;
+    }
+
+    .authpage__right--title {
+        text-align: left;
+    }
+    
+    .authpage__left {
+        padding: 0;
+        
+        &--box {
+            text-align: left;
+            margin: 0rem;
+            width: 100%;
+            padding: 1rem;
+        }
+    }
+}
