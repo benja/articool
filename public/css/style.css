@@ -790,7 +790,7 @@ input {
       transform: skew(-7deg);
       box-shadow: -3px -5px 10px #C5C5C5;
       position: absolute;
-      right: 58px;
+      right: 60px;
       z-index: -5; }
     .frontpage .information::after {
       content: "";

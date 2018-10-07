@@ -383,36 +383,39 @@
 				{% endfor %}
 			</div>
 		</section>
-	</div>
-	{% endif %}
-</div>
-<div class="right">
-	<section class="section">
-		<h1 class="section__text--title nomargin">Authors on the rise</h1>
-
-		{% if getApprovedAuthors|length is 0 %}
-		<p style="margin: 0;" class="section__text--error">There are no approved authors.</p>
 		{% endif %}
 
-		{% for user in getApprovedAuthors %}
+	</div>
 
-		<a href="{{ url('author/') }}{{ user.username }}">
-			<div class="author">
-				<div class="author__image" style="background-image: url({{ url('img/avatars/') }}{{ user.avatar }})"></div>
-				<div class="author__info">
-					<div class="author__info--text">
-						<h1 class="author__info--name">{{ user.first_name }} {{ user.last_name }}</h1>
-						<h4 class="author__info--username">(@{{ user.username }})</h4>
-						{% if user.rank_id >= 2 %}
-						<div class="role {% if user.rank_id == 2 %}verified{% elseif user.rank_id == 3 %}mod{% elseif user.rank_id == 4 %}admin{% endif %}">{% if user.rank_id == 2 %}verified{% elseif user.rank_id == 3 %}mod{% elseif user.rank_id == 4 %}admin{% endif %}</div>
-						{% endif %}
+	<div class="right">
+		<section class="section">
+			<h1 class="section__text--title nomargin">Authors on the rise</h1>
+	
+			{% if getApprovedAuthors|length is 0 %}
+			<p style="margin: 0;" class="section__text--error">There are no approved authors.</p>
+			{% endif %}
+	
+			{% for user in getApprovedAuthors %}
+	
+			<a href="{{ url('author/') }}{{ user.username }}">
+				<div class="author">
+					<div class="author__image" style="background-image: url({{ url('img/avatars/') }}{{ user.avatar }})"></div>
+					<div class="author__info">
+						<div class="author__info--text">
+							<h1 class="author__info--name">{{ user.first_name }} {{ user.last_name }}</h1>
+							<h4 class="author__info--username">(@{{ user.username }})</h4>
+							{% if user.rank_id >= 2 %}
+							<div class="role {% if user.rank_id == 2 %}verified{% elseif user.rank_id == 3 %}mod{% elseif user.rank_id == 4 %}admin{% endif %}">{% if user.rank_id == 2 %}verified{% elseif user.rank_id == 3 %}mod{% elseif user.rank_id == 4 %}admin{% endif %}</div>
+							{% endif %}
+						</div>
 					</div>
 				</div>
-			</div>
-		</a>
+			</a>
+	
+			{% endfor %}
+	
+		</section>
+	</div>
 
-		{% endfor %}
-
-	</section>
 </div>
 {% endblock %}
