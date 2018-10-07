@@ -12,6 +12,7 @@
             <h3 class="appfooter__list--title">Explore</h3>
             <ul>
                 <li><a href="{{ url('faq') }}">FAQ</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
             </ul>
         </div>
         
