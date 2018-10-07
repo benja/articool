@@ -23,6 +23,11 @@ class PostController extends ControllerBase
         /* EDIT POST */
         $post = $this->getArticoolData($post_id); // get post data
 
+        /* If the post is a draft, redirect access to it by other people but creator */
+        if($post[0]->is_draft == 1 && $post[0]->users->user_id != $this->_user->user_id) {
+            return $this->response->redirect($_SERVER['HTTP_REFERER']);
+        }
+
         // pass data to view
         $this->view->printAuthorsId      = $this->printAuthorsId($post_id); // in edit articool
         $this->view->getRegisteredUsers  = $this->getRegisteredUsers();

@@ -110,6 +110,17 @@
     &__post {
         color: #1e1e1e;
 
+        &--draft {
+            font-family: 'Bree Serif', sans-serif;
+            font-size: .8rem;
+            width: fit-content;
+            box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.1);
+            padding: .5rem;
+            border-radius: .2rem;
+            color: white;
+            background-color: #131313;
+        }
+
         &--title {
             margin-bottom: .5rem;
 
@@ -152,7 +163,7 @@
         &--extratext {
             font-size: 1rem;
             margin-top: -2.3rem;
-            width: fit-content;
+            width: 50%;
             font-style: italic;
             position: absolute;
             background: white;

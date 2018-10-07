@@ -7,7 +7,6 @@
             <p class="appfooter__list--description">A platform where you are given the opportunity to express your feelings, thoughts, and interests – free of charge.</p>
         </div>
 
-
         <div class="appfooter__list--entry">
             <h3 class="appfooter__list--title">Explore</h3>
             <ul>

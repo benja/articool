@@ -10,8 +10,6 @@ $(document).ready(function() {
 $('#articool_delete').click(function() {
 var post_id = window.location.pathname.match(/\/(\d+)/)[1]
 
-var user_username = $('#username').val();
-
 var username = $('#session_identifier').val();
 var password = $('#session_token').val();
 
@@ -28,8 +26,10 @@ var password = $('#session_token').val();
             },
             dataType: 'json',
             success: function (feedback) {
+
                 if(feedback.success == true) {
                     setTimeout(function() {
+                        var user_username = $('#user_username').val();
                         window.location.href = basePath + 'author/' + user_username;
                     }, 250);
                 }

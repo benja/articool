@@ -178,7 +178,7 @@
                 <input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}" />
 
                 <div class="input__box end">
-                    <!--<input class="button normal" type="submit" value="Save Draft">-->
+                    <input class="button normal" id="articool_draft" type="submit" value="Save Draft">
                     <input class="button success" id="articool_submit" type="submit" name="submit" value="Publish">
                 </div>
 
@@ -245,23 +245,45 @@
                     <div class="articoolboxes">
 
                         {% for post in getUserPosts %}
-                        <a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
-                            <div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">
-                                                        
-                                <div class='articoolboxes__box--overlay {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>
-                                    <div class="articoolboxes__content">
-                                        <!-- meta -->
-                                        <h2 class="articoolboxes__content--title">{{ post.post_title }}</h2>
-                                        <p class="articoolboxes__content--description">«{{ short_body(post.post_body) }}...»</p>
-                                        <p class="articoolboxes__content--genre">{{ post.post_language }} {{ post.post_genre }}</p>
-                                        <p class="articoolboxes__content--authors">by {{ post.users.first_name }} {{ post.users.last_name }}</p>
+                            {% if post.is_draft is 0 %}
+                            <a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
+                                <div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">
+                                                            
+                                    <div class='articoolboxes__box--overlay {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>
+                                        <div class="articoolboxes__content">
+                                            <!-- meta -->
+                                            <h2 class="articoolboxes__content--title">{{ post.post_title }}</h2>
+                                            <p class="articoolboxes__content--description">«{{ short_body(post.post_body) }}...»</p>
+                                            <p class="articoolboxes__content--genre">{{ post.post_language }} {{ post.post_genre }}</p>
+                                            <p class="articoolboxes__content--authors">by {{ post.users.first_name }} {{ post.users.last_name }}</p>
 
-                                        <!-- stats -->
-                                        <p class="articoolboxes__content--views"><i class="far fa-eye" style="margin-right: .5rem;"></i>{{ niceNumber(post.post_views) }}</p>
+                                            <!-- stats -->
+                                            <p class="articoolboxes__content--views"><i class="far fa-eye" style="margin-right: .5rem;"></i>{{ niceNumber(post.post_views) }}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                            {% elseif post.is_draft is 1 and user.username is defined and profile.username == user.username %}
+                            <a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
+                                <div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">
+                                                            
+                                    <div class='articoolboxes__box--overlay {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>
+                                        <div class="articoolboxes__content">
+                                            <!-- meta -->
+                                            <h2 class="articoolboxes__content--title">
+                                                <div class="articoolboxes__content--draft">draft</div>{{ post.post_title }}
+                                            </h2>
+                                            <p class="articoolboxes__content--description">«{{ short_body(post.post_body) }}...»</p>
+                                            <p class="articoolboxes__content--genre">{{ post.post_language }} {{ post.post_genre }}</p>
+                                            <p class="articoolboxes__content--authors">by {{ post.users.first_name }} {{ post.users.last_name }}</p>
+
+                                            <!-- stats -->
+                                            <p class="articoolboxes__content--views"><i class="far fa-eye" style="margin-right: .5rem;"></i>{{ niceNumber(post.post_views) }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            {% endif %}
                         {% endfor %}
                     </div>
                     <!-- articool boxes -->
@@ -405,5 +427,6 @@ $(".chosen-select").chosen({
 </script>
 
 {{ javascript_include("js/auth/postArticool.js") }}
+{{ javascript_include("js/auth/postDraft.js") }}
 {{ javascript_include("js/partials/modal.js") }}
 {% endblock %}

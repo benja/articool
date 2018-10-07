@@ -103,6 +103,15 @@ class PostsMigration_104 extends Migration
                         ]
                     ),
                     new Column(
+                        'is_draft',
+                        [
+                            'type' => Column::TYPE_BOOLEAN,
+                            'default' => 0,
+                            'size' => 1,
+                            'after' => 'post_background'
+                        ]
+                    ),
+                    new Column(
                         'created_at',
                         [
                             'type' => Column::TYPE_TIMESTAMP,

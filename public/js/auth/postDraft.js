@@ -1,7 +1,6 @@
 /* Disable refresh on submit & AJAX */
 $(document).ready(function() {
-
-    $('#editArticool').submit(function(event) {
+    $('#postArticool').submit(function(event) {
     event.preventDefault();
     });
 
@@ -16,10 +15,25 @@ $(document).ready(function() {
         }
     });
 
+    /**
+     * Functions
+     */
+
+    function createTitleSlug(text)
+    {
+    return text.toString().toLowerCase()
+        .replace(/\s+/g, '-')           // Replace spaces with -
+        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+        .replace(/^-+/, '')             // Trim - from start of text
+        .replace(/-+$/, '');            // Trim - from end of text
+    }
+
     /* Ajax calls */
-    $('#articool_submit').click(function() {
+    $('#articool_draft').click(function() {
 
     var title = $('#post_title').val();
+    var title_slug = createTitleSlug(title);
     var body = post_body.getData();
     var authors = $('#post_authors').val();
     var language = $('#post_language').val();
@@ -40,10 +54,8 @@ $(document).ready(function() {
     var username = $('#session_identifier').val();
     var password = $('#session_token').val();
 
-    var post_id = window.location.pathname.match(/\/(\d+)/)[1];
-
         $.ajax({
-            url: baseUrl + 'post/edit-articool/' + post_id,
+            url: baseUrl + 'post/draft-articool',
             type: 'post',
             contentType: false,
             processData: false,
@@ -53,7 +65,13 @@ $(document).ready(function() {
             },
             dataType: 'json',
             success: function (feedback) {
+                if(feedback.success == true) {
 
+                    setTimeout(function() {
+                        window.location.href = basePath + "posts/" + feedback.data.post_id + "/" + title_slug;
+                    }, 1000);
+                }
+                
                 // display error messages properly through our alert div
                 if( feedback.success == false) {
                     $('#alert_div').removeClass('is-success'); 
@@ -64,19 +82,11 @@ $(document).ready(function() {
                     $('#alert_div').addClass('is-success'); 
                     $('#alert_title').html('Wohoo, success!');
         
-                    // update values on the page
-                    $('#postpage_title').text(title);
-                    $('#postpage_body').html(body);
-                    if( $('#post_backgroundlink').val() == null) {
-                        $('#postpage_background').css('background-image', 'url(' + $('#post_backgroundlink').val() + ')');
-                    }
-
                     setTimeout(function(){
                         $('#alert_div').removeClass('is-success');
                     }, 2000);
                 }
 
-                // i chose not to redirect the user back, incase they want to make a fix again
                 $('#feedback_message').html(feedback.messages.join('<br />'));
             }
         });

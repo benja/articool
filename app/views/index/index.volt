@@ -29,6 +29,7 @@
 			<div class="welcome__background"></div>
 		</div>
 
+		{% if user is not defined %}
 		<nav class="welcome__navbar">
 			<ul class="welcome__navbar--links">
 				<li class="welcome__navbar--entry"><a href="{{ url('login') }}">Login</a></li>
@@ -36,6 +37,14 @@
 				<li class="welcome__navbar--entry"><a href="{{ url('register') }}">Register</a></li>
 			</ul>
 		</nav>
+		{% else %}
+		<nav class="welcome__navbar">
+			<ul class="welcome__navbar--links">
+				<li class="welcome__navbar--entry"><a href="{{ url('explore') }}">Explore</a></li>
+				<li class="welcome__navbar--entry"><a href="{{ url('author/') }}{{ user.username }}">Profile</a></li>
+			</ul>
+		</nav>
+		{% endif %}
 
 		<div class="welcome__body">
 			<div class="welcome__text">

@@ -218,6 +218,15 @@
             width: 100%;
         }
     }
+
+    /* HEIGHT */
+
+    @media (max-height: 850px) {
+        .profilepage .profile__stats {
+            flex-direction: column;
+            margin-bottom: 8rem;
+        }
+    }
 }
 
 @media (max-width: 1205px) {
@@ -255,6 +264,11 @@
         width: 100%;
         overflow: hidden;
         margin-top: 1rem;
+    }
+
+    .profilepage .profile__stats {
+        flex-direction: unset;
+        margin: unset;
     }
 }
 
@@ -301,14 +315,5 @@
         top: 0; bottom: 0;
         height: 100%;
         width: 100%;
-    }
-}
-
-/* HEIGHT */
-
-@media (max-height: 850px) {
-    .profilepage .profile__stats {
-        flex-direction: column;
-        margin-bottom: 8rem;
     }
 }

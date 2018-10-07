@@ -28,6 +28,16 @@ $router->addPost(
     ]
 );
 
+// draft articool
+$router->addPost(
+    '/api/v1/post/draft-articool',
+    [
+        'namespace'  => 'Api\v1',
+        'controller' => 'post',
+        'action'     => 'draftArticool' 
+    ]
+);
+
 // delete articool
 $router->addDelete(
     '/api/v1/post/delete-articool/{post_id}',
@@ -45,6 +55,16 @@ $router->addPost(
         'namespace'     =>  'Api\v1',
         'controller'    =>  'post',
         'action'        =>  'editArticool'
+    ]
+);
+
+// edit draft
+$router->addPost(
+    '/api/v1/post/edit-draft/{post_id}',
+    [
+        'namespace'     =>  'Api\v1',
+        'controller'    =>  'post',
+        'action'        =>  'editDraft'
     ]
 );
 

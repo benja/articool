@@ -264,12 +264,13 @@ class ControllerBase extends Controller
     public static function getLatestPosts(string $genre)
     {
         $posts = Posts::find([
-            'conditions' => 'post_active = :post_active: AND post_genre = :post_genre:',
+            'conditions' => 'post_active = :post_active: AND post_genre = :post_genre: AND is_draft = :is_draft:',
             'limit' => 10,
             'order' => 'created_at DESC',
             'bind' => [
                 'post_active' => 1,
-                'post_genre' => $genre
+                'post_genre' => $genre,
+                'is_draft' => 0
             ]
         ]);
 
@@ -282,7 +283,7 @@ class ControllerBase extends Controller
     public static function getTrendingPosts()
     {
         $posts = PostTrending::find([
-            'order' => 'created_at DESC',
+            'order' => 'created_at DESC'
         ]);
 
         return $posts;
@@ -359,10 +360,11 @@ class ControllerBase extends Controller
         $posts = Posts::find([
             'type'  => 'user_id',
             'order' => 'post_views DESC',
-            'conditions' => 'user_id = :user_id: AND post_active = :post_active:',
+            'conditions' => 'user_id = :user_id: AND post_active = :post_active: AND is_draft = :is_draft:',
             'bind' => [
                 'user_id' => $user_id,
-                'post_active' => 1
+                'post_active' => 1,
+                'is_draft' => 0
             ],
             'limit' => 10
         ]);
@@ -519,11 +521,11 @@ class ControllerBase extends Controller
     public static function getWrittenArticools()
     {
         $posts = Posts::find([
-            /*
-            'conditions' => 'post_active = :post_active:',
+            'conditions' => 'post_active = :post_active: and is_draft = :is_draft:',
             'bind' => [
-                'post_active' => 1
-            ]*/
+                'post_active' => 1,
+                'is_draft' => 0
+            ]
         ]);
 
         return count($posts); // count all rows

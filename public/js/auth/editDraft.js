@@ -17,7 +17,7 @@ $(document).ready(function() {
     });
 
     /* Ajax calls */
-    $('#articool_submit').click(function() {
+    $('#articool_update').click(function() {
 
     var title = $('#post_title').val();
     var body = post_body.getData();
@@ -43,7 +43,7 @@ $(document).ready(function() {
     var post_id = window.location.pathname.match(/\/(\d+)/)[1];
 
         $.ajax({
-            url: baseUrl + 'post/edit-articool/' + post_id,
+            url: baseUrl + 'post/edit-draft/' + post_id,
             type: 'post',
             contentType: false,
             processData: false,
@@ -63,7 +63,7 @@ $(document).ready(function() {
                     $('#alert_div').removeClass('is-error');
                     $('#alert_div').addClass('is-success'); 
                     $('#alert_title').html('Wohoo, success!');
-        
+
                     // update values on the page
                     $('#postpage_title').text(title);
                     $('#postpage_body').html(body);

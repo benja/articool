@@ -5,6 +5,9 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
+    	// Pass user information to view
+        $this->view->user = $this->_user;
+        
         // Analytics on landing page
         $this->view->allArticoolViews = $this->getAllArticoolViews();
         $this->view->writtenArticools = $this->getWrittenArticools();
