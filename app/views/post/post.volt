@@ -515,8 +515,8 @@
 			<h1 id="postpage_title" class="postpage__post--title">{{ post.post_title }} </h1>
 			<div class="postpage__post--authors">{{ printAuthorsHtml }}</div>
 			<div class="postpage__post--extra">
-				<p>~ {{ readTime }} min read, published <time class="timeago" datetime="{{post.created_at}}">July 17, 2008</time></p>
-				<span class="postpage__post--extratext">Published {{ format_date(post.created_at) }}{% if post.created_at != post.updated_at %} - Updated {{ format_date(post.updated_at) }} {% endif %} ({{ niceNumber(post.post_views) }} {% if post.post_views is 1 %} view{% else %} views{% endif %})</span>
+				<p>~ {{ readTime }} min read, {% if post.is_draft is 0 %}published{% else %}drafted{% endif %} <time class="timeago" datetime="{{post.created_at}}">July 17, 2008</time></p>
+				<span class="postpage__post--extratext">{% if post.is_draft is 0 %}Published{% else %}Drafted{% endif %} {{ format_date(post.created_at) }}{% if post.created_at != post.updated_at %} - Updated {{ format_date(post.updated_at) }} {% endif %} ({{ niceNumber(post.post_views) }} {% if post.post_views is 1 %} view{% else %} views{% endif %})</span>
 			</div>
 			
 			<span class='postpage__post--category {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>{{ post.post_language }} {{ post.post_genre }}</span>
