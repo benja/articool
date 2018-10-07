@@ -83,7 +83,7 @@
 
 				{% for post in getTrendingPosts %}
 				<a href="{{ appUrl }}@{{ post.posts.users.username }}/{{ post.posts.post_id }}/{{ createTitleSlug(post.posts.post_title) }}">
-					<div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">
+					<div {% if post.posts.post_background is not null %}style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});"{% endif %} class="articoolboxes__box">
 												
 						<div class='articoolboxes__box--overlay {% if post.posts.post_genre == "Analysis" %}analysis{% elseif post.posts.post_genre == "Autobiography" %}autobiography{% elseif post.posts.post_genre == "Biography" %}biography{% elseif post.posts.post_genre == "Chronicle" %}chronicle{% elseif post.posts.post_genre == "Essay" %}essay{% elseif post.posts.post_genre == "Fiction" %}fiction{% elseif post.posts.post_genre == "Non-Fiction" %}nonfiction{% elseif post.posts.post_genre == "Poetry" %}poetry{% elseif post.posts.post_genre == "Popular-Science" %}popularscience{% elseif post.posts.post_genre == "Short-Story" %}shortstory{% endif %}'>
 							<div class="articoolboxes__content">
@@ -112,7 +112,7 @@
 			<div class="articoolboxes">
 				{% for post in getAnalysisPosts %}
 				<a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
-					<div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">
+					<div {% if post.post_background is not null %}style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});"{% endif %} class="articoolboxes__box">
 												
 						<div class='articoolboxes__box--overlay {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>
 							<div class="articoolboxes__content">
@@ -140,7 +140,7 @@
 			<div class="articoolboxes">
 			{% for post in getAutobiographyPosts %}
 			<a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
-				<div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">
+				<div {% if post.post_background is not null %}style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});"{% endif %} class="articoolboxes__box">
 											
 					<div class='articoolboxes__box--overlay {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>
 						<div class="articoolboxes__content">
@@ -168,7 +168,7 @@
 			<div class="articoolboxes">
 				{% for post in getBiographyPosts %}
 				<a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
-					<div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">
+					<div {% if post.post_background is not null %}style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});"{% endif %} class="articoolboxes__box">
 												
 						<div class='articoolboxes__box--overlay {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>
 							<div class="articoolboxes__content">
@@ -196,7 +196,7 @@
 			<div class="articoolboxes">
 				{% for post in getChroniclePosts %}
 				<a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
-					<div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">
+					<div {% if post.post_background is not null %}style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});"{% endif %} class="articoolboxes__box">
 												
 						<div class='articoolboxes__box--overlay {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>
 							<div class="articoolboxes__content">
@@ -224,7 +224,7 @@
 			<div class="articoolboxes">
 				{% for post in getEssayPosts %}
 				<a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
-					<div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">
+					<div {% if post.post_background is not null %}style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});"{% endif %} class="articoolboxes__box">
 												
 						<div class='articoolboxes__box--overlay {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>
 							<div class="articoolboxes__content">
@@ -252,7 +252,7 @@
 			<div class="articoolboxes">
 				{% for post in getFictionPosts %}
 				<a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
-					<div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">
+					<div {% if post.post_background is not null %}style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});"{% endif %} class="articoolboxes__box">
 												
 						<div class='articoolboxes__box--overlay {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>
 							<div class="articoolboxes__content">
@@ -280,7 +280,7 @@
 			<div class="articoolboxes">
 				{% for post in getNonFictionPosts %}
 				<a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
-					<div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">
+					<div {% if post.post_background is not null %}style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});"{% endif %} class="articoolboxes__box">
 												
 						<div class='articoolboxes__box--overlay {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>
 							<div class="articoolboxes__content">
@@ -308,7 +308,7 @@
 			<div class="articoolboxes">
 				{% for post in getPoetryPosts %}
 				<a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
-					<div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">
+					<div {% if post.post_background is not null %}style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});"{% endif %} class="articoolboxes__box">
 												
 						<div class='articoolboxes__box--overlay {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>
 							<div class="articoolboxes__content">
@@ -336,7 +336,7 @@
 			<div class="articoolboxes">
 				{% for post in getPopularSciencePosts %}
 				<a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
-					<div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">
+					<div {% if post.post_background is not null %}style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});"{% endif %} class="articoolboxes__box">
 												
 						<div class='articoolboxes__box--overlay {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>
 							<div class="articoolboxes__content">
@@ -364,7 +364,7 @@
 			<div class="articoolboxes">
 				{% for post in getShortStoryPosts %}
 				<a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
-					<div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">
+					<div {% if post.post_background is not null %}style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});"{% endif %} class="articoolboxes__box">
 												
 						<div class='articoolboxes__box--overlay {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>
 							<div class="articoolboxes__content">
@@ -387,32 +387,32 @@
 	{% endif %}
 </div>
 <div class="right">
-		<section class="section">
-			<h1 class="section__text--title nomargin">Authors on the rise</h1>
+	<section class="section">
+		<h1 class="section__text--title nomargin">Authors on the rise</h1>
 
-			{% if getApprovedAuthors|length is 0 %}
-			<p style="margin: 0;" class="section__text--error">There are no approved authors.</p>
-			{% endif %}
+		{% if getApprovedAuthors|length is 0 %}
+		<p style="margin: 0;" class="section__text--error">There are no approved authors.</p>
+		{% endif %}
 
-			{% for user in getApprovedAuthors %}
+		{% for user in getApprovedAuthors %}
 
-			<a href="{{ url('author/') }}{{ user.username }}">
-				<div class="author">
-					<div class="author__image" style="background-image: url({{ url('img/avatars/') }}{{ user.avatar }})"></div>
-					<div class="author__info">
-						<div class="author__info--text">
-							<h1 class="author__info--name">{{ user.first_name }} {{ user.last_name }}</h1>
-							<h4 class="author__info--username">(@{{ user.username }})</h4>
-							{% if user.rank_id >= 2 %}
-							<div class="role {% if user.rank_id == 2 %}verified{% elseif user.rank_id == 3 %}mod{% elseif user.rank_id == 4 %}admin{% endif %}">{% if user.rank_id == 2 %}verified{% elseif user.rank_id == 3 %}mod{% elseif user.rank_id == 4 %}admin{% endif %}</div>
-							{% endif %}
-						</div>
+		<a href="{{ url('author/') }}{{ user.username }}">
+			<div class="author">
+				<div class="author__image" style="background-image: url({{ url('img/avatars/') }}{{ user.avatar }})"></div>
+				<div class="author__info">
+					<div class="author__info--text">
+						<h1 class="author__info--name">{{ user.first_name }} {{ user.last_name }}</h1>
+						<h4 class="author__info--username">(@{{ user.username }})</h4>
+						{% if user.rank_id >= 2 %}
+						<div class="role {% if user.rank_id == 2 %}verified{% elseif user.rank_id == 3 %}mod{% elseif user.rank_id == 4 %}admin{% endif %}">{% if user.rank_id == 2 %}verified{% elseif user.rank_id == 3 %}mod{% elseif user.rank_id == 4 %}admin{% endif %}</div>
+						{% endif %}
 					</div>
 				</div>
-			</a>
+			</div>
+		</a>
 
-			{% endfor %}
+		{% endfor %}
 
-		</section>
-	</div>
+	</section>
+</div>
 {% endblock %}
