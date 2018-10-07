@@ -316,15 +316,34 @@ class ControllerBase extends Controller
         $posts = Posts::find([
             'type'  => 'user_id',
             'order' => 'created_at DESC',
-            'conditions' => 'user_id = :user_id: AND post_active = :post_active: and is_draft = :is_draft:',
+            'conditions' => 'user_id = :user_id: AND post_active = :post_active:',
             'bind' => [
                 'user_id' => $user_id,
-                'post_active' => 1,
-                'is_draft' => 0
+                'post_active' => 1
             ]
         ]);
 
         return $posts;
+    }
+
+    /*
+    *   Get all user posts by id
+    */
+    public static function getUserPostCount(int $user_id)
+    {
+        $user_id;
+        $posts = Posts::find([
+            'type'  => 'user_id',
+            'order' => 'created_at DESC',
+            'conditions' => 'user_id = :user_id: AND post_active = :post_active: AND is_draft = :is_draft:',
+            'bind' => [
+                'user_id' => $user_id,
+                'post_active' => 1,
+                'is_draft' => 0,
+            ]
+        ]);
+
+        return count($posts);
     }
 
     /*

@@ -18,7 +18,7 @@ class ProfileController extends ControllerBase
         $this->view->getUserPopularPosts = $this->getUserPopularPosts($this->_profile->user_id);
 
         // stats
-        $this->view->getPostCount        = count($this->getUserPosts($this->_profile->user_id));
+        $this->view->getPostCount        = $this->getUserPostCount($this->_profile->user_id);
         $this->view->getPeopleReached    = $this->getPeopleReached($this->_profile->user_id);
 
         $this->view->appName             = $_ENV['APP_NAME'];
