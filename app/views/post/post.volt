@@ -640,21 +640,19 @@ ClassicEditor
 	font-weight: 400;
 	margin-top: 1rem;
 }
+
 .ck-editor__editable blockquote {
-	margin: 1rem 0;
-	padding: .5rem 0;
+	margin: 2rem 0 1rem 1rem;
+	padding-left: 1rem;
 	width: fit-content;
 	display: inline-flex;
 	color: #131313e3;
+	border-left: .15rem solid #959595;
 	font-style: italic;
-	border: none;
 }
 
-.ck-editor__editable blockquote:before {
-	content: '"';
-	font-size: 2rem;
-	font-style: normal;
-	font-weight: bold;
+.ck-editor__editable blockquote p {
+	margin: 0;
 }
 
 .ck-editor__editable em, .ck-editor__editable a, .ck-editor__editable i, .ck-editor__editable u, .ck-editor__editable s, .ck-editor__editable code, .ck-editor__editable ul, .ck-editor__editable li, .ck-editor__editable ol {
@@ -671,10 +669,6 @@ ClassicEditor
 .ck-editor__editable a:hover {
 	border-color: #131313;
 	transition: .1s;
-}
-
-.ck-editor__editable blockquote p {
-	margin-top: 1rem;
 }
 
 .ck-editor__editable ul, ol {

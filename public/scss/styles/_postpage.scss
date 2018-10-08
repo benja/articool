@@ -274,18 +274,16 @@
             }
 
             blockquote {
-                margin: 1rem 0;
-                padding: .5rem 0;
+                margin: 2rem 0 1rem 1rem;
+                padding-left: 1rem;
                 width: fit-content;
                 display: inline-flex;
                 color: #131313e3;
+                border-left: .15rem solid #959595;
                 font-style: italic;
 
-                &:before {
-                    content: '"';
-                    font-size: 2rem;
-                    font-style: normal;
-                    font-weight: bold;
+                p {
+                    margin: 0;
                 }
             }
 
