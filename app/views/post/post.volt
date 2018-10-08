@@ -31,6 +31,8 @@
 	<meta property="og:description" content="{{ short_body(post.post_body)|left_trim }}" />
 	<meta property="og:image" content="{{ appUrl }}img/logo/facebook-logo.png" />
 	<meta property="fb:app_id"	content="181778325703258" />
+
+	{% if post.canonical_url is not null %} <link rel="canonical" href="{{ post.canonical_url }}" /> {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -50,13 +52,6 @@
 		<form id="editArticool" method="POST" action="{{ url('api/v1/post/edit-articool') }}" enctype="multipart/form-data">
 			<input type="hidden" name="post_id" value="{{ post.post_id }}">
             <div class="input__div">
-
-				<div class="input__box">
-					<div id="alert_div" class="feedback">
-						<h1 id="alert_title" class="feedback--title">TITLE</h1>
-						<div id="feedback_message" class="feedback__messages">message</div>
-					</div>
-				</div>
 
                 <div class="three">
 
@@ -178,46 +173,73 @@
                     <div class="input__box--field" name="post_body" id="post_body">{{ post.post_body }}</div><br>
                 </div>
 
-                <div class="input__box">
-                    <div class="inline">
-                        <h1 class="input__box--title">Contributors</h1>
+				<details>
+					<summary>Additional Info</summary>
+					<div class="input__box">
+						<div class="inline">
+							<h1 class="input__box--title">Contributors</h1>
 
-                        <!-- Help button -->
-                        <div class="input__box--helpcircle">?
-                            <div class="input__box--helpbox">
-                                <span>You can add contributors to your article by writing their name in the box below, keep in mind that they will need an Articool account. Leave blank if nobody else contributed to the Articool. By selecting the Articool language, and genre, your Articool will appear under the specified categories, and will do better engagement-wise.</span>
-                            </div>
-                        </div>
-                        <!-- Help button -->
-                    </div>
+							<!-- Help button -->
+							<div class="input__box--helpcircle">?
+								<div class="input__box--helpbox">
+									<span>You can add contributors to your article by writing their name in the box below, keep in mind that they will need an Articool account. Leave blank if nobody else contributed to the Articool. By selecting the Articool language, and genre, your Articool will appear under the specified categories, and will do better engagement-wise.</span>
+								</div>
+							</div>
+							<!-- Help button -->
+						</div>
 
-                    <select multiple id="post_authors" name="post_authors[]" data-placeholder="Add contributors" class="chosen-select">
+						<select multiple id="post_authors" name="post_authors[]" data-placeholder="Add contributors" class="chosen-select">
 
-						{% for author in getRegisteredUsers %}
-							{% if post.user_id != author.user_id %}
-								<option value="{{ author.user_id }}">{{ author.first_name }} {{ author.last_name }} ({{ author.username }})</option>
-							{% endif %}
-						{% endfor %}
+							{% for author in getRegisteredUsers %}
+								{% if post.user_id != author.user_id %}
+									<option value="{{ author.user_id }}">{{ author.first_name }} {{ author.last_name }} ({{ author.username }})</option>
+								{% endif %}
+							{% endfor %}
 
-						{% for authors in printAuthorsId %}
-							{% if user.username != authors.username %}
-								<option selected value="{{ authors.users.user_id }}">{{ authors.users.first_name }} {{ authors.users.last_name }} ({{ authors.users.username }})</option>
-							{% endif %}
-						{% endfor %}
+							{% for authors in printAuthorsId %}
+								{% if user.username != authors.username %}
+									<option selected value="{{ authors.users.user_id }}">{{ authors.users.first_name }} {{ authors.users.last_name }} ({{ authors.users.username }})</option>
+								{% endif %}
+							{% endfor %}
 
-                    </select>
-                </div>
+						</select>
+					</div>
 
-                <div class="input__box">
-                    <h1 class="input__box--title">Upload background image (optional)</h1>
-                    <input type="file" id="post_background" value="Click to upload"> <!-- Hidden -->
+                    <div class="input__box">
+						<div class="inline">
+							<h1 class="input__box--title">Is this text canonical?</h1>
+		
+							<!-- Help button -->
+							<div class="input__box--helpcircle">?
+								<div class="input__box--helpbox">
+									<span>Is the text you have written, with some fine adjuments, to be found anywhere else on the internet? If so, you must check it as canonical and link to the URL where it is to be found.</span>
+								</div>
+							</div>
+							<!-- Help button -->
+						</div>
 
-                    <div class="inline">
-                        <label id="post_backgroundlabel" class="input__box--filebutton" for="post_background">Click to upload</label>
-                        <p>or</p>
-                        <input class="input__box--field" id="post_backgroundlink" type="text" placeholder="Link to an image">
-                    </div>
-				</div>
+						{% if post.canonical_url is not null %}
+							<input type="checkbox" id="is_canonical" name="is_canonical" value="is_canonical" checked/>
+							<label for="is_canonical" style="font-size: 1.2rem;">Yes</label>
+							<input class="input__box--field" type="text" id="canonical_url" name="canonical_url" placeholder="Link to the post" value="{{ post.canonical_url }}" style="margin-top: 1rem;">
+						{% else %}
+							<input type="checkbox" id="is_canonical" name="is_canonical" value="is_canonical" />
+							<label for="is_canonical" style="font-size: 1.2rem;">Yes</label>
+							<input class="input__box--field" type="text" id="canonical_url" name="canonical_url" placeholder="Link to the post" style="display: none; margin-top: 1rem;">
+						{% endif %}
+					</div>
+
+					<div class="input__box">
+						<h1 class="input__box--title">Upload background image (optional)</h1>
+						<input type="file" id="post_background" value="Click to upload"> <!-- Hidden -->
+
+						<div class="inline">
+							<label id="post_backgroundlabel" class="input__box--filebutton" for="post_background">Click to upload</label>
+							<p>or</p>
+							<input class="input__box--field" id="post_backgroundlink" type="text" placeholder="Link to an image">
+						</div>
+					</div>
+				</details>
 				
                 <input type="hidden" id="user_username" value="{{ post.users.username }}" />
                 <input type="hidden" id="session_identifier" value="{{ tokens.session_identifier }}" />
@@ -229,6 +251,13 @@
 					<input class="button danger" type="submit" id="articool_delete" name="submit" value="Delete">
                     <input class="button success" id="articool_submit" type="submit" name="submit" value="Update">
                 </div>
+
+				<div class="input__box">
+					<div id="alert_div" class="feedback">
+						<h1 id="alert_title" class="feedback--title">TITLE</h1>
+						<div id="feedback_message" class="feedback__messages">message</div>
+					</div>
+				</div>
 
             </div>
 		</form>
@@ -246,13 +275,6 @@
 			<form id="editArticool" method="POST" action="{{ url('api/v1/post/edit-articool') }}" enctype="multipart/form-data">
 				<input type="hidden" name="post_id" value="{{ post.post_id }}">
 				<div class="input__div">
-	
-					<div class="input__box">
-						<div id="alert_div" class="feedback">
-							<h1 id="alert_title" class="feedback--title">TITLE</h1>
-							<div id="feedback_message" class="feedback__messages">message</div>
-						</div>
-					</div>
 	
 					<div class="three">
 	
@@ -374,46 +396,74 @@
 						<div class="input__box--field" name="post_body" id="post_body">{{ post.post_body }}</div><br>
 					</div>
 	
-					<div class="input__box">
-						<div class="inline">
-							<h1 class="input__box--title">Contributors</h1>
-	
-							<!-- Help button -->
-							<div class="input__box--helpcircle">?
-								<div class="input__box--helpbox">
-									<span>You can add contributors to your article by writing their name in the box below, keep in mind that they will need an Articool account. Leave blank if nobody else contributed to the Articool. By selecting the Articool language, and genre, your Articool will appear under the specified categories, and will do better engagement-wise.</span>
+
+					<details>
+						<summary>Additional Info</summary>
+						<div class="input__box">
+							<div class="inline">
+								<h1 class="input__box--title">Contributors</h1>
+		
+								<!-- Help button -->
+								<div class="input__box--helpcircle">?
+									<div class="input__box--helpbox">
+										<span>You can add contributors to your article by writing their name in the box below, keep in mind that they will need an Articool account. Leave blank if nobody else contributed to the Articool. By selecting the Articool language, and genre, your Articool will appear under the specified categories, and will do better engagement-wise.</span>
+									</div>
 								</div>
+								<!-- Help button -->
 							</div>
-							<!-- Help button -->
+		
+							<select multiple id="post_authors" name="post_authors[]" data-placeholder="Add contributors" class="chosen-select">
+		
+								{% for author in getRegisteredUsers %}
+									{% if post.user_id != author.user_id %}
+										<option value="{{ author.user_id }}">{{ author.first_name }} {{ author.last_name }} ({{ author.username }})</option>
+									{% endif %}
+								{% endfor %}
+		
+								{% for authors in printAuthorsId %}
+									{% if user.username != authors.username %}
+										<option selected value="{{ authors.users.user_id }}">{{ authors.users.first_name }} {{ authors.users.last_name }} ({{ authors.users.username }})</option>
+									{% endif %}
+								{% endfor %}
+		
+							</select>
 						</div>
-	
-						<select multiple id="post_authors" name="post_authors[]" data-placeholder="Add contributors" class="chosen-select">
-	
-							{% for author in getRegisteredUsers %}
-								{% if post.user_id != author.user_id %}
-									<option value="{{ author.user_id }}">{{ author.first_name }} {{ author.last_name }} ({{ author.username }})</option>
-								{% endif %}
-							{% endfor %}
-	
-							{% for authors in printAuthorsId %}
-								{% if user.username != authors.username %}
-									<option selected value="{{ authors.users.user_id }}">{{ authors.users.first_name }} {{ authors.users.last_name }} ({{ authors.users.username }})</option>
-								{% endif %}
-							{% endfor %}
-	
-						</select>
-					</div>
-	
-					<div class="input__box">
-						<h1 class="input__box--title">Upload background image (optional)</h1>
-						<input type="file" id="post_background" value="Click to upload"> <!-- Hidden -->
-	
-						<div class="inline">
-							<label id="post_backgroundlabel" class="input__box--filebutton" for="post_background">Click to upload</label>
-							<p>or</p>
-							<input class="input__box--field" id="post_backgroundlink" type="text" placeholder="Link to an image">
+
+						<div class="input__box">
+							<div class="inline">
+								<h1 class="input__box--title">Is this text canonical?</h1>
+			
+								<!-- Help button -->
+								<div class="input__box--helpcircle">?
+									<div class="input__box--helpbox">
+										<span>Is the text you have written, with some fine adjuments, to be found anywhere else on the internet? If so, you must check it as canonical and link to the URL where it is to be found.</span>
+									</div>
+								</div>
+								<!-- Help button -->
+							</div>
+
+							{% if post.canonical_url is not null %}
+								<input type="checkbox" id="is_canonical" name="is_canonical" value="is_canonical" checked/>
+								<label for="is_canonical" style="font-size: 1.2rem;">Yes</label>
+								<input class="input__box--field" type="text" id="canonical_url" name="canonical_url" placeholder="Link to the post" value="{{ post.canonical_url }}" style="margin-top: 1rem;">
+							{% else %}
+								<input type="checkbox" id="is_canonical" name="is_canonical" value="is_canonical" />
+								<label for="is_canonical" style="font-size: 1.2rem;">Yes</label>
+								<input class="input__box--field" type="text" id="canonical_url" name="canonical_url" placeholder="Link to the post" style="display: none; margin-top: 1rem;">
+							{% endif %}
 						</div>
-					</div>
+
+						<div class="input__box">
+							<h1 class="input__box--title">Upload background image (optional)</h1>
+							<input type="file" id="post_background" value="Click to upload"> <!-- Hidden -->
+		
+							<div class="inline">
+								<label id="post_backgroundlabel" class="input__box--filebutton" for="post_background">Click to upload</label>
+								<p>or</p>
+								<input class="input__box--field" id="post_backgroundlink" type="text" placeholder="Link to an image">
+							</div>
+						</div>
+					</details>
 					
 					<input type="hidden" id="user_username" value="{{ post.users.username }}" />
 					<input type="hidden" id="session_identifier" value="{{ tokens.session_identifier }}" />
@@ -425,6 +475,13 @@
 						<input class="button danger" type="submit" id="articool_delete" name="submit" value="Delete">
 						<input class="button normal" type="submit" id="articool_update" name="submit" value="Save Changes">
 						<input class="button success" id="articool_submit" type="submit" name="submit" value="Publish">
+					</div>
+
+					<div class="input__box">
+						<div id="alert_div" class="feedback">
+							<h1 id="alert_title" class="feedback--title">TITLE</h1>
+							<div id="feedback_message" class="feedback__messages">message</div>
+						</div>
 					</div>
 	
 				</div>
@@ -621,7 +678,7 @@ ClassicEditor
 }
 
 .ck-editor__editable ul, ol {
-	margin-left: 1.3rem;
+	margin: 1rem 0 .5rem 3rem;
 	font-size: 1.2rem;
 	line-height: 2rem;
 	white-space: pre-line;

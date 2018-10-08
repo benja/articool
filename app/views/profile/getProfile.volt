@@ -15,15 +15,8 @@
             <div id="modalfullscreen" class="postmodal__close" style="margin-right: 1rem;"><i class="fas fa-arrows-alt"></i></div>
             <div id="modalclose" class="postmodal__close"><i style="color: #ff7474;" class="fas fa-times"></i></div>
         </div>
-        <form id="postArticool" method="POST" action="{{ url('api/v1/post/post-articool') }}" enctype="multipart/form-data">
+        <form id="postArticool" method="POST" enctype="multipart/form-data">
             <div class="input__div">
-
-                <div class="input__box">
-                    <div id="alert_div" class="feedback">
-                        <h1 id="alert_title" class="feedback--title">TITLE</h1>
-                        <div id="feedback_message" class="feedback__messages">message</div>
-                    </div>
-                </div>
 
                 <div class="three">
 
@@ -137,40 +130,61 @@
                     <div class="input__box--field" name="post_body" id="post_body"></div><br>
                 </div>
 
-                <div class="input__box">
-                    <div class="inline">
-                        <h1 class="input__box--title">Contributors</h1>
+                <details>
+                    <summary>Additional Info</summary>
+                    <div class="input__box">
+                        <div class="inline">
+                            <h1 class="input__box--title">Contributors</h1>
 
-                        <!-- Help button -->
-                        <div class="input__box--helpcircle">?
-                            <div class="input__box--helpbox">
-                                <span>You can add contributors to your article by writing their name in the box below, keep in mind that they will need an Articool account. Leave blank if nobody else contributed to the Articool. By selecting the Articool language, and genre, your Articool will appear under the specified categories, and will do better engagement-wise.</span>
+                            <!-- Help button -->
+                            <div class="input__box--helpcircle">?
+                                <div class="input__box--helpbox">
+                                    <span>You can add contributors to your article by writing their name in the box below, keep in mind that they will need an Articool account. Leave blank if nobody else contributed to the Articool. By selecting the Articool language, and genre, your Articool will appear under the specified categories, and will do better engagement-wise.</span>
+                                </div>
                             </div>
+                            <!-- Help button -->
                         </div>
-                        <!-- Help button -->
+
+                        <select multiple id="post_authors" name="post_authors[]" data-placeholder="Add contributors" class="chosen-select">
+
+                        {% for author in getRegisteredUsers %}
+                            {% if user.username != author.username %}
+                                <option value="{{ author.user_id }}">{{ author.first_name }} {{ author.last_name }} ({{ author.username }})</option>
+                            {% endif %}
+                        {% endfor %}
+
+                        </select>
                     </div>
 
-                    <select multiple id="post_authors" name="post_authors[]" data-placeholder="Add contributors" class="chosen-select">
+                    <div class="input__box">
+                        <div class="inline">
+                            <h1 class="input__box--title">Is this text canonical?</h1>
+        
+                            <!-- Help button -->
+                            <div class="input__box--helpcircle">?
+                                <div class="input__box--helpbox">
+                                    <span>Is the text you have written, with some fine adjuments, to be found anywhere else on the internet? If so, you must check it as canonical and link to the URL where it is to be found.</span>
+                                </div>
+                            </div>
+                            <!-- Help button -->
+                        </div>
 
-                    {% for author in getRegisteredUsers %}
-                        {% if user.username != author.username %}
-                            <option value="{{ author.user_id }}">{{ author.first_name }} {{ author.last_name }} ({{ author.username }})</option>
-                        {% endif %}
-                    {% endfor %}
-
-                    </select>
-                </div>
-
-                <div class="input__box">
-                    <h1 class="input__box--title">Upload background image (optional)</h1>
-                    <input type="file" id="post_background" value="Click to upload"> <!-- Hidden -->
-
-                    <div class="inline">
-                        <label id="post_backgroundlabel" class="input__box--filebutton" for="post_background">Click to upload</label>
-                        <p>or</p>
-                        <input class="input__box--field" id="post_backgroundlink" type="text" placeholder="Link to an image">
+                        <input type="checkbox" id="is_canonical" name="is_canonical" value="is_canonical" />
+                        <label for="is_canonical" style="font-size: 1.2rem;">Yes</label>
+                        <input class="input__box--field" type="text" id="canonical_url" name="canonical_url" placeholder="Link to the post" style="display: none; margin-top: 1rem;">
                     </div>
-                </div>
+
+                    <div class="input__box">
+                        <h1 class="input__box--title">Upload background image (optional)</h1>
+                        <input type="file" id="post_background" value="Click to upload"> <!-- Hidden -->
+
+                        <div class="inline">
+                            <label id="post_backgroundlabel" class="input__box--filebutton" for="post_background">Click to upload</label>
+                            <p>or</p>
+                            <input class="input__box--field" id="post_backgroundlink" type="text" placeholder="Link to an image">
+                        </div>
+                    </div>
+                </details>
 
                 <input type="hidden" id="session_identifier" value="{{ tokens.session_identifier }}" />
                 <input type="hidden" id="session_token" value="{{ tokens.session_token }}" />
@@ -180,6 +194,13 @@
                 <div class="input__box end">
                     <input class="button normal" id="articool_draft" type="submit" value="Save Draft">
                     <input class="button success" id="articool_submit" type="submit" name="submit" value="Publish">
+                </div>
+
+                <div class="input__box">
+                    <div id="alert_div" class="feedback">
+                        <h1 id="alert_title" class="feedback--title">TITLE</h1>
+                        <div id="feedback_message" class="feedback__messages">message</div>
+                    </div>
                 </div>
 
             </div>
@@ -247,7 +268,7 @@
                         {% for post in getUserPosts %}
                             {% if post.is_draft is 0 %}
                             <a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
-                                <div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">
+                                <div {% if post.post_background is not null %}style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});"{% endif %} class="articoolboxes__box">
                                                             
                                     <div class='articoolboxes__box--overlay {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>
                                         <div class="articoolboxes__content">
@@ -299,7 +320,7 @@
 
                         {% for post in getUserPopularPosts %}
                         <a href="{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}">
-                            <div style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});" class="articoolboxes__box">       
+                            <div {% if post.post_background is not null %}style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});"{% endif %} class="articoolboxes__box">       
 
                                 <div class='articoolboxes__box--overlay {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'>
                                     <div class="articoolboxes__content">
@@ -398,7 +419,7 @@ ClassicEditor
 }
 
 .ck-editor__editable ul, ol {
-	margin-left: 1.3rem;
+	margin: 1rem 0 .5rem 3rem;
 	font-size: 1.2rem;
 	line-height: 2rem;
 	white-space: pre-line;

@@ -84,7 +84,7 @@
 				{% for post in getTrendingPosts %}
 					{% if post.posts.is_draft is 0 %}
 					<a href="{{ appUrl }}@{{ post.posts.users.username }}/{{ post.posts.post_id }}/{{ createTitleSlug(post.posts.post_title) }}">
-						<div {% if post.posts.post_background is not null %}style="background-image: url({{ url('img/backgrounds/') }}{{ post.post_background }});"{% endif %} class="articoolboxes__box">
+						<div {% if post.posts.post_background is not null %}style="background-image: url({{ url('img/backgrounds/') }}{{ post.posts.post_background }});"{% endif %} class="articoolboxes__box">
 													
 							<div class='articoolboxes__box--overlay {% if post.posts.post_genre == "Analysis" %}analysis{% elseif post.posts.post_genre == "Autobiography" %}autobiography{% elseif post.posts.post_genre == "Biography" %}biography{% elseif post.posts.post_genre == "Chronicle" %}chronicle{% elseif post.posts.post_genre == "Essay" %}essay{% elseif post.posts.post_genre == "Fiction" %}fiction{% elseif post.posts.post_genre == "Non-Fiction" %}nonfiction{% elseif post.posts.post_genre == "Poetry" %}poetry{% elseif post.posts.post_genre == "Popular-Science" %}popularscience{% elseif post.posts.post_genre == "Short-Story" %}shortstory{% endif %}'>
 								<div class="articoolboxes__content">

@@ -63,7 +63,7 @@
 {% else %}
 <nav id="nav" class="nav">
     <div class="nav__left">
-        <a href="{{ url('explore') }}">
+        <a href="{{ url('/') }}">
             <h1 class="nav__left--text">articool</h1>
         </a>
 

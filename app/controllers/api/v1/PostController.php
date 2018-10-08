@@ -45,15 +45,24 @@ class PostController extends ControllerBase {
                 ]));
             }
 
+            if($this->request->getPost('canonical_url') !== "") {
+                $validation->add([
+                    'canonical_url'
+                ], new UrlValidator([
+                    'message' => 'The canonical link you entered is not a valid link'
+                ]));
+            }
+
             $messages = $validation->validate($_POST);
 
             $post_title          = strip_tags($this->request->getPost('post_title'));
             $post_body           = $this->request->getPost('post_body');
             $post_language       = $this->request->getPost('post_language');
             $post_genre          = $this->request->getPost('post_genre');
-            $post_authors        = ($this->request->getPost('post_authors') ? $this->request->getPost('post_authors') : NULL );
+            $post_authors        = json_decode(($this->request->getPost('post_authors') ? $this->request->getPost('post_authors') : NULL ));
             $post_background     = $this->request->getPost('post_background');
             $post_backgroundlink = $this->request->getPost('post_backgroundlink');
+            $canonical_url       = $this->request->getPost('canonical_url');
 
             /*
             *   Validating the avatar uploaded
@@ -89,6 +98,11 @@ class PostController extends ControllerBase {
                 return $this->ajaxResponse(false, $messages, 'ajax');
             }
 
+            // if user has not written anything, ckeditor automatically prints this out if nothing is input
+            if($post_body === "<p>&nbsp;</p>") {
+                $messages->appendMessage( new Message('Did you forget to write something? o.O') );
+            }
+
             // if user has not selected genre
             if($post_genre === "null") {
                 $messages->appendMessage( new Message('Please select a genre') );
@@ -108,6 +122,13 @@ class PostController extends ControllerBase {
                 $post->post_language     = $post_language;
                 $post->post_genre        = $post_genre;
                 $post->is_draft          = 0;
+
+                // if not empty, and not null string
+                if($canonical_url == "") {
+                    $post->canonical_url = NULL;
+                } else {
+                    $post->canonical_url = $canonical_url;
+                }
 
                 // check if files are uploaded
                 if($this->request->hasFiles() == true) {
@@ -192,15 +213,24 @@ class PostController extends ControllerBase {
                 ]));
             }
 
+            if($this->request->getPost('canonical_url') !== "") {
+                $validation->add([
+                    'canonical_url'
+                ], new UrlValidator([
+                    'message' => 'The canonical link you entered is not a valid link'
+                ]));
+            }
+
             $messages = $validation->validate($_POST);
 
             $post_title          = strip_tags($this->request->getPost('post_title'));
             $post_body           = $this->request->getPost('post_body');
             $post_language       = $this->request->getPost('post_language');
             $post_genre          = $this->request->getPost('post_genre');
-            $post_authors        = ($this->request->getPost('post_authors') ? $this->request->getPost('post_authors') : NULL );
+            $post_authors        = json_decode(($this->request->getPost('post_authors') ? $this->request->getPost('post_authors') : NULL ));
             $post_background     = $this->request->getPost('post_background');
             $post_backgroundlink = $this->request->getPost('post_backgroundlink');
+            $canonical_url       = $this->request->getPost('canonical_url');
 
             /*
             *   Validating the avatar uploaded
@@ -236,6 +266,11 @@ class PostController extends ControllerBase {
                 return $this->ajaxResponse(false, $messages, 'ajax');
             }
 
+            // if user has not written anything, ckeditor automatically prints this out if nothing is input
+            if($post_body === "<p>&nbsp;</p>") {
+                $messages->appendMessage( new Message('Did you forget to write something? o.O') );
+            }
+
             // if user has not selected genre
             if($post_genre === "null") {
                 $messages->appendMessage( new Message('Please select a genre') );
@@ -255,6 +290,13 @@ class PostController extends ControllerBase {
                 $post->post_language     = $post_language;
                 $post->post_genre        = $post_genre;
                 $post->is_draft          = 1;
+
+                // if not empty, and not null string
+                if($canonical_url == "") {
+                    $post->canonical_url = NULL;
+                } else {
+                    $post->canonical_url = $canonical_url;
+                }
 
                 // check if files are uploaded
                 if($this->request->hasFiles() == true) {
@@ -397,17 +439,26 @@ class PostController extends ControllerBase {
                 ]));
             }
 
+            if($this->request->getPost('canonical_url') !== "") {
+                $validation->add([
+                    'canonical_url'
+                ], new UrlValidator([
+                    'message' => 'The canonical link you entered is not a valid link'
+                ]));
+            }
+
             // save all messages to array
             $messages = $validation->validate($_POST);
 
             // get inputs from post
-            $post_title     = strip_tags($this->request->getPost('post_title'));
-            $post_body      = $this->request->getPost('post_body');
-            $post_language  = $this->request->getPost('post_language');
-            $post_genre     = $this->request->getPost('post_genre');
-            $post_authors   = ($this->request->getPost('post_authors') ? $this->request->getPost('post_authors') : NULL );
+            $post_title          = strip_tags($this->request->getPost('post_title'));
+            $post_body           = $this->request->getPost('post_body');
+            $post_language       = $this->request->getPost('post_language');
+            $post_genre          = $this->request->getPost('post_genre');
+            $post_authors        = json_decode(($this->request->getPost('post_authors') ? $this->request->getPost('post_authors') : NULL ));
             $post_background     = $this->request->getPost('post_background');
             $post_backgroundlink = $this->request->getPost('post_backgroundlink');
+            $canonical_url       = $this->request->getPost('canonical_url');
 
             /*
             *   Validating the avatar uploaded
@@ -462,6 +513,11 @@ class PostController extends ControllerBase {
                 return $this->ajaxResponse(false, $messages, 'ajax');
             }
 
+            // if user has not written anything, ckeditor automatically prints this out if nothing is input
+            if($post_body === "<p>&nbsp;</p>") {
+                $messages->appendMessage( new Message('Did you forget to write something? o.O') );
+            }
+
             // if user has not selected genre
             if($post_genre === "null") {
                 $messages->appendMessage( new Message('Please select a genre') );
@@ -480,11 +536,19 @@ class PostController extends ControllerBase {
                 $post->post_genre       = $post_genre;
                 $post->updated_at       = date("Y-m-d H:i:s");
 
+                // if not empty, and not null string
+                if($canonical_url == "") {
+                    $post->canonical_url = NULL;
+                } else {
+                    $post->canonical_url = $canonical_url;
+                }
+
                 // if post is draft, we assume they want to publish it and set draft to 0
                 // we assume they clicked "publish" because it runs this code. the "save changes" runs another
                 // function that doesn't set is_draft to 0
                 if($post->is_draft == 1) {
                     $post->is_draft = 0;
+                    $post->post_views = 0;
                     $post->created_at = date("Y-m-d H:i:s");
                     $post->updated_at = date("Y-m-d H:i:s");
                     $messages->appendMessage( new Message('Successfully published draft') );
@@ -587,17 +651,26 @@ class PostController extends ControllerBase {
                 ]));
             }
 
+            if($this->request->getPost('canonical_url') !== "") {
+                $validation->add([
+                    'canonical_url'
+                ], new UrlValidator([
+                    'message' => 'The canonical link you entered is not a valid link'
+                ]));
+            }
+
             // save all messages to array
             $messages = $validation->validate($_POST);
 
             // get inputs from post
-            $post_title     = strip_tags($this->request->getPost('post_title'));
-            $post_body      = $this->request->getPost('post_body');
-            $post_language  = $this->request->getPost('post_language');
-            $post_genre     = $this->request->getPost('post_genre');
-            $post_authors   = ($this->request->getPost('post_authors') ? $this->request->getPost('post_authors') : NULL );
-            $post_background     = $this->request->getPost('post_background');
-            $post_backgroundlink = $this->request->getPost('post_backgroundlink');
+            $post_title             = strip_tags($this->request->getPost('post_title'));
+            $post_body              = $this->request->getPost('post_body');
+            $post_language          = $this->request->getPost('post_language');
+            $post_genre             = $this->request->getPost('post_genre');
+            $post_authors           = json_decode(($this->request->getPost('post_authors') ? $this->request->getPost('post_authors') : NULL ));
+            $post_background        = $this->request->getPost('post_background');
+            $post_backgroundlink    = $this->request->getPost('post_backgroundlink');
+            $canonical_url          = $this->request->getPost('canonical_url');
 
             /*
             *   Validating the avatar uploaded
@@ -652,6 +725,11 @@ class PostController extends ControllerBase {
                 return $this->ajaxResponse(false, $messages, 'ajax');
             }
 
+            // if user has not written anything, ckeditor automatically prints this out if nothing is input
+            if($post_body === "<p>&nbsp;</p>") {
+                $messages->appendMessage( new Message('Did you forget to write something? o.O') );
+            }
+
             // if user has not selected genre
             if($post_genre === "null") {
                 $messages->appendMessage( new Message('Please select a genre') );
@@ -669,6 +747,13 @@ class PostController extends ControllerBase {
                 $post->post_language    = $post_language;
                 $post->post_genre       = $post_genre;
                 $post->updated_at       = date("Y-m-d H:i:s");
+
+                // if not empty, and not null string
+                if($canonical_url == "") {
+                    $post->canonical_url = NULL;
+                } else {
+                    $post->canonical_url = $canonical_url;
+                }
 
                 // check if files are uploaded
                 if($this->request->hasFiles() == true) {

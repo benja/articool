@@ -29,17 +29,33 @@ $(document).ready(function() {
         .replace(/-+$/, '');            // Trim - from end of text
     }
 
+    /* taken from https://stackoverflow.com/questions/22633560/if-checkbox-is-checked-show-input-field-works-in-jsfiddle-not-on-website */
+    $(function () {
+        $('input[name="canonical_url"]').hide();
+    
+        //show it when the checkbox is clicked
+        $('input[name="is_canonical"]').on('click', function () {
+            if ($(this).prop('checked')) {
+                $('input[name="canonical_url"]').fadeIn();
+            } else {
+                $('input[name="canonical_url"').val('');
+                $('input[name="canonical_url"]').hide();
+            }
+        });
+    });
+
     /* Ajax calls */
     $('#articool_draft').click(function() {
 
     var title = $('#post_title').val();
     var title_slug = createTitleSlug(title);
     var body = post_body.getData();
-    var authors = $('#post_authors').val();
+    var authors = JSON.stringify($('#post_authors').val());
     var language = $('#post_language').val();
     var genre = $('#post_genre').val();
     var postbackground = $('#post_background')[0].files[0];
     var postbackgroundlink = $('#post_backgroundlink').val();
+    var canonical_url = $('#canonical_url').val();
 
     // create formdata
     var data = new FormData();
@@ -50,6 +66,7 @@ $(document).ready(function() {
     data.append('post_genre', genre);
     data.append('post_background', postbackground);
     data.append('post_backgroundlink', postbackgroundlink);
+    data.append('canonical_url', canonical_url);
 
     var username = $('#session_identifier').val();
     var password = $('#session_token').val();

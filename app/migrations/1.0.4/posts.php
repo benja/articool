@@ -112,13 +112,22 @@ class PostsMigration_104 extends Migration
                         ]
                     ),
                     new Column(
+                        'canonical_url',
+                        [
+                            'type' => Column::TYPE_VARCHAR,
+                            'default' => NULL,
+                            'size' => 255,
+                            'after' => 'is_draft'
+                        ]
+                    ),
+                    new Column(
                         'created_at',
                         [
                             'type' => Column::TYPE_TIMESTAMP,
                             'default' => "CURRENT_TIMESTAMP",
                             'notNull' => true,
                             'size' => 1,
-                            'after' => 'post_views'
+                            'after' => 'canonical_url'
                         ]
                     ),
                     new Column(
