@@ -60,7 +60,7 @@ class Actions extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("benjamin_articool");
-        $this->setSource("Actions");
+        $this->setSource("actions");
     }
 
     /**
@@ -70,7 +70,7 @@ class Actions extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'Actions';
+        return 'actions';
     }
 
     /**
@@ -93,6 +93,19 @@ class Actions extends \Phalcon\Mvc\Model
     public static function findFirst($parameters = null)
     {
         return parent::findFirst($parameters);
+    }
+
+    /*
+        Update the updated_at section in the database
+        every time the row gets updated
+    */
+    public function beforeUpdate()
+    {
+        // Set default timezone
+        date_default_timezone_set('Europe/Oslo');
+
+        // Update updated_at field everytime the row updates
+        $this->updated_at = date("Y-m-d H:i:s");
     }
 
 }

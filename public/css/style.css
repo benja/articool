@@ -4,7 +4,9 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  -webkit-appearance: none; }
 
 ::-moz-selection {
   /* Code for Firefox */
@@ -1240,11 +1242,8 @@ input {
 @media (max-width: 500px) {
   .explorepage {
     padding: 0; }
-    .explorepage .left {
-      overflow-y: scroll; }
     .explorepage .right {
-      margin-bottom: 4rem;
-      overflow-y: scroll; } }
+      margin-bottom: 4rem; } }
 @media (max-width: 280px) {
   .explorepage .section .author .author__info {
     min-width: 10%;

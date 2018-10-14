@@ -6,6 +6,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    -webkit-appearance: none;
 }
 
 ::-moz-selection { /* Code for Firefox */
