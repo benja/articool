@@ -1,7 +1,6 @@
 {% extends "templates/base.volt" %}
 
-{% block title %} Forgot Password {% endblock %}
-{% block body_id %}forgot{% endblock %}
+{% block title %} Terms of Service {% endblock %}
 
 {% block content %}
 {{ partial('templates/navbar') }}

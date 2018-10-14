@@ -1,7 +1,6 @@
 {% extends "templates/base.volt" %}
 
 {% block title %} Profile Settings {% endblock %}
-{% block body_id %}settings{% endblock %}
 
 {% block content %}
 {{ partial('templates/navbar') }}

@@ -101,6 +101,81 @@
         }
     }
 
+    &__appreciate {
+        position: fixed;
+        margin: 0rem 47rem;
+
+        form {
+            font-size: 2rem;
+            padding-top: .5rem;
+        }
+
+        &--count {
+            font-family: 'Bree Serif', sans-serif;
+            font-weight: 100;
+            text-align: center;
+            color: #222222;
+        }
+
+        i {
+            cursor: pointer;
+            padding-right: .5rem;
+            padding: .6rem;
+            color: #222222;
+            background: #ffffff;
+            border-radius: 50rem;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border: .15rem solid white;
+            transition: .2s;
+
+            &:hover {
+                border: .15rem solid;
+                transition: .2s;
+                transform: scale(1.1);
+            }
+
+            &.analysis {
+                color: #fe6363;
+            }
+
+            &.autobiography {
+                color: #6895ff;
+            }
+
+            &.biography {
+                color: #805281;
+            }
+
+            &.chronicle {
+                color: #d7cc39;
+            }
+            
+            &.essay {
+                color: #54a85f;
+            }
+
+            &.fiction {
+                color: #b280e8;
+            }
+
+            &.nonfiction {
+                color: #e4b27c;
+            }
+
+            &.poetry {
+                color: #607d8b;
+            }
+
+            &.popularscience {
+                color: #8961d1;
+            }
+
+            &.shortstory {
+                color: #bd9330;
+            }
+        }
+    }
+
     &__nopost {
         font-size: 1rem;
         font-weight: 100;
@@ -326,6 +401,20 @@
 
         p {
             margin: auto 0;
+        }
+    }
+
+    .postpage__appreciate {
+        display: flex;
+        flex-direction: column-reverse;
+        margin: 2rem 0;
+        position: absolute;
+        right: 2.4rem;
+
+        &--count {
+            text-align: left;
+            padding-left: 1.4rem;
+            margin-top: 1rem;
         }
     }
 

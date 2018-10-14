@@ -4,7 +4,7 @@
     <div class="cookie__left">
         <h1 class="cookie__text">
             Articool uses cookies to offer you a better browsing experience.
-            By browsing our site you hereby accept our use of <a href="privacypolicy.php" target="_blank">cookies</a>.
+            By browsing our site you hereby accept our use of <a href="{{ url('privacy') }}" target="_blank">cookies</a>.
         </h1>
     </div>
 

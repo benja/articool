@@ -96,6 +96,7 @@
 
             &__stats {
                 display: flex;
+                flex-wrap: wrap;
                 flex-direction: row;
                 font-family: 'Open Sans', sans-serif;
                 font-weight: bold;
@@ -103,7 +104,7 @@
                 &--entry {
                     text-align: center;
                     margin-top: 1rem;
-                    width: 100%;
+                    width: calc(100% * (1/2));
                     padding: 1rem;
                 }
 
@@ -223,7 +224,6 @@
 
     @media (max-height: 850px) {
         .profilepage .profile__stats {
-            flex-direction: column;
             margin-bottom: 8rem;
         }
     }
@@ -308,6 +308,8 @@
 
         .articools--new {
             margin-top: 1rem;
+            min-width: unset;
+            width: 100%;
         }
     }
 

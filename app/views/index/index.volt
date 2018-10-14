@@ -1,14 +1,14 @@
 {% extends "templates/landing.volt" %}
 
-{% block title %} Articool {% endblock %}
+{% block title %} Articool - writing & blogging platform! {% endblock %}
 
 {% block meta %}
 <meta name="description" content="{{ appDescription }}">
-<meta name="keywords" content="{{ appName }}, article">
+<meta name="keywords" content="{{ appName }}, article, Benjamin Akar, Programming, Web, Design, articoolo, free, article platform, writing platform, free writing platform, writing, platform, blogging platform, blog, articool blog">
 <meta name="author" content="{{ appName }}">
 
 <!-- Twitter Tags -->
-<meta name="twitter:title" content="Articool - article platform!" />
+<meta name="twitter:title" content="Articool - writing & blogging platform!" />
 <meta name="twitter:site" content="{{ appUrl }}" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:description" content="{{ appDescription }}" />
@@ -16,7 +16,7 @@
 <!-- Facebook Tags -->
 <meta property="og:url" content="{{ appUrl }}" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Articool - article platform!" />
+<meta property="og:title" content="Articool - writing & blogging platform!" />
 <meta property="og:description" content="{{ appDescription }}" />
 <meta property="fb:app_id"	content="181778325703258" />
 {% endblock %}

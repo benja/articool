@@ -1,7 +1,6 @@
 {% extends "templates/base.volt" %}
 
 {% block title %} Security Settings {% endblock %}
-{% block body_id %}settings{% endblock %}
 
 {% block title %} Settings  {% endblock %}
 

@@ -8,6 +8,16 @@ $router->removeExtraSlashes(true); // This peace of code lets us add slashes at 
  *  POSTCONTROLLER
  */
 
+// appreciate articool
+$router->addPost(
+    '/api/v1/post/like-articool',
+    [
+        'namespace'  => 'Api\v1',
+        'controller' => 'post',
+        'action'     => 'appreciateArticool'
+    ]
+);
+
 // add or remove articool to trending
 $router->addPost(
     '/api/v1/post/trend-articool',

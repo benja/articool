@@ -14,6 +14,8 @@ class PostController extends ControllerBase
         $this->view->getArticoolData     = $this->getArticoolData($post_id);
         $this->view->printAuthorsHtml    = $this->printAuthorsHtml($post_id); // authors printed in html
         $this->view->printAuthorsText    = $this->printAuthorsText($post_id); // authors printed in text (title)
+        $this->view->appreciationCount   = $this->getAppreciationCount($post_id);
+        $this->view->hasAppreciated      = $this->hasAppreciated($post_id, $this->_user->user_id); // returns true if user has liked
 
         $this->view->appName             = $_ENV['APP_NAME'];
         $this->view->appUrl              = $_ENV['APP_URL'];

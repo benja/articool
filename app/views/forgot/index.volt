@@ -1,7 +1,6 @@
 {% extends "templates/base.volt" %}
 
 {% block title %} Forgot Password {% endblock %}
-{% block body_id %}forgot{% endblock %}
 
 {% block content %}
 <div class="authpage">

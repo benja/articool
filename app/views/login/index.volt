@@ -1,7 +1,6 @@
 {% extends "templates/base.volt" %}
 
 {% block title %} Login {% endblock %}
-{% block body_id %} login {% endblock %}
 
 {% block content %}
 <div class="authpage">

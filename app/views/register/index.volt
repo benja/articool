@@ -1,7 +1,6 @@
 {% extends "templates/base.volt" %}
 
 {% block title %} Register {% endblock %}
-{% block body_id %} register {% endblock %}
 
 {% block content %}
 <div class="authpage">
@@ -18,6 +17,7 @@
 					<li>Join <strong>{{ registeredUsers }}</strong> other authors and start sharing your creativity with the world today.</li>
 					<li>Writing and publishing articools is very simple. Share to your preferred social network with one click.</li>
 					<li>Creating an account is easy, just fill in the form, confirm your email, profit!</li>
+					<li>Show authors how much you appreciate their writing by ("hearting") it on the post page. </li>
 				</ul>
 
 				<a class="authpage__left--goback" href="javascript:history.go(-1)">

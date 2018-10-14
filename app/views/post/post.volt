@@ -492,7 +492,6 @@
 {% endif %}
 {% endif %}
 
-
 <div class="postpage">
 
 	<div class="postpage__menu">
@@ -564,7 +563,18 @@
 
 			</div>
 			<p>Share</p>
-		</div>
+        </div>
+        
+        <div class="postpage__appreciate">
+            <p id="appreciate_count" class="postpage__appreciate--count">{{ kNumber(appreciationCount) }}</p>
+            <form id="appreciateForm">
+    			<input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}" />
+                <input type="hidden" id="session_identifier" value="{{ tokens.session_identifier }}" />
+                <input type="hidden" id="session_token" value="{{ tokens.session_token }}" />
+                <i id="post_appreciate" class='{% if hasAppreciated|length > 0 %}fas{% elseif hasAppreciated|length is 0 %}far{% endif %} fa-heart {% if post.post_genre == "Analysis" %}analysis{% elseif post.post_genre == "Autobiography" %}autobiography{% elseif post.post_genre == "Biography" %}biography{% elseif post.post_genre == "Chronicle" %}chronicle{% elseif post.post_genre == "Essay" %}essay{% elseif post.post_genre == "Fiction" %}fiction{% elseif post.post_genre == "Non-Fiction" %}nonfiction{% elseif post.post_genre == "Poetry" %}poetry{% elseif post.post_genre == "Popular-Science" %}popularscience{% elseif post.post_genre == "Short-Story" %}shortstory{% endif %}'></i>
+            </form>
+        </div>
+
 		{% if post is defined and post.post_active != 0 %}
 		{% for post in getArticoolData %}
 		<div class="postpage__post">
@@ -711,6 +721,7 @@ jQuery(document).ready(function() {
 {{ javascript_include("js/auth/editArticool.js") }}
 {{ javascript_include("js/auth/editDraft.js") }}
 {{ javascript_include("js/auth/deleteArticool.js") }}
+{{ javascript_include("js/auth/appreciatePost.js") }}
 {{ javascript_include("js/partials/modal.js") }}
 {{ javascript_include("js/jquery.timeago.js") }}
 

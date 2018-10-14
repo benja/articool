@@ -210,7 +210,6 @@
 {% endif %}
 {% endif %}
 
-
 {% if profile %}
 <div class="profilepage">
     <div class="profilepage__content">
@@ -244,6 +243,10 @@
                         <p class="profile__stats--value">{{ niceNumber(getPeopleReached) }}</p>
                         <p class="profile__stats--description">people reached</p>
                     </div>
+                    <div class="profile__stats--entry">
+                        <p class="profile__stats--value">{{ niceNumber(getAppreciationCount) }}</p>
+                        <p class="profile__stats--description">appreciations received</p>
+                    </div>
                 </div>
                 
             </div>
@@ -258,7 +261,8 @@
                         {% if profile.username == user.username %}
                             <div id="modalbutton" class="articools--new">+</div>
                         {% endif %}
-                    {% elseif getUserPosts|length is 0 %}
+                    {% endif %}
+                    {% if getUserPosts|length is 0 and profile.username != user.username %}
                         <p class="articools--none">{{ profile.first_name }} has not posted any articools.</p>
                     {% endif %}
 

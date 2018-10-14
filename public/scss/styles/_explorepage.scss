@@ -213,8 +213,13 @@
     .explorepage {
         padding: 0;
 
+        .left {
+            overflow-y: scroll;
+        }
+
         .right {
             margin-bottom: 4rem;
+            overflow-y: scroll;
         }
     }
 }

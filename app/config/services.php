@@ -73,7 +73,23 @@ $di->setShared('view', function () {
             $compiler->addFunction('niceNumber', function($resolvedArgs, $exprArgs) {
                 return 'number_format(' .$resolvedArgs .')';
             });
+            $compiler->addFunction('kNumber', function($resolvedArgs, $exprArgs) {
 
+                if($resolvedArgs < 1000) {
+                    // Anything less than a thousand
+                    return 'number_format('.$resolvedArgs.')';
+                } else if ($resolvedArgs < 1000000) {
+                    // Anything less than a million
+                    return 'number_format('.$resolvedArgs.' / 1000, 1) . "k"';
+                } else if ($resolvedArgs < 1000000000) {
+                    // Anything less than a billion
+                    return 'number_format('.$resolvedArgs.' / 1000000, 3) . "m"';
+                } else {
+                    // At least a billion
+                    return 'number_format('.$resolvedArgs.' / 1000000000, 3) . "b"';
+                }
+
+            });
             return $volt;
 
         },

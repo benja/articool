@@ -3,6 +3,7 @@ namespace Api\v1;
 use Phalcon\Validation;
 
 use Phalcon\Validation\Message;
+use Phalcon\Http\Request;
 
 use Phalcon\Validation\Validator\{PresenceOf, StringLength, Alnum, Url as UrlValidator};
 
@@ -10,6 +11,7 @@ use \ControllerBase;
 use \Posts;
 use \PostAuthor;
 use \PostTrending;
+use \Actions;
 
 class PostController extends ControllerBase {
 
@@ -893,6 +895,65 @@ class PostController extends ControllerBase {
 
         }
         return $this->ajaxResponse($auth, ['No authorization'], 'ajax');
+    }
+
+    public function appreciateArticoolAction()
+    {
+        $auth = $this->checkAuth(1); // has to be registered user
+        if($auth) {
+
+            // validate input
+            $validation = new Validation();
+            $validation->add([
+                'post_id'
+            ], new PresenceOf([
+                'message' => [
+                    'post_id' => 'Nice try, but you can\'t tweak our system'
+                ]
+            ]));
+
+            // validate errors, and put in array
+            $messages = $validation->validate($_POST);
+
+            // check if post has been liked by user before
+            $actions = Actions::findFirst([
+                'conditions' => 'post_id = :post_id: and user_id = :user_id: and action = :action: and user_agent = :user_agent:',
+                'bind' => [
+                    'post_id' => $this->request->getPost('post_id'),
+                    'user_id' => ($this->_user) ? $this->_user->user_id : 0,
+                    'action' => 'like',
+                    'user_agent' => $this->request->getClientAddress()
+                ]
+            ]);
+
+            if(!$actions) {
+
+                // create new row in table, because post is not liked
+                $action = new Actions();
+                $action->user_id = ($this->_user) ? $this->_user->user_id : 0;
+                $action->post_id = $this->request->getPost('post_id');
+                $action->action = 'like';
+                $action->user_agent = $this->request->getClientAddress();
+                $action->save();
+
+                $messages->appendMessage( new Message('Appreciated articool') );
+                return $this->ajaxResponse(true, $messages, 'ajax');
+
+            } else {
+
+                // if post does not exist in database
+                if(empty($actions)) {
+                    $messages->appendMessage( new Message('The given Articool was not found') );
+                    return $this->ajaxResponse(false, $messages, 'ajax');
+                }
+
+                $actions->delete(); // delete the action we already found
+
+                $messages->appendMessage( new Message('Unappreciated articool') );
+                return $this->ajaxResponse(true, $messages, 'ajax');
+            }
+        }
+        return $this->ajaxResponse($auth, ['Create an account to appreciate articools'], 'ajax');
     }
 
 }

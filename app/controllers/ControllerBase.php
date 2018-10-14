@@ -2,6 +2,7 @@
 
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Url;
+use Phalcon\Http\Request;
 use Phalcon\Validation\Message\Group as MessageGroup;
 
 class ControllerBase extends Controller
@@ -80,6 +81,7 @@ class ControllerBase extends Controller
         if(isset($post) && $post != NULL) {
             return true;
         }
+
         return false;
 	}
 
@@ -88,25 +90,128 @@ class ControllerBase extends Controller
 	*/
 	public function addPostView(int $post_id)
 	{
-        // Check if the cookie has previously set
-        if (!$this->cookies->has('post_view_'.$post_id)) {
+        // get user info
+        $request = new Request();
+        $ip = $request->getClientAddress();
+        $ua = $request->getUserAgent();
+        $id = ($this->_user) ? $this->_user->user_id : 0;
+
+        // set info to variable (create array)
+        $viewer['ua'] = $ua;
+        $viewer['ip'] = $ip;
+        $viewer['id'] = ($id) ? $id : 0;
+
+        // check if exists / has viewed before
+        $actions = Actions::findFirst([
+            'conditions' => 'post_id = :post_id: and user_id = :user_id: and action = :action: and user_agent = :user_agent:',
+            'bind' => [
+                'post_id' => $post_id,
+                'user_id' => $viewer['id'],
+                'action' => 'view',
+                'user_agent' => $viewer['ip']
+            ]
+        ]);
+
+        // if nothing is found
+        if(!$actions) {
+            // add user to database, so they can't view again
+            $action = new Actions();
+            $action->user_id = $viewer['id'];
+            $action->post_id = $post_id;
+            $action->action = 'view';
+            $action->user_agent = $viewer['ip'];
+            $action->save();
+
+            // add view to post
             $post = Posts::findFirst([
                 'conditions' => 'post_id = :post_id:',
                 'bind' => [
                     'post_id' => $post_id,
                 ]
             ]);
-            
-            // If there's no post, return to home
-            if(!$post) {
-                return $this->response->redirect('');
-            }
-
             $post->post_views++;
             $post->update();
-            $this->cookies->set('post_view_'.$post_id, '1', time() + 3600 * 24 * 30 * 12);
+
+            if(!$post) {
+                return $this->response->redirect('explore'); // If there's no post, return home
+            }
         }
-	}
+    }
+    
+    /*
+    *   Get appreciation count on post
+    */
+    public function getAppreciationCount(int $post_id)
+    {
+
+        // get likes
+        $likes = Actions::find([
+            'conditions' => 'post_id = :post_id: and action = :action:',
+            'bind' => [
+                'post_id' => $post_id,
+                'action' => 'like'
+            ]
+        ]);
+
+        return count($likes);
+    }
+
+    /*
+    *   Get user appreciation count
+    */
+    public function getUserAppreciations(int $user_id)
+    {
+
+        // get every post id that user has posted
+        $posts = Posts::find([
+            'conditions' => 'user_id = :user_id: and post_active = :post_active:',
+            'bind' => [
+                'user_id' => $user_id,
+                'post_active' => 1
+            ] 
+        ]);
+
+        // put them in array
+        $postids = [];
+        foreach ($posts as $post) {
+            array_push($postids, $post->post_id);
+        }
+
+        // search action table to find for every post how many likes
+        $totallikes = [];
+        foreach($postids as $postid) {
+            $count = Actions::find([
+                'conditions' => 'post_id = :post_id: and action = :action:',
+                'bind' => [
+                    'post_id' => $postid,
+                    'action' => 'like'
+                ]
+            ]);
+            array_push($totallikes, count($count));    
+        }
+
+        $totallikecount = array_sum($totallikes);
+        return $totallikecount;
+    }
+
+    /*
+    *   If user has liked post, return true
+    */
+    public function hasAppreciated($post_id, $user_id)
+    {
+
+        // check if user has liked
+        $hasliked = Actions::find([
+            'conditions' => 'post_id = :post_id: and user_id = :user_id: and action = :action:',
+            'bind' => [
+                'post_id' => $post_id,
+                'user_id' => $user_id,
+                'action' => 'like',
+            ]
+        ]);
+
+        return $hasliked;
+    }
 
     /*
     *   This function deletes sessions that are older than 30 days old
