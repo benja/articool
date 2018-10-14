@@ -5,8 +5,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  -webkit-overflow-scrolling: touch;
-  -webkit-appearance: none; }
+  -webkit-overflow-scrolling: touch; }
 
 ::-moz-selection {
   /* Code for Firefox */
@@ -400,6 +399,7 @@ input {
   font-size: 1rem;
   min-width: 8rem;
   cursor: pointer;
+  -webkit-appearance: none;
   font-family: 'Bree Serif', 'Open Sans', sans-serif;
   font-weight: 100;
   border: none; }
@@ -493,7 +493,8 @@ input {
     background: #494949;
     color: white;
     font-family: 'Bree Serif', 'Open Sans', sans-serif;
-    font-weight: 100; }
+    font-weight: 100;
+    -webkit-appearance: none; }
   .input__box--field {
     font-family: 'Bree Serif', 'Open Sans', sans-serif;
     font-weight: 100;
@@ -503,7 +504,8 @@ input {
     padding: .8rem;
     font-size: 1.1rem;
     min-width: 15rem;
-    display: block; }
+    display: block;
+    -webkit-appearance: none; }
     .input__box--field::placeholder {
       color: #979797;
       font-family: 'Bree Serif', 'Open Sans', sans-serif;
