@@ -956,4 +956,50 @@ class PostController extends ControllerBase {
         return $this->ajaxResponse($auth, ['Create an account to appreciate articools'], 'ajax');
     }
 
+    public function genShareKeyAction()
+    {
+        $auth = $this->checkAuth(1); // has to be registered to do this 
+        if($auth) {
+
+            // validate input
+            $validation = new Validation();
+            $validation->add([
+                'post_id'
+            ], new PresenceOf([
+                'message' => [
+                    'post_id' => 'Nice try, but you can\'t tweak our system'
+                ]
+            ]));
+
+            // validate errors, and put in array
+            $messages = $validation->validate($_POST);
+
+            // check if we can find the post (based on post_id)
+            $post = Posts::findFirst([
+                'conditions' => 'post_id = :post_id:',
+                'bind' => [
+                    'post_id' => $this->request->getPost('post_id')
+                ]
+            ]);
+
+            if(empty($post)) {
+                $messages->appendMessage( new Message('Post was not found') );
+                return $this->ajaxResponse(true, $messages, 'ajax');
+            } else {
+                // we dont do an if-stmt to check if it exists, because we always want to generate a new code
+                // whether or not the user has already generated a code
+
+                // generate a random key (https://stackoverflow.com/a/28171796)
+                $sharekey = base_convert(rand(1000000000,PHP_INT_MAX), 10, 36);
+
+                // input it in database
+                $post->post_sharekey = $sharekey;
+                $post->update();
+                $messages->appendMessage( new Message('Generated new share url') );
+                return $this->ajaxResponse(true, $messages, 'ajax', $post->toArray());
+            }
+        }
+        return $this->ajaxResponse($auth, ['No authorization'], 'ajax');
+    }
+
 }

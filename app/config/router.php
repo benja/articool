@@ -78,6 +78,16 @@ $router->addPost(
     ]
 );
 
+// generate share key
+$router->addPost(
+    '/api/v1/post/generate-sharekey',
+    [
+        'namespace'  => 'Api\v1',
+        'controller' => 'post',
+        'action'     => 'genShareKey'
+    ]
+);
+
 /*
  *  SETTINGSCONTROLLER
  */
@@ -327,6 +337,8 @@ $router->add(
         'post_id'    => 2
     ]
 );
+
+// figure out how to display the sharekey in the url
 
 /* -------------------------------------------------- */
 
