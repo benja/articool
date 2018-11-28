@@ -323,6 +323,32 @@
             font-family: 'Open Sans', sans-serif;
             font-weight: 400;
 
+            .image-style-side {
+                float: right;
+                margin: 1rem;
+                width: 50%;
+            }
+
+            figcaption {
+                border-radius: .3rem;
+                padding: .5rem;
+                font-style: italic;
+                text-align: center;
+            }
+
+            img {
+                width: 100%;
+                margin: 1.5rem 0 1rem;
+                border-radius: .2rem;
+                box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.1);
+                user-drag: none;
+                user-select: none;
+                -moz-user-select: none;
+                -webkit-user-drag: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+            }
+
             p {
                 margin-top: 1rem;
                 word-break: break-word;
@@ -425,6 +451,13 @@
 }
 
 @media (max-width: 500px) {
+
+    .postpage__post--body .image-style-side {
+        float: unset;
+        margin: 0rem;
+        width: 100%;
+    }
+
     .postpage__post--title {
         font-size: 2rem;
     }

@@ -64,6 +64,18 @@
             display: flex;
             justify-content: flex-end;
         }
+
+        &--link {
+            width: fit-content;
+            color: #1e1e1e;
+            border-bottom: .15rem solid #7D7D7D;
+            transition: .1s;
+
+            &:hover {
+                border-color: #131313;
+                transition: .1s;
+            }
+        }
     
         &--title {
             font-size: 1.2rem;

@@ -98,4 +98,52 @@ $(document).ready(function() {
         
     });
 
+    // remove background
+    $('#post_removebackground').click(function() {
+
+        var post_id = window.location.pathname.match(/\/(\d+)/)[1];
+
+        // create formdata
+        var data = new FormData();
+        data.append('post_id', post_id);
+
+        var username = $('#session_identifier').val();
+        var password = $('#session_token').val();
+
+        $.ajax({
+            url: baseUrl + 'post/remove-background/',
+            type: 'post',
+            contentType: false,
+            processData: false,
+            data: data,
+            headers: {
+                Authorization: "Basic " + btoa(username + ":" + password)
+            },
+            dataType: 'json',
+            success: function (feedback) {
+
+                // display error messages properly through our alert div
+                if( feedback.success == false) {
+                    $('#alert_div').removeClass('hidden'); 
+                    $('#alert_div').removeClass('is-success'); 
+                    $('#alert_div').addClass('is-error'); 
+                    $('#alert_title').html('ERROR');
+                } else if(feedback.success == true) {
+                    $('#alert_div').removeClass('hidden');
+                    $('#alert_div').removeClass('is-error');
+                    $('#alert_div').addClass('is-success'); 
+                    $('#alert_title').html('SUCCESS');
+
+                    setTimeout(function(){
+                        $('#alert_div').addClass('hidden');
+                        $('#alert_div').removeClass('is-success');
+                    }, 2000);
+                }
+
+                $('#feedback_message').html(feedback.messages.join('<br />'));
+            }
+        });
+        
+    });
+
 });

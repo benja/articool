@@ -1002,4 +1002,41 @@ class PostController extends ControllerBase {
         return $this->ajaxResponse($auth, ['No authorization'], 'ajax');
     }
 
+    public function removeBackgroundAction()
+    {
+        $auth = $this->checkAuth(1); // has to be registered user to do this
+
+        if($auth) {
+
+            // validate input
+            $validation = new Validation();
+            $validation->add([
+                'post_id'
+            ], new PresenceOf([
+                'message' => [
+                    'post_id' => 'Nice try, but you can\'t tweak our system'
+                ]
+            ]));
+
+            // check if we can find the post (based on post_id)
+            $post = Posts::findFirst([
+                'conditions' => 'post_id = :post_id:',
+                'bind' => [
+                    'post_id' => $this->request->getPost('post_id')
+                ]
+            ]);
+
+            // delete from trending before we delete post
+            if($post) {
+                $post->post_background = null;
+            }
+            $post->save();
+
+            $messages[] = 'Background successfully removed';
+            return $this->ajaxResponse(true, $messages, 'ajax');
+
+        }
+        return $this->ajaxResponse($auth, ['No authorization'], 'ajax');
+    }
+
 }

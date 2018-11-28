@@ -238,7 +238,10 @@
 							<p>or</p>
 							<input class="input__box--field" id="post_backgroundlink" type="text" placeholder="Link to an image">
 						</div>
+
+						<p id="post_removebackground" class="input__box--link" style="margin-top: 1rem;">Remove background</p>
 					</div>
+
 				</details>
 				
                 <input type="hidden" id="user_username" value="{{ post.users.username }}" />
@@ -462,7 +465,27 @@
 								<p>or</p>
 								<input class="input__box--field" id="post_backgroundlink" type="text" placeholder="Link to an image">
 							</div>
+
+							<p id="post_removebackground" class="input__box--link" style="margin-top: 1rem;">Remove background</p>
 						</div>
+
+						<div class="input__box">
+							<div class="inline">
+								<h1 class="input__box--title">Share link</h1>
+			
+								<!-- Help button -->
+								<div class="input__box--helpcircle">?
+									<div class="input__box--helpbox">
+										<span>Generates custom private share link. Works well when you want feedback on something you've written, but don't feel ready to publish it yet. Every time you generate a new share link, the old one will be delted.</span>
+									</div>
+								</div>
+								<!-- Help button -->
+							</div>
+	
+							<p id="gensharekey_button" class="input__box--link">Generate new</p>
+							<input style="width: 100%; margin-top: 1rem;" class="input__box--field" id="post_sharelink" type="text" placeholder="Share link" {% if post.post_sharekey is not null %}value="{{ appUrl}}@{{post.users.username}}/{{post.post_id}}/{{post.post_sharekey}}/{{ createTitleSlug(post.post_title) }}"{% endif %}>
+						</div>
+
 					</details>
 					
 					<input type="hidden" id="user_username" value="{{ post.users.username }}" />
@@ -578,7 +601,7 @@
 		{% if post is defined and post.post_active != 0 %}
 		{% for post in getArticoolData %}
 		<div class="postpage__post">
-			{% if post.is_draft is 1 %}<div class="postpage__post--draft">This draft is only visible to you, unless you publish it from the "edit" menu.</div> {% endif %}
+			{% if post.is_draft is 1 %}<div class="postpage__post--draft">This draft is only visible to you and people with the share link{% if user is defined and post.user_id == user.user_id %}, unless you publish it from the "edit" menu.{% endif %}</div> {% endif %}
 			<h1 id="postpage_title" class="postpage__post--title">{{ post.post_title }} </h1>
 			<div class="postpage__post--authors">{{ printAuthorsHtml }}</div>
 			<div class="postpage__post--extra">
@@ -601,6 +624,14 @@
 
 </div>
 
+{% if post.post_sharekey != null AND post.post_sharekey == shareKey %}
+<!-- Sharekey detected, so we update URL based on sharekey -->
+<script> history.replaceState({}, 'title', '{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ post.post_sharekey }}/{{ createTitleSlug(post.post_title) }}' ); </script>
+{% else %}
+<!-- No sharekey, so we update URL based on NO sharekey -->
+<script> history.replaceState({}, 'title', '{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}' ); </script>
+{% endif %}
+
 <script>
 	/* animate navbar to remove on scroll down */
 	var nav = document.getElementById("nav");
@@ -617,8 +648,6 @@
 			nav.classList.add("slideup");
 		}
 	});
-
-	history.replaceState({}, 'title', '{{ appUrl }}@{{ post.users.username }}/{{ post.post_id }}/{{ createTitleSlug(post.post_title) }}' );
 </script>
 
 <script type="text/javascript">

@@ -88,6 +88,16 @@ $router->addPost(
     ]
 );
 
+// remove avatar
+$router->addPost(
+    '/api/v1/post/remove-background',
+    [
+        'namespace'     =>  'Api\v1',
+        'controller'    =>  'post',
+        'action'        =>  'removeBackground'
+    ]
+);
+
 /*
  *  SETTINGSCONTROLLER
  */
@@ -339,6 +349,17 @@ $router->add(
 );
 
 // figure out how to display the sharekey in the url
+
+$router->add(
+    '/{user}/:int/{key}/:params',
+    [
+        'controller' => 'post',
+        'action'     => 'post',
+        'user'       => 1,
+        'post_id'    => 2,
+        'share_key'   => 3
+    ]
+);
 
 /* -------------------------------------------------- */
 

@@ -6,6 +6,7 @@ class PostController extends ControllerBase
     public function postAction()
     {
         $post_id   = $this->dispatcher->getParam('post_id'); //define post_id from url
+        $share_key = $this->dispatcher->getParam('share_key');
 
         // pass data to view
         $this->view->user                = $this->_user;
@@ -17,6 +18,9 @@ class PostController extends ControllerBase
         $this->view->appreciationCount   = $this->getAppreciationCount($post_id);
         $this->view->hasAppreciated      = $this->hasAppreciated($post_id, $this->_user->user_id); // returns true if user has liked
 
+        // pass this data so we can check what to update the url to
+        $this->view->shareKey = $share_key;
+
         $this->view->appName             = $_ENV['APP_NAME'];
         $this->view->appUrl              = $_ENV['APP_URL'];
         
@@ -25,8 +29,11 @@ class PostController extends ControllerBase
         /* EDIT POST */
         $post = $this->getArticoolData($post_id); // get post data
 
+        /* Check if sharekey is right, or exists */
         /* If the post is a draft, redirect access to it by other people but creator */
-        if($post[0]->is_draft == 1 && $post[0]->users->user_id != $this->_user->user_id) {
+        if($post[0]->post_sharekey != "" && $post[0]->post_sharekey == $share_key) {
+            return true; // they used the right sharekey
+        } else if($post[0]->is_draft == 1 && $post[0]->users->user_id != $this->_user->user_id) {
             return $this->response->redirect($_SERVER['HTTP_REFERER']);
         }
 
