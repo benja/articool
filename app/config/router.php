@@ -231,7 +231,19 @@ $router->addPost(
     ]
 );
 
+/*
+ *  SEARCHCONTROLLER
+ */
 
+$router->addGet(
+    '/api/v1/search/authors/{query}',
+    [
+        'namespace'     => 'Api\v1',
+        'controller'    => 'search',
+        'action'        => 'searchAuthors',
+        'query'         => 1
+    ]
+);
 
 /* -------------------------------------------------- */
 
@@ -347,8 +359,6 @@ $router->add(
         'post_id'    => 2
     ]
 );
-
-// figure out how to display the sharekey in the url
 
 $router->add(
     '/{user}/:int/{key}/:params',

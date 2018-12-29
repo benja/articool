@@ -16,7 +16,7 @@ return new \Phalcon\Config([
         'username'    => $_ENV['DATABASE_USER'],
         'password'    => $_ENV['DATABASE_PASS'],
         'dbname'      => $_ENV['DATABASE_NAME'],
-        'charset'     => 'utf8',
+        'charset'     => 'utf8mb4',
     ],
     'application' => [
         'appDir'         => APP_PATH . '/',
