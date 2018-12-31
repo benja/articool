@@ -32,8 +32,6 @@ $("#searchAuthorsField").on("input", function(){
         $.get(baseUrl + 'search/authors/' + query, function(data) {
             // clear list before we add new authors so we don't get multiple same inserts
             authorList.innerHTML = "";
-            
-            console.log(data.data);
 
             if(data.data !== undefined && data.data.length > 0) {
                 data.data.forEach(function(user) {  

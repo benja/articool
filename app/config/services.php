@@ -10,6 +10,9 @@ use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Phalcon\Flash\Session as Flash;
 use Phalcon\Mvc\View\Engine\Volt;
 
+ini_set("display_errors", false);
+ini_set("display_startup_errors", false);
+
 /**
  * Shared configuration service
  */

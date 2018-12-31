@@ -22,8 +22,10 @@ class SearchController extends ControllerBase {
         $query = $this->dispatcher->getParam('query');
 
         // find user
+        // condition found on https://ohdoylerules.com/tricks/handle-spaces-and-no-spaces-in-mysql-where-like-clauses/
+        // OLD WAY: username LIKE :value: OR first_name LIKE :value: OR last_name LIKE :value:
         $users = Users::find([
-            'conditions' => 'username LIKE :value: OR first_name LIKE :value: OR last_name LIKE :value:', // add active = 1? we dont want to show accounts which are deactivated
+            'conditions' => 'LOWER(CONCAT(first_name, last_name)) LIKE LOWER(REPLACE(:value:, " ", "%"))',
             'columns' => [
                 'username',
                 'first_name',
@@ -32,7 +34,7 @@ class SearchController extends ControllerBase {
             ],
             'limit' => 5,
             'bind' => [
-                'value' => "%" . $query . "%"
+                'value' => "%" . trim($query) . "%"
             ]
         ]);
 
