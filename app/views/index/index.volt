@@ -22,6 +22,12 @@
 {% endblock %}
 
 {% block content %}
+<!-- Firework Script from https://codepen.io/yshlin/pen/ylDEk -->
+<div class="pyro">
+	<div class="before"></div>
+	<div class="after"></div>
+</div>
+
 <div class="frontpage">
 	<!-- Welcome Section  -->
 	<section class="welcome">
@@ -61,19 +67,25 @@
 		</div>
 	</section>
 
-	<!-- Explore Section -->
-	<section class="explore">
-			<div class="explore__content">
-		
-				<div class="explore__text">
-					<div class="explore__text--big">
-						Take a look at what our authors are writing about!
-					</div>
+	<!-- Announcement Section -->
+	<section class="announcement">
+
+		<!-- Firework Script from https://codepen.io/yshlin/pen/ylDEk -->
+		<div class="pyro">
+			<div class="before"></div>
+			<div class="after"></div>
+		</div>
+
+		<div class="announcement__content">
+
+			<div class="announcement__text">
+				<div class="announcement__text--big">
+					We wish you a Happy New Year!
 				</div>
-		
-				<a class="explore__button" href="{{ url('explore') }}">Explore Articools</a>
 			</div>
-		</section>
+
+		</div>
+	</section>
 
 	<!-- Statistics Section -->
 	<section class="stats">
@@ -97,6 +109,20 @@
 				<div class="stats__boxes--hr"></div>
 			</div>
 
+		</div>
+	</section>
+
+	<!-- Explore Section -->
+	<section class="explore">
+		<div class="explore__content">
+	
+			<div class="explore__text">
+				<div class="explore__text--big">
+					Take a look at what our authors are writing about!
+				</div>
+			</div>
+	
+			<a class="explore__button" href="{{ url('explore') }}">Explore Articools</a>
 		</div>
 	</section>
 
