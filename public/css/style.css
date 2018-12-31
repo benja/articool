@@ -319,7 +319,7 @@ input {
     list-style-type: none;
     font-weight: 100; }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
   .nav__left--input {
     display: none; } }
 @media (max-width: 420px) {
