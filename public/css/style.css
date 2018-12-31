@@ -126,8 +126,8 @@ input {
   margin: 0 auto;
   width: fit-content;
   font-size: .8rem;
-  border-radius: .2rem;
-  padding: 0 .5rem; }
+  border-radius: 5rem;
+  padding: .15rem .8rem; }
   .role.verified {
     background: #7F7DFF; }
   .role.admin {
@@ -1306,7 +1306,19 @@ input {
           margin: 0 auto; }
         .profilepage__left .profile__info--name {
           font-size: 1.4rem;
-          margin: .8rem 0 .3rem; }
+          margin: 1.5rem 0 .3rem;
+          display: inline-block; }
+        .profilepage__left .profile__info--checkmark {
+          width: 1rem;
+          height: 1rem;
+          margin-left: 0.3rem;
+          display: inline;
+          user-drag: none;
+          user-select: none;
+          -moz-user-select: none;
+          -webkit-user-drag: none;
+          -webkit-user-select: none;
+          -ms-user-select: none; }
         .profilepage__left .profile__info--username {
           font-size: .9rem;
           opacity: .8;
@@ -1315,7 +1327,7 @@ input {
         .profilepage__left .profile__info--description {
           font-style: italic;
           font-size: 1rem;
-          margin: 1rem auto;
+          margin: 0rem auto;
           line-height: 1.5rem;
           width: 80%;
           font-weight: 300; }

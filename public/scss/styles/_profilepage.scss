@@ -55,7 +55,22 @@
 
                 &--name {
                     font-size: 1.4rem;
-                    margin: .8rem 0 .3rem;
+                    margin: 1.5rem 0 .3rem;
+                    display: inline-block;
+                }
+
+                &--checkmark {
+                    width: 1rem;
+                    height: 1rem;
+                    margin-left: 0.3rem;
+                    display: inline;
+
+                    user-drag: none;
+                    user-select: none;
+                    -moz-user-select: none;
+                    -webkit-user-drag: none;
+                    -webkit-user-select: none;
+                    -ms-user-select: none;
                 }
 
                 &--username {
@@ -68,7 +83,7 @@
                 &--description {
                     font-style: italic;
                     font-size: 1rem;
-                    margin: 1rem auto;
+                    margin: 0rem auto;
                     line-height: 1.5rem;
                     width: 80%;
                     font-weight: 300;
