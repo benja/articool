@@ -25,7 +25,7 @@ class SearchController extends ControllerBase {
         // condition found on https://ohdoylerules.com/tricks/handle-spaces-and-no-spaces-in-mysql-where-like-clauses/
         // OLD WAY: username LIKE :value: OR first_name LIKE :value: OR last_name LIKE :value:
         $users = Users::find([
-            'conditions' => 'LOWER(CONCAT(first_name, last_name)) LIKE LOWER(REPLACE(:value:, " ", "%"))',
+            'conditions' => 'LOWER(CONCAT(first_name, last_name, username)) LIKE LOWER(REPLACE(:value:, " ", "%"))',
             'columns' => [
                 'username',
                 'first_name',
