@@ -65,11 +65,11 @@
             <h1 class="nav__left--text">articool</h1>
         </a>
 
-        <!--
+        <!-- Search field -->
         <form>
-            <input class="nav__left--input" type="text" placeholder="Search for Author...">
+            <input id="searchAuthorsField" class="nav__left--input" type="text" placeholder="Search for Author...">
         </form>
-        -->
+
     </div>
     <div class="nav__right">
         <div id="nav__user" class="nav__user" style="background-image: url({{ url('img/avatars/') }}default.jpg)"></div>
@@ -92,24 +92,23 @@
     </ul>
 </div>
 
-<!--
-<div class="nav__search">
+<!-- Search list -->
+<div id="nav__search" class="nav__search">
 
+    <div id="nav__search--authors">
+
+    </div>
+
+    <!--
     <a href="#">
         <div class="nav__search--entry">
             <div class="nav__search--image" style="background-image: url(https://articool.blog/img/avatars/77190dffd281e91c62662944fe74d19d6920a653.jpg)"></div>
             <div class="nav__search--name">Benjamin Akar</div>
         </div>
     </a>
+    -->
 
-    <a href="#">
-        <div class="nav__search--entry">
-            <div class="nav__search--image" style="background-image: url(https://pbs.twimg.com/profile_images/988775660163252226/XpgonN0X_400x400.jpg)"></div>
-            <div class="nav__search--name">Kevin Gates</div>
-        </div>
-    </a>
-
-    <p class="nav__search--result">4</p>
+    <p id="nav__search--results" class="nav__search--result">0</p>
 </div>
--->
+
 {% endif %}
