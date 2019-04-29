@@ -166,7 +166,6 @@ class PostController extends ControllerBase {
                 }
                 $post->save();
 
-                
                 // save post contributions to postauthor table
                 foreach($post_authors as $contributor) {
                     $postauthor = new PostAuthor();
