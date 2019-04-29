@@ -152,6 +152,26 @@ class RegisterController extends ControllerBase {
             $mail->Subject = 'Welcome';
             $mail->Body = $registertemplate;
             $mail->send();
+
+            /*
+            *   After we send a mail, we also notify that a user has signed up on Slack
+            */
+            $client = new Maknz\Slack\Client('https://hooks.slack.com/services/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');
+            $client->attach([
+                'color' => 'good',
+                'fields' => [
+                    [
+                        'title' => 'Email',
+                        'value' => $email_address,
+                        'short' => true
+                    ],
+                    [
+                        'title' => 'Username',
+                        'value' => $username,
+                        'short' => true
+                    ]
+                ]
+            ])->send('A new user has signed up! :tada:');
             
             return $this->ajaxResponse(true, ['Successfully registered account, check your email to confirm your email-address.'], 'ajax', $user->toArray());
         }
