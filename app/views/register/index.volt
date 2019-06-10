@@ -2,6 +2,11 @@
 
 {% block title %} Register {% endblock %}
 
+{% block meta %}
+<!-- A tricky way to get this before the closing head tag -->
+<script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
+
 {% block content %}
 <div class="authpage">
 	<div class="authpage__content">
@@ -68,6 +73,10 @@
 					</div>
 
 					<input type="hidden" name="{{ security.getTokenKey() }}" value="{{ security.getToken() }}" />
+
+					<div class="input__box">
+						<div class="g-recaptcha" data-sitekey="6Ld1CqgUAAAAAPwgfsDdWL0I5pMohP0OsQ4j-wue"></div>
+					</div>
 
 					<div class="input__box">
 						<input class="input__box--field fullwidth button success" type="submit" id="register_submit" value="Register">

@@ -14,6 +14,7 @@ var lastname = $('#last_name').val();
 var email = $('#email_address').val();
 var password = $('#password').val();
 var accepttos = $('#accepttos').is(":checked");
+var captcha = $('#g-recaptcha-response').val();
 
 $.ajax({
     url: baseUrl + 'auth/register',
@@ -24,7 +25,8 @@ $.ajax({
         last_name: lastname,
         email_address: email,
         password: password,
-        accepttos: accepttos
+        accepttos: accepttos,
+        captcha: captcha
     },
     dataType: 'json',
     success: function (feedback) {

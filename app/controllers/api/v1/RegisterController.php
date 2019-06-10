@@ -84,6 +84,19 @@ class RegisterController extends ControllerBase {
         $email_address = $this->request->getPost('email_address');
         $password = $this->request->getPost('password');
         $accepttos = $this->request->getPost('accepttos');
+        $captcha = $this->request->getPost('captcha');
+
+        
+        // If captcha wasn't validated - source: https://www.bleuken.com/php-demo-using-google-recaptcha-v2-0-sample-php-code/
+        $ip = $_SERVER['REMOTE_ADDR'];		
+        $secretkey = $_ENV['RECAPTCHA_SECRET_KEY'];
+        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretkey."&response=".$captcha."&remoteip=".$ip);
+        $responseKeys = json_decode($response, true);
+        
+        if(intval($responseKeys["success"]) !== 1) {
+            $messages->appendMessage( new Message('Captcha was not validated, refresh and try again'));
+            return $this->ajaxResponse(false, $messages, 'ajax');
+        }
 
         // if user has not accepted tos
         if($accepttos == "false") {
