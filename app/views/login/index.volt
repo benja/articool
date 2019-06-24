@@ -45,7 +45,7 @@
 
 					<div class="input__box">
 						<h1 class="input__box--title">Password</h1>
-						<input class="input__box--field" type="password" id="password" name="password" maxlength="255" placeholder="Enter your first name" required>
+						<input class="input__box--field" type="password" id="password" name="password" maxlength="255" placeholder="Enter your password" required>
 					</div>
 
 					<div class="input__box inline checkbox">
