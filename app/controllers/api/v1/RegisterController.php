@@ -169,7 +169,7 @@ class RegisterController extends ControllerBase {
             /*
             *   After we send a mail, we also notify that a user has signed up on Slack
             */
-            $client = new \Maknz\Slack\Client('https://hooks.slack.com/services/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');
+            $client = new \Maknz\Slack\Client($_ENV['SLACK_WEBHOOK_URL']);
             $client->attach([
                 'color' => 'good',
                 'fields' => [
