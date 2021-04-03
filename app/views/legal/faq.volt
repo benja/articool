@@ -7,7 +7,7 @@
 <div class="faqpage">
     <h1 class="faqpage__title">Frequently Asked Questions (click)</h1>
     <div class="faqpage__content">
-        
+
         <div class="faqpage__list">
 
             <div class="faqpage__list--box">
@@ -33,7 +33,7 @@
                     <p>How do I delete my Articool account?</p>
                 </div>
                 <div class="faqpage__list--answer">
-                    <p>If you wish to delete your account, send an email to <strong>support@articool.blog</strong> from the email in which you registered an account on. Let us know you want to delete your account, and we will take it from there.</p>
+                    <p>If you wish to delete your account, send an email to <strong>support@articool.benjaminakar.com</strong> from the email in which you registered an account on. Let us know you want to delete your account, and we will take it from there.</p>
                 </div>
             </div>
 
@@ -51,7 +51,7 @@
                     <p>I successfully logged in, but I'm not logged in?</p>
                 </div>
                 <div class="faqpage__list--answer">
-                    <p>If this happens, reset your browser's cache and try logging in again. If this does not solve the issue, please email us at <strong>support@articool.blog</strong></p>
+                    <p>If this happens, reset your browser's cache and try logging in again. If this does not solve the issue, please email us at <strong>support@articool.benjaminakar.com</strong></p>
                 </div>
             </div>
 

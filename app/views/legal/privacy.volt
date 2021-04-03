@@ -8,16 +8,16 @@
     <div class="legalpage__box">
 
         <div class="legalpage__box--text">
-            
+
         <h1>Privacy Policy</h1>
 
         <p>Effective date: October 05, 2018</p>
 
-        <p>Articool ("us", "we", or "our") operates the https://articool.blog website (hereinafter referred to as the "Service").</p>
+        <p>Articool ("us", "we", or "our") operates the https://articool.benjaminakar.com website (hereinafter referred to as the "Service").</p>
 
         <p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. Our Privacy Policy  for Articool is managed with the help of <a href="https://privacypolicies.com/free-privacy-policy-generator/">Privacy Policies</a>.</p>
 
-        <p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, the terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from https://articool.blog</p>
+        <p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, the terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from https://articool.benjaminakar.com</p>
 
         <h2>Information Collection And Use</h2>
 
@@ -50,7 +50,7 @@
 
         <h2>Use of Data</h2>
 
-        <p>Articool uses the collected data for various purposes:</p>    
+        <p>Articool uses the collected data for various purposes:</p>
         <ul>
         <li>To provide and maintain the Service</li>
         <li>To notify you about changes to our Service</li>
@@ -87,7 +87,7 @@
         <p>These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
 
         <h3>Analytics</h3>
-        <p>We may use third-party Service Providers to monitor and analyze the use of our Service.</p>    
+        <p>We may use third-party Service Providers to monitor and analyze the use of our Service.</p>
         <ul>
         <li>
         <p><strong>Google Analytics</strong></p>
@@ -116,7 +116,7 @@
         <h2>Contact Us</h2>
         <p>If you have any questions about this Privacy Policy, please contact us:</p>
         <ul>
-        <li>By email: <a href="mailto:support@articool.blog" target="_top">support@articool.blog</a></li>
+        <li>By email: <a href="mailto:support@articool.benjaminakar.com" target="_top">support@articool.benjaminakar.com</a></li>
 
         </ul>
 

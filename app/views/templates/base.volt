@@ -14,7 +14,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}{% endblock %}</title>
-        
+
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,800&amp;subset=latin-ext,latin" rel="stylesheet">
 
         <link rel="apple-touch-icon" sizes="76x76" href="{{ url('img/favicon/apple-touch-icon.png?v=OmyYv82BBp') }}">
@@ -25,8 +25,8 @@
         <link rel="shortcut icon" href="{{ url('img/favicon/favicon.ico?v=OmyYv82BBp') }}">
         <meta name="theme-color" content="#ffffff">
 
-        <meta name="twitter:image" content="https://articool.blog/img/logo/facebook-logo.png" />
-	    <meta property="og:image" content="https://articool.blog/img/logo/facebook-logo.png" />
+        <meta name="twitter:image" content="https://articool.benjaminakar.com/img/logo/facebook-logo.png" />
+	    <meta property="og:image" content="https://articool.benjaminakar.com/img/logo/facebook-logo.png" />
 
         <!-- Output CSS & JS from controllerbase -->
         {{ assets.outputCss() }}

@@ -49,7 +49,7 @@
     <!--
     <a href="#">
         <div class="nav__search--entry">
-            <div class="nav__search--image" style="background-image: url(https://articool.blog/img/avatars/77190dffd281e91c62662944fe74d19d6920a653.jpg)"></div>
+            <div class="nav__search--image" style="background-image: url(https://articool.benjaminakar.com/img/avatars/77190dffd281e91c62662944fe74d19d6920a653.jpg)"></div>
             <div class="nav__search--name">Benjamin Akar</div>
         </div>
     </a>
@@ -102,7 +102,7 @@
     <!--
     <a href="#">
         <div class="nav__search--entry">
-            <div class="nav__search--image" style="background-image: url(https://articool.blog/img/avatars/77190dffd281e91c62662944fe74d19d6920a653.jpg)"></div>
+            <div class="nav__search--image" style="background-image: url(https://articool.benjaminakar.com/img/avatars/77190dffd281e91c62662944fe74d19d6920a653.jpg)"></div>
             <div class="nav__search--name">Benjamin Akar</div>
         </div>
     </a>

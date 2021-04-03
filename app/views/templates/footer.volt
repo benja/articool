@@ -14,7 +14,7 @@
                 <li><a href="{{ url('/') }}">Home</a></li>
             </ul>
         </div>
-        
+
         <div class="appfooter__list--entry">
             <h3 class="appfooter__list--title">Legal</h3>
             <ul>
@@ -26,7 +26,7 @@
         <div class="appfooter__list--entry">
             <h3 class="appfooter__list--title">Contact</h3>
             <ul>
-                <li><a href="mailto:support@articool.blog" target="_top">support@articool.blog</a></li>
+                <li><a href="mailto:support@articool.benjaminakar.com" target="_top">support@articool.benjaminakar.com</a></li>
             </ul>
         </div>
 
